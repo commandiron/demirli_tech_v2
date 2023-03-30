@@ -1,0 +1,32 @@
+name: demirli_tech_v2
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.5 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  flutter_launcher_icons: "^0.11.0"
+
+flutter_icons:
+  web:
+    generate: true
+    image_path: "assets/images/demirli_tech_only_logo_web_icon.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
+
