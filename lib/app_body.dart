@@ -34,10 +34,10 @@ class _AppBodyState extends State<AppBody> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.all(64),
+          padding: const EdgeInsets.all(64),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [
+            children: const [
               AppText(text: "Vizyon ve Uygulamalar", color: Colors.white, fontSize: 32,),
               Expanded(child: SizedBox()),
               DemirliTechLogo(),
@@ -49,7 +49,7 @@ class _AppBodyState extends State<AppBody> {
           duration: const Duration(milliseconds: 500),
           curve: Curves.easeIn,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 64),
+            padding: const EdgeInsets.symmetric(horizontal: 64),
             alignment: Alignment.center,
             child: Stack(
               alignment: Alignment.center,
@@ -137,7 +137,7 @@ class _InfoCardState extends State<InfoCard> {
         Card(
           elevation: 32,
           child: AnimatedContainer(
-            duration: Duration(milliseconds: 250),
+            duration: const Duration(milliseconds: 250),
             height: _height,
             width: _width,
             alignment: Alignment.center,

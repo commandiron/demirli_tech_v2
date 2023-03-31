@@ -23,11 +23,11 @@ class VisionItem extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 child: InkWell(
                   onTap: onTap,
-                  child: AppCard()
+                  child: const AppCard()
                 )
               ),
-              VerticalDivider(color: Colors.white,),
-              Align(
+              const VerticalDivider(color: Colors.white,),
+              const Align(
                 alignment: Alignment.bottomCenter,
                 child: AppCard()
               ),

@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       theme: themeLight,
       darkTheme: themeDark,
       title: "Demirli Tech",
-      home: Scaffold(
+      home: const Scaffold(
         backgroundColor: Color(0xff06080D),
-        body: const AppBody()
+        body: AppBody()
       )
     );
   }

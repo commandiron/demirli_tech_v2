@@ -1,21 +1,19 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
-final colorSchemeLight = ColorScheme.light(
-  primary: const Color(0xffF48B0B),
-  secondary: const Color(0xffffffff),
-  onSecondary: const Color(0xff000000),
+const colorSchemeLight = ColorScheme.light(
+  primary: Color(0xffF48B0B),
+  secondary: Color(0xffffffff),
+  onSecondary: Color(0xff000000),
 );
 
 final themeLight = ThemeData(
   colorScheme: colorSchemeLight,
 );
 
-final colorSchemeDark = ColorScheme.dark(
-  primary: const Color(0xffF48B0B),
-  secondary: const Color(0xffffffff),
-  onSecondary: const Color(0xff000000),
+const colorSchemeDark = ColorScheme.dark(
+  primary: Color(0xffF48B0B),
+  secondary: Color(0xffffffff),
+  onSecondary: Color(0xff000000),
 );
 
 final themeDark = ThemeData(
