@@ -22,16 +22,16 @@ class GlowingContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.secondary,
-          shape: shape,
-          borderRadius: borderRadius,
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).colorScheme.primary,
-              blurRadius: 15.0,
-              offset: const Offset(0, 0),
-            )
-          ]
+        color: Theme.of(context).colorScheme.secondary,
+        shape: shape,
+        borderRadius: borderRadius,
+        boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).colorScheme.primary,
+            blurRadius: 15.0,
+            offset: const Offset(0, 0),
+          )
+        ]
       ),
       height: height,
       width: width,
