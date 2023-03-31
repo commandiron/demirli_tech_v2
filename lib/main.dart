@@ -1,3 +1,5 @@
+import 'package:demirli_tech_v2/app_body.dart';
+import 'package:demirli_tech_v2/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -12,19 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: themeLight,
+      darkTheme: themeDark,
       title: "Demirli Tech",
       home: Scaffold(
-        backgroundColor: Colors.black,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset("assets/images/demirli_tech_text_logo_white.png"),
-              const SizedBox(height: 16,),
-              const Text("Yakında..", style: TextStyle(color: Colors.white),)
-            ],
-          ),
-        ),
+        backgroundColor: Color(0xff06080D),
+        body: const AppBody()
       )
     );
   }
