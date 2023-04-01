@@ -8,6 +8,7 @@ const colorSchemeLight = ColorScheme.light(
 
 final themeLight = ThemeData(
   colorScheme: colorSchemeLight,
+  scaffoldBackgroundColor: Color(0xff000000),
 );
 
 const colorSchemeDark = ColorScheme.dark(
@@ -18,4 +19,5 @@ const colorSchemeDark = ColorScheme.dark(
 
 final themeDark = ThemeData(
   colorScheme: colorSchemeDark,
+  scaffoldBackgroundColor: Color(0xff000000),
 );
