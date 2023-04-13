@@ -1,5 +1,5 @@
-import 'package:demirli_tech_v2/app_body.dart';
-import 'package:demirli_tech_v2/app_theme.dart';
+import 'package:demirli_tech_v2/theme/app_theme.dart';
+import 'package:demirli_tech_v2/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -17,9 +17,7 @@ class MyApp extends StatelessWidget {
       theme: themeLight,
       darkTheme: themeDark,
       title: "Demirli Tech",
-      home: Scaffold(
-        body: AppBody()
-      )
+      home: const HomeScreen()
     );
   }
 }
