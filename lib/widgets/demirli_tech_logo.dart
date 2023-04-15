@@ -8,7 +8,7 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      "assets/images/demirli_tech_text_logo_white.png",
+      "assets/images/demirli_tech_text_logo_black.png",
       width: width,
     );
   }

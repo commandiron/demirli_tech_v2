@@ -1,117 +1,147 @@
+import 'package:demirli_tech_v2/widgets/demirli_tech_logo.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/app_text.dart';
-import '../widgets/demirli_tech_logo.dart';
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  ScrollController _controller = ScrollController();
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Row(
-            children: [
-              Expanded(
-                flex: 6,
-                child: Padding(
-                  padding: const EdgeInsets.all(32),
-                  child: Column(
+        body: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            CustomScrollView(
+              controller: _controller,
+              slivers: [
+                SliverAppBar(
+                  pinned: false,
+                  snap: true,
+                  floating: true,
+                  toolbarHeight: 100,
+                  backgroundColor: Colors.white,
+                  leading:  AppLogo(),
+                  leadingWidth: 300,
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AppText(text: "Uygulamalarımız", fontSize: 32,),
-                      SizedBox(height: 16,),
-                      Wrap(
-                        direction: Axis.horizontal,
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: const [
-                          ApplicationItem(),
-                          ApplicationItem(),
-                          ApplicationItem(),
-                          ApplicationItem(),
-                          ApplicationItem(),
-                          ApplicationItem(),
-                        ],
-                      ),
-                      SizedBox(height: 16,),
-                      Expanded(
-                        child: Container(
-                          width: 600,
-                        ),
-                      )
+                      AppTextButton(text: "About"),
+                      AppTextButton(text: "Products"),
+                      AppTextButton(text: "Our Vision"),
+                      AppTextButton(text: "Contact us"),
                     ],
                   ),
+                  actions: [
+                    SizedBox(width: 300,)
+                  ],
                 ),
-              ),
-              Expanded(
-                child: Card(
-                  margin: EdgeInsets.zero,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 32),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            AppText(text: "İletişim", fontSize: 16,),
-                            SizedBox(height: 16,),
-                            Wrap(
-                              direction: Axis.horizontal,
-                              children: [
-                                ContactItem(),
-                                ContactItem(),
-                                ContactItem(),
-                                ContactItem(),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 4),
-                          child: AppLogo(width: 120,),
-                        ),
-                      ],
-                    ),
+                SliverToBoxAdapter(
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      //Welcome
+                      Container(
+                        height: 720,
+                        color: Colors.purple,
+                        child: Center(child: Text("Welcome"),),
+                      ),
+                      //About
+                      Container(
+                        height: 360,
+                        color: Theme.of(context).colorScheme.secondaryContainer,
+                        child: Center(child: Text("About"),),
+                      ),
+                      //Products
+                      Container(
+                        height: 720,
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        child: Center(child: Text("Products"),),
+                      ),
+                      //Our Vision
+                      Container(
+                        height: 360,
+                        color: Theme.of(context).colorScheme.secondaryContainer,
+                        child: Center(child: Text("Our Vision"),),
+                      ),
+                      //Contact Us
+                      Container(
+                        height: 360,
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        child: Center(child: Text("Contact Us"),),
+                      ),
+                    ]
                   ),
                 )
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         )
     );
   }
 }
 
-class ContactItem extends StatelessWidget {
-  const ContactItem({Key? key}) : super(key: key);
+class AppTextButton extends StatefulWidget {
+  const AppTextButton({Key? key, required this.text, this.onPressed}) : super(key: key);
+
+  final String text;
+  final void Function()? onPressed;
+
+  @override
+  State<AppTextButton> createState() => _AppTextButtonState();
+}
+
+class _AppTextButtonState extends State<AppTextButton> {
+
+  bool _isOnHover = false;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      child: SizedBox(
-        width: 50,
-        height: 50,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
+      child: InkWell(
+        onTap: () {
+          if(widget.onPressed != null) {
+            widget.onPressed!();
+          }
+        },
+        onHover: (value) {
+          setState(() {
+            _isOnHover = value;
+          });
+        },
+        hoverColor: Colors.transparent,
+        child: IntrinsicWidth(
+          child: Column(
+            children: [
+              if(_isOnHover)
+                Divider(color: Colors.transparent),
+              Text(
+                widget.text,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500
+                ),
+              ),
+              if(_isOnHover)
+                Divider(color: Theme.of(context).colorScheme.primary, thickness: 3,)
+            ],
+          ),
+        )
       ),
     );
   }
 }
 
 
-class ApplicationItem extends StatelessWidget {
-  const ApplicationItem({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return const Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
-      child: SizedBox(
-        width: 100,
-        height: 100,
-      ),
-    );
-  }
-}
 
