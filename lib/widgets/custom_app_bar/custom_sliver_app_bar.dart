@@ -27,7 +27,7 @@ class CustomSliverAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: bodySections.where((item) => item.showButton == true).map(
           (e) => AppBarTextButton(
-            text: e.title,
+            text: e.title ?? "",
             onPressed: () {
               onButtonTap(e.offset);
             },

@@ -1,12 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:demirli_tech_v2/config/app_padding.dart';
-import 'package:demirli_tech_v2/config/app_text_style.dart';
 import 'package:demirli_tech_v2/config/app_theme.dart';
 import 'package:demirli_tech_v2/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import '../config/app_config.dart';
+import '../screens/sections/products/products_section.dart';
 
 void main() {
   setPathUrlStrategy();
@@ -39,7 +37,7 @@ class MaterialChild extends StatelessWidget {
 class BodySection{
   BodySection(
     {
-      required this.title,
+      this.title,
       required this.screenHeight,
       required this.offset,
       required this.color,
@@ -48,7 +46,7 @@ class BodySection{
     }
   );
 
-  final String title;
+  final String? title;
   final double screenHeight;
   final double offset;
   final Color color;
@@ -73,68 +71,11 @@ class BodySection{
     return [
       BodySection(title: "Ana Sayfa", screenHeight: welcomeHeight, offset: welcomeOffset, color: Colors.purple, showButton: false),
       BodySection(title: "Hakkımızda", screenHeight: aboutHeight, offset: aboutOffset, color: Theme.of(context).colorScheme.primaryContainer),
-      BodySection(title: "Ürünlerimiz", screenHeight: productsHeight, offset: productsOffset, color: Theme.of(context).colorScheme.secondaryContainer, section: const ProductsSection()),
+      BodySection(title: "Ürünlerimiz", screenHeight: productsHeight, offset: productsOffset, color: Theme.of(context).colorScheme.secondaryContainer, section: ProductsSection(products: Product.getItems(),)),
       BodySection(title: "Vizyonumuz", screenHeight: ourVisionHeight, offset: ourVisionOffset, color: Theme.of(context).colorScheme.primaryContainer),
       BodySection(title: "Bize ulaşın", screenHeight: contactUsHeight, offset: contactUsOffset, color: Theme.of(context).colorScheme.secondaryContainer),
-      BodySection(title: "Copyright Footer", screenHeight: copyrightFooterHeight, offset: copyrightFooterOffset, color: Theme.of(context).colorScheme.primaryContainer, showButton: false),
+      BodySection(screenHeight: copyrightFooterHeight, offset: copyrightFooterOffset, color: Theme.of(context).colorScheme.primaryContainer, showButton: false),
     ];
-  }
-}
-
-class ProductsSection extends StatelessWidget {
-  const ProductsSection({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final products = Product.getItems();
-    return CarouselSlider(
-      options: CarouselOptions(height: 720.0),
-      items: products.map((product) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Padding(
-              padding: AppPadding.hL!,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
-                    child: Image.asset(product.backgroundAsset, fit: BoxFit.cover,)
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    padding: AppPadding.allXXL,
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.6),
-                      borderRadius: BorderRadius.all(Radius.circular(40)),
-                    ),
-                    child: Row(
-                      children: [
-                        Card(
-                          margin: AppPadding.hL!,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(16)
-                            )
-                          ),
-                          child: Container(
-                            width: 80,
-                            height: 80,
-                            padding: EdgeInsets.all(12),
-                            child: Image.asset(product.iconAsset,),
-                          ),
-                        ),
-                        Text(product.name, style: AppTextStyle.h2b!.copyWith(color: Colors.white),)
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            );
-          }
-        );
-      }).toList(),
-    );
   }
 }
 
@@ -154,9 +95,9 @@ class Product {
   static List<Product> getItems() {
     return [
       Product(
-        backgroundAsset: "assets/images/products/qr_projem/reference_qr_image_1.png",
-        iconAsset: "assets/images/products/qr_projem/qr_projem_logo.png",
-        name: "Qr Projem"
+          backgroundAsset: "assets/images/products/qr_projem/reference_qr_image_1.png",
+          iconAsset: "assets/images/products/qr_projem/qr_projem_logo.png",
+          name: "Qr Projem"
       ),
       Product(
           backgroundAsset: "assets/images/products/qr_projem/reference_qr_image_1.png",
