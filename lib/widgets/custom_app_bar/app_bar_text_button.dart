@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AppTextButton extends StatefulWidget {
-  const AppTextButton({Key? key, required this.text, this.onPressed}) : super(key: key);
+class AppBarTextButton extends StatefulWidget {
+  const AppBarTextButton({Key? key, required this.text, this.onPressed}) : super(key: key);
 
   final String text;
   final void Function()? onPressed;
 
   @override
-  State<AppTextButton> createState() => _AppTextButtonState();
+  State<AppBarTextButton> createState() => _AppBarTextButtonState();
 }
 
-class _AppTextButtonState extends State<AppTextButton> {
+class _AppBarTextButtonState extends State<AppBarTextButton> {
 
   bool _isOnHover = false;
 

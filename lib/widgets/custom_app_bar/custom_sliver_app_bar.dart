@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../config/constants.dart';
-import '../main/main.dart';
-import 'app_text_button.dart';
-import 'demirli_tech_logo.dart';
+import '../../config/constants.dart';
+import '../../main/main.dart';
+import 'app_bar_text_button.dart';
+import '../app_logo.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar({Key? key, required this.bodySections, required this.onLeadingTap, required this.onButtonTap,}) : super(key: key);
@@ -26,10 +26,10 @@ class CustomSliverAppBar extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: bodySections.where((item) => item.showButton == true).map(
-          (e) => AppTextButton(
+          (e) => AppBarTextButton(
             text: e.title,
             onPressed: () {
-              onButtonTap(e.offset + Constants.appBarHeight);
+              onButtonTap(e.offset);
             },
           ),
         ).toList()

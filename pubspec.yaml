@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   url_strategy: ^0.2.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -29,4 +30,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/app_logo/
+    - assets/images/products/
+    - assets/images/products/qr_projem/
 

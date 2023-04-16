@@ -14,7 +14,7 @@ class AppLogo extends StatelessWidget {
       highlightColor: Colors.transparent,
       hoverColor: Colors.transparent,
       child: Image.asset(
-        "assets/images/demirli_tech_text_logo_black.png",
+        "assets/images/app_logo/demirli_tech_text_logo_black.png",
         width: width,
       ),
     );
