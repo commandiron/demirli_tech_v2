@@ -24,7 +24,7 @@ class BodyBase extends StatelessWidget {
                 padding: AppPadding.hXXL!.add(AppPadding.vXL!),
                 child: Row(
                   children: [
-                    Text(title!.toUpperCase(), style: AppTextStyle.h5b,),
+                    Text(title!, style: AppTextStyle.h5b,),
                     AppSpace.hL!,
                     SizedBox(width: 70, child: Divider(thickness: 3, color: Theme.of(context).colorScheme.primary,))
                   ],

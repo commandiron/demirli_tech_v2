@@ -1,3 +1,4 @@
+import 'package:demirli_tech_v2/config/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class AppBarTextButton extends StatefulWidget {
@@ -38,15 +39,13 @@ class _AppBarTextButtonState extends State<AppBarTextButton> {
                 const Divider(color: Colors.transparent),
                 Text(
                   widget.text,
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500
-                  ),
+                  style: AppTextStyle.b2!.copyWith(
+                    fontWeight: FontWeight.w500
+                  )
                 ),
                 AnimatedOpacity(
                     opacity: _isOnHover ? 1 : 0,
-                    duration: Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 500),
                     child: Divider(color: Theme.of(context).colorScheme.primary, thickness: 3,)
                 )
               ],

@@ -33,7 +33,7 @@ class AppTextStyle {
 
   static init(BuildContext context) {
 
-    const baseStyle = TextStyle(fontWeight: FontWeight.w400);
+    const baseStyle = TextStyle(fontFamily: "Roboto", fontWeight: FontWeight.w400);
     const bold = FontWeight.bold;
 
     h1 = baseStyle.copyWith(fontSize: 48);

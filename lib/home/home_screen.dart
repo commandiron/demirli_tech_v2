@@ -29,10 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
             slivers: [
               CustomSliverAppBar(
                 bodySections: widget.bodySections,
-                onLeadingTap: () => _controller.animateTo(0, duration: const Duration(milliseconds: 1000), curve: Curves.ease),
+                onLeadingTap: () => _controller.animateTo(0, duration: const Duration(seconds: 1), curve: Curves.ease),
                 onButtonTap: (offset) => _controller.animateTo(
                   _controller.offset < offset ? offset + Constants.appBarHeight : offset,
-                  duration: const Duration(milliseconds: 1000),
+                  duration: const Duration(seconds: 1),
                   curve: Curves.ease
                 ),
               ),
