@@ -98,12 +98,16 @@ class ProductsSection extends StatelessWidget {
                 fit: StackFit.expand,
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(32)),
+                    borderRadius: BorderRadius.all(Radius.circular(40)),
                     child: Image.asset(product.backgroundAsset, fit: BoxFit.cover,)
                   ),
                   Container(
                     alignment: Alignment.topLeft,
                     padding: AppPadding.allXXL,
+                    decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.6),
+                      borderRadius: BorderRadius.all(Radius.circular(40)),
+                    ),
                     child: Row(
                       children: [
                         Card(
