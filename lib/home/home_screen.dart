@@ -43,7 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     return BodyBase(
                       height: widget.bodySections[index].screenHeight,
                       color: widget.bodySections[index].color,
-                      title: widget.bodySections[index].title,
+                      title: widget.bodySections[index].showTitleAsHeader
+                          ? widget.bodySections[index].title
+                          : null,
                       child: widget.bodySections[index].section,
                     );
                   }

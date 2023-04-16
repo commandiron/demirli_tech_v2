@@ -1,3 +1,5 @@
+import 'package:demirli_tech_v2/home/sections/contact_us/contact_us_section.dart';
+import 'package:demirli_tech_v2/home/sections/copyright_footer/copyright_footer.dart';
 import 'package:demirli_tech_v2/ui_model/product.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +12,8 @@ class BodySection{
       required this.screenHeight,
       required this.offset,
       required this.color,
-      this.showButton = true,
+      this.showInAppBar = true,
+      this.showTitleAsHeader = true,
       this.section
     }
   );
@@ -19,7 +22,8 @@ class BodySection{
   final double screenHeight;
   final double offset;
   final Color color;
-  final bool showButton;
+  final bool showInAppBar;
+  final bool showTitleAsHeader;
   final Widget? section;
 
   static List<BodySection> getItems(BuildContext context) {
@@ -28,7 +32,7 @@ class BodySection{
     const double productsHeight = 960;
     const double ourVisionHeight = 720;
     const double contactUsHeight = 360;
-    const double copyrightFooterHeight = 45;
+    const double copyrightFooterHeight = 60;
 
     const double welcomeOffset = 0;
     const double aboutOffset = welcomeOffset + welcomeHeight;
@@ -38,12 +42,12 @@ class BodySection{
     const double copyrightFooterOffset = contactUsOffset + contactUsHeight;
 
     return [
-      BodySection(title: "Ana Sayfa", screenHeight: welcomeHeight, offset: welcomeOffset, color: Colors.purple, showButton: false),
+      BodySection(title: "Ana Sayfa", screenHeight: welcomeHeight, offset: welcomeOffset, color: Colors.purple, showInAppBar: false),
       BodySection(title: "Hakkımızda", screenHeight: aboutHeight, offset: aboutOffset, color: Theme.of(context).colorScheme.primaryContainer),
       BodySection(title: "Ürünlerimiz", screenHeight: productsHeight, offset: productsOffset, color: Theme.of(context).colorScheme.secondaryContainer, section: ProductsSection(products: Product.getItems(),)),
       BodySection(title: "Vizyonumuz", screenHeight: ourVisionHeight, offset: ourVisionOffset, color: Theme.of(context).colorScheme.primaryContainer),
-      BodySection(title: "Bize ulaşın", screenHeight: contactUsHeight, offset: contactUsOffset, color: Theme.of(context).colorScheme.secondaryContainer),
-      BodySection(screenHeight: copyrightFooterHeight, offset: copyrightFooterOffset, color: Theme.of(context).colorScheme.primaryContainer, showButton: false),
+      BodySection(title: "Bize ulaşın", screenHeight: contactUsHeight, offset: contactUsOffset, color: Theme.of(context).colorScheme.tertiaryContainer, showTitleAsHeader: false, section: const ContactUsSection()),
+      BodySection(title: "Copyright Footer", screenHeight: copyrightFooterHeight, offset: copyrightFooterOffset, color: Theme.of(context).colorScheme.tertiaryContainer, showInAppBar: false, showTitleAsHeader: false, section: const CopyrightFooter()),
     ];
   }
 }
