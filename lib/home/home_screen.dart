@@ -2,7 +2,7 @@ import 'package:demirli_tech_v2/config/constants.dart';
 import 'package:demirli_tech_v2/widgets/custom_app_bar/custom_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../main/main.dart';
+import '../ui_model/body_section.dart';
 import '../widgets/body_base.dart';
 
 class HomeScreen extends StatefulWidget {

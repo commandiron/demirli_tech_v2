@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../config/constants.dart';
-import '../../main/main.dart';
+import '../../ui_model/body_section.dart';
 import 'app_bar_text_button.dart';
 import '../app_logo.dart';
 

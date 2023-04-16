@@ -1,38 +1,7 @@
-import 'package:demirli_tech_v2/config/app_theme.dart';
-import 'package:demirli_tech_v2/screens/home_screen.dart';
+import 'package:demirli_tech_v2/ui_model/product.dart';
 import 'package:flutter/material.dart';
-import 'package:url_strategy/url_strategy.dart';
 
-import '../config/app_config.dart';
-import '../screens/sections/products/products_section.dart';
-
-void main() {
-  setPathUrlStrategy();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    AppConfig.init(context);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: themeLight,
-      darkTheme: themeDark,
-      title: "Demirli Tech",
-      home: const MaterialChild()
-    );
-  }
-}
-
-class MaterialChild extends StatelessWidget {
-  const MaterialChild({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return HomeScreen(bodySections: BodySection.getItems(context));
-  }
-}
+import '../home/sections/products/products_section.dart';
 
 class BodySection{
   BodySection(
@@ -75,40 +44,6 @@ class BodySection{
       BodySection(title: "Vizyonumuz", screenHeight: ourVisionHeight, offset: ourVisionOffset, color: Theme.of(context).colorScheme.primaryContainer),
       BodySection(title: "Bize ulaşın", screenHeight: contactUsHeight, offset: contactUsOffset, color: Theme.of(context).colorScheme.secondaryContainer),
       BodySection(screenHeight: copyrightFooterHeight, offset: copyrightFooterOffset, color: Theme.of(context).colorScheme.primaryContainer, showButton: false),
-    ];
-  }
-}
-
-class Product {
-  Product(
-    {
-      required this.backgroundAsset,
-      required this.iconAsset,
-      required this.name
-    }
-  );
-
-  final String backgroundAsset;
-  final String iconAsset;
-  final String name;
-
-  static List<Product> getItems() {
-    return [
-      Product(
-          backgroundAsset: "assets/images/products/qr_projem/reference_qr_image_1.png",
-          iconAsset: "assets/images/products/qr_projem/qr_projem_logo.png",
-          name: "Qr Projem"
-      ),
-      Product(
-          backgroundAsset: "assets/images/products/qr_projem/reference_qr_image_1.png",
-          iconAsset: "assets/images/products/qr_projem/qr_projem_logo.png",
-          name: "Qr Projem"
-      ),
-      Product(
-          backgroundAsset: "assets/images/products/qr_projem/reference_qr_image_1.png",
-          iconAsset: "assets/images/products/qr_projem/qr_projem_logo.png",
-          name: "Qr Projem"
-      ),
     ];
   }
 }

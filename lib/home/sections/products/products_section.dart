@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:demirli_tech_v2/screens/sections/products/widgets/product_item.dart';
+import 'package:demirli_tech_v2/home/sections/products/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 
-import '../../../main/main.dart';
+import '../../../ui_model/product.dart';
 
 
 class ProductsSection extends StatelessWidget {
