@@ -19,7 +19,6 @@ class CustomSliverAppBar extends StatelessWidget {
       snap: false,
       floating: true,
       toolbarHeight: Constants.appBarHeight,
-      backgroundColor: Colors.white,
       leading:  AppLogo(
         onTap: () => onLeadingTap()
       ),
