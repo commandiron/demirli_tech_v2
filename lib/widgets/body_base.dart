@@ -26,7 +26,14 @@ class BodyBase extends StatelessWidget {
                   children: [
                     Text(title!.toUpperCase(), style: AppTextStyle.h5b,),
                     AppSpace.hL!,
-                    SizedBox(width: 70, child: Divider(thickness: 3, color: Theme.of(context).colorScheme.primary,))
+                    Container(
+                      width: 70,
+                      height: 5,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.circular(16)
+                      ),
+                    )
                   ],
                 ),
               ),

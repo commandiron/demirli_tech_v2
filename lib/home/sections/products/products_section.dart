@@ -17,7 +17,7 @@ class ProductsSection extends StatefulWidget {
 
 class _ProductsSectionState extends State<ProductsSection> {
 
-  CarouselController _controller = CarouselController();
+  final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +38,9 @@ class _ProductsSectionState extends State<ProductsSection> {
                   iconAsset: product.iconAsset,
                   name: product.name,
                   shortDescription: product.shortDescription,
+                  webUrl: product.webUrl,
+                  appStoreUrl: product.appStoreUrl,
+                  googlePlayUrl: product.googlePlayUrl,
                 );
               }
             );
