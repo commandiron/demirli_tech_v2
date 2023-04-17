@@ -15,48 +15,49 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   final ScrollController _controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          CustomScrollView(
-            controller: _controller,
-            slivers: [
-              CustomSliverAppBar(
-                bodySections: widget.bodySections,
-                onLeadingTap: () => _controller.animateTo(0, duration: const Duration(seconds: 1), curve: Curves.ease),
-                onButtonTap: (offset) => _controller.animateTo(
-                  _controller.offset < offset ? offset + Constants.appBarHeight : offset,
-                  duration: const Duration(seconds: 1),
-                  curve: Curves.ease
-                ),
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  childCount: widget.bodySections.length,
-                  (context, index) {
-                    return BodyBase(
-                      height: widget.bodySections[index].screenHeight,
-                      color: widget.bodySections[index].color,
-                      title: widget.bodySections[index].showTitleAsHeader
-                          ? widget.bodySections[index].title
-                          : null,
-                      child: widget.bodySections[index].section,
-                    );
-                  }
-                ),
-              )
-            ],
-          ),
-        ],
-      )
-    );
+        body: Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        CustomScrollView(
+          controller: _controller,
+          slivers: [
+            SliverLayoutBuilder(
+              builder: (context, constraints) {
+                print(constraints);
+                return CustomSliverAppBar(
+                  bodySections: widget.bodySections,
+                  onLeadingTap: () => _controller.animateTo(0,
+                      duration: const Duration(seconds: 1), curve: Curves.ease),
+                  onButtonTap: (offset) => _controller.animateTo(
+                      _controller.offset < offset
+                          ? offset + Constants.appBarHeight
+                          : offset,
+                      duration: const Duration(seconds: 1),
+                      curve: Curves.ease),
+                );
+              },
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                  childCount: widget.bodySections.length, (context, index) {
+                return BodyBase(
+                  height: widget.bodySections[index].screenHeight,
+                  color: widget.bodySections[index].color,
+                  title: widget.bodySections[index].showTitleAsHeader
+                      ? widget.bodySections[index].title
+                      : null,
+                  child: widget.bodySections[index].section,
+                );
+              }),
+            )
+          ],
+        ),
+      ],
+    ));
   }
 }
-
-
