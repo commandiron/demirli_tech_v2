@@ -26,7 +26,7 @@ class BodySection {
 
   static List<BodySection> getItems(BuildContext context) {
     double welcomeHeight = MediaQuery.of(context).size.height - Constants.appBarHeight;
-    double welcomeMinHeight = 500;
+    double welcomeMinHeight = 720;
     if (welcomeHeight < welcomeMinHeight) {
       welcomeHeight = welcomeMinHeight;
     }
@@ -34,11 +34,11 @@ class BodySection {
     const double aboutHeight = 360;
 
     double productsHeight = MediaQuery.of(context).size.height;
-    double productsMinHeight = 500;
+    double productsMinHeight = 600;
     if (productsHeight < productsMinHeight) {
       productsHeight = productsMinHeight;
     }
-    const double ourVisionHeight = 720;
+    const double ourVisionHeight = 600;
     const double contactUsHeight = 360;
     const double copyrightFooterHeight = 60;
 
