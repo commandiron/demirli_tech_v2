@@ -24,9 +24,12 @@ class BodySection {
   final bool showTitleAsHeader;
   final Widget? section;
 
+  static const double welcomeMinHeight = 600;
+  static const double productsMinHeight = 600;
+
   static List<BodySection> getItems(BuildContext context) {
-    double welcomeHeight = MediaQuery.of(context).size.height - Constants.appBarHeight;
-    double welcomeMinHeight = 720;
+    double welcomeHeight =
+        MediaQuery.of(context).size.height - Constants.appBarHeight;
     if (welcomeHeight < welcomeMinHeight) {
       welcomeHeight = welcomeMinHeight;
     }
@@ -34,7 +37,6 @@ class BodySection {
     const double aboutHeight = 360;
 
     double productsHeight = MediaQuery.of(context).size.height;
-    double productsMinHeight = 600;
     if (productsHeight < productsMinHeight) {
       productsHeight = productsMinHeight;
     }
