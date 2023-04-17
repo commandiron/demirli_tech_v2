@@ -1,5 +1,4 @@
 import 'package:demirli_tech_v2/config/app_space.dart';
-import 'package:demirli_tech_v2/helper/url_launcher.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/badges.dart';
 import 'package:flutter/material.dart';
 
