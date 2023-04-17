@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:demirli_tech_v2/config/app_padding.dart';
+import 'package:demirli_tech_v2/home/sections/products/widgets/carousel_move_button.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 
@@ -51,8 +52,14 @@ class _ProductsSectionState extends State<ProductsSection> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CarouselBackButton(onTap: () => _controller.previousPage(duration: Duration(milliseconds: 500), curve: Curves.ease),),
-              CarouselNextButton(onTap: () => _controller.nextPage(duration: Duration(milliseconds: 500), curve: Curves.ease),),
+              CarouselBackButton(
+                onTap: () => _controller.previousPage(duration: const Duration(milliseconds: 500), 
+                curve: Curves.ease),
+              ),
+              CarouselNextButton(
+                onTap: () => _controller.nextPage(duration: const Duration(milliseconds: 500), 
+                curve: Curves.ease),
+              ),
             ],
           ),
         )
@@ -60,47 +67,3 @@ class _ProductsSectionState extends State<ProductsSection> {
     );
   }
 }
-
-class CarouselMoveButton extends StatelessWidget {
-  const CarouselMoveButton({Key? key, this.icon}) : super(key: key);
-  final IconData? icon;
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundColor: Colors.white,
-      minRadius: 40,
-      child: Icon(
-        icon,
-        color: Theme.of(context).colorScheme.primary,
-        size: 40,
-      ),
-    );
-  }
-}
-class CarouselNextButton extends StatelessWidget {
-  const CarouselNextButton({Key? key, this.onTap}) : super(key: key);
-  final void Function()? onTap;
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: CarouselMoveButton(icon: Icons.navigate_next,)
-    );
-  }
-}
-class CarouselBackButton extends StatelessWidget {
-  const CarouselBackButton({Key? key, this.onTap}) : super(key: key);
-  final void Function()? onTap;
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: CarouselMoveButton(icon: Icons.navigate_before,)
-    );
-  }
-}
-
-
-
-
-
