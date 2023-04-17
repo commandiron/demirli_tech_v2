@@ -25,7 +25,7 @@ class _CarouselMoveButtonState extends State<CarouselMoveButton> {
         minRadius: 40,
         child: Icon(
           widget.icon,
-          color: _onHover ? Colors.white : Colors.grey,
+          color: _onHover ? Colors.white : Colors.black,
           size: 40,
         ),
       ),
