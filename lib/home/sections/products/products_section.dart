@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:demirli_tech_v2/compatibility/adaptive.dart';
 import 'package:demirli_tech_v2/config/app_padding.dart';
+import 'package:demirli_tech_v2/config/constants.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/carousel_move_button.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/product_item.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _ProductsSectionState extends State<ProductsSection> {
         CarouselSlider(
           carouselController: _controller,
           options: CarouselOptions(
-            height: 720.0,
+            height: MediaQuery.of(context).size.height * 0.8 - Constants.appBarHeight,
             enableInfiniteScroll: false,
             scrollPhysics: Adaptive.isMac() ? const NeverScrollableScrollPhysics() : null
           ),

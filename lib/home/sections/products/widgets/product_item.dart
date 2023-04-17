@@ -1,4 +1,5 @@
 import 'package:demirli_tech_v2/config/app_space.dart';
+import 'package:demirli_tech_v2/helper/url_launcher.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/badges.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class ProductItem extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.topLeft,
-            padding: AppPadding.allXXL,
+            padding: AppPadding.hXXL!.add(AppPadding.vXL!),
             decoration: BoxDecoration(
               color: Colors.black.withOpacity(0.6),
               borderRadius: const BorderRadius.all(Radius.circular(40)),
