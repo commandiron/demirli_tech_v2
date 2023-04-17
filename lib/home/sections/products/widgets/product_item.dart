@@ -1,5 +1,6 @@
 import 'package:demirli_tech_v2/config/app_space.dart';
 import 'package:demirli_tech_v2/helper/url_launcher.dart';
+import 'package:demirli_tech_v2/home/sections/products/widgets/badges.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../config/app_padding.dart';
@@ -74,38 +75,17 @@ class ProductItem extends StatelessWidget {
                 Row(
                   children: [
                     if(webUrl != null)
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8)
-                            ),
-                            side: BorderSide(
-                              color: Colors.grey
-                            )
-                          )
-                        ),
-                        onPressed: () => openURL(webUrl!),
-                        child: Container(
-                          height: 60,
-                          padding: AppPadding.hM!,
-                          child: Row(
-                            children: [
-                              Text("Web Sitesine Git", style: AppTextStyle.b2!,),
-                              AppSpace.hM!,
-                              Icon(Icons.link)
-                            ],
-                          ),
-                        )
+                      Padding(
+                        padding: const EdgeInsets.only(right: 16),
+                        child: WebSiteBadge(webUrl: webUrl!)
                       ),
                     if(appStoreUrl == null)
-                      Padding(
-                        padding: AppPadding.hL!,
-                        child: Image.asset("assets/images/badges/app_store_badge.png", height: 60,),
+                      const Padding(
+                        padding: EdgeInsets.only(right: 16),
+                        child: AppStoreBadge(),
                       ),
                     if(googlePlayUrl == null)
-                      Image.asset("assets/images/badges/google_play_badge.png", height: 60,),
+                      const GooglePlayBadge()
                   ],
                 )
               ],
