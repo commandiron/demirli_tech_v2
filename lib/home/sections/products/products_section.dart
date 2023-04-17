@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:demirli_tech_v2/compatibility/adaptive.dart';
 import 'package:demirli_tech_v2/config/app_padding.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/carousel_move_button.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/product_item.dart';
@@ -29,7 +30,8 @@ class _ProductsSectionState extends State<ProductsSection> {
           carouselController: _controller,
           options: CarouselOptions(
             height: 720.0,
-            enableInfiniteScroll: false
+            enableInfiniteScroll: false,
+            scrollPhysics: Adaptive.isMac() ? const NeverScrollableScrollPhysics() : null
           ),
           items: widget.products.map((product) {
             return Builder(
