@@ -24,8 +24,8 @@ class BodySection {
   final bool showTitleAsHeader;
   final Widget? section;
 
-  static const double welcomeMinHeight = 600;
-  static const double productsMinHeight = 600;
+  static const double welcomeMinHeight = 660;
+  static const double productsMinHeight = 660;
 
   static List<BodySection> getItems(BuildContext context) {
     double welcomeHeight =

@@ -25,9 +25,6 @@ class _ProductsSectionState extends State<ProductsSection> {
   Widget build(BuildContext context) {
     double carouselHeight =
         MediaQuery.of(context).size.height * 0.8 - Constants.appBarHeight;
-    if (carouselHeight < BodySection.productsMinHeight * 0.8) {
-      carouselHeight = BodySection.productsMinHeight * 0.8;
-    }
     return Stack(
       alignment: Alignment.center,
       children: [
