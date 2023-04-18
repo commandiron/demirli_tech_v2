@@ -35,6 +35,7 @@ class ProductItem extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(40)),
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AppSpace.vExpanded!,
                 AppSpace.vXL!,
@@ -58,33 +59,25 @@ class ProductItem extends StatelessWidget {
                   ],
                 ),
                 AppSpace.vXXL!,
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        shortDescription,
-                        style: AppTextStyle.b1b!.copyWith(
+                SizedBox(
+                  width: 600,
+                  child: Text(
+                      shortDescription,
+                      style: AppTextStyle.b1b!.copyWith(
                           color: Colors.white,
                           height: 2
-                        ),
-                      )
-                    ),
-                    AppSpace.hExpanded!
-                  ],
+                      ),
+                  )
                 ),
                 AppSpace.vXXL!,
-                Row(
+                Wrap(
+                  spacing: 16,
+                  runSpacing: 8,
                   children: [
                     if(webUrl != null)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: WebSiteBadge(webUrl: webUrl!)
-                      ),
+                      WebSiteBadge(webUrl: webUrl!),
                     if(appStoreUrl == null)
-                      const Padding(
-                        padding: EdgeInsets.only(right: 16),
-                        child: AppStoreBadge(),
-                      ),
+                      const AppStoreBadge(),
                     if(googlePlayUrl == null)
                       const GooglePlayBadge()
                   ],
