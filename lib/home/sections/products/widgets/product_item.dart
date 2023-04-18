@@ -29,13 +29,15 @@ class ProductItem extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.topLeft,
-            padding: AppPadding.hXXL!.add(AppPadding.vXXL!),
+            padding: AppPadding.hXXL!,
             decoration: BoxDecoration(
               color: Colors.black.withOpacity(0.6),
               borderRadius: const BorderRadius.all(Radius.circular(40)),
             ),
             child: Column(
               children: [
+                AppSpace.vExpanded!,
+                AppSpace.vXL!,
                 Row(
                   children: [
                     Card(
@@ -45,8 +47,8 @@ class ProductItem extends StatelessWidget {
                         )
                       ),
                       child: Container(
-                        width: 80,
-                        height: 80,
+                        width: 72,
+                        height: 72,
                         padding: const EdgeInsets.all(12),
                         child: Image.asset(iconAsset,),
                       ),
@@ -86,7 +88,10 @@ class ProductItem extends StatelessWidget {
                     if(googlePlayUrl == null)
                       const GooglePlayBadge()
                   ],
-                )
+                ),
+                AppSpace.vExpanded!,
+                AppSpace.vExpanded!,
+                AppSpace.vExpanded!,
               ],
             ),
           )

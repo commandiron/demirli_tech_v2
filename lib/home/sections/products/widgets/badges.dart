@@ -27,7 +27,7 @@ class WebSiteBadge extends StatelessWidget {
                 style: AppTextStyle.b2!,
               ),
               AppSpace.hM!,
-              const Icon(Icons.link)
+              const Icon(Icons.open_in_new)
             ],
           ),
         ));
