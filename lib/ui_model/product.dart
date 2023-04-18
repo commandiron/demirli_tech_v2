@@ -26,7 +26,7 @@ class Product {
         iconAsset: "assets/images/products/qr_projem/qr_projem_logo.png",
         name: "Qr Projem",
         shortDescription: "Qr Projem, inşaat projeleri için özel QR kodları oluşturmanızı sağlayan bir platformdur.",
-        webUrl: "https://qrprojem.demirli.tech",
+        webUrl: "https://qrprojem.com",
       ),
       Product(
         backgroundAsset: "assets/images/products/qr_projem/reference_qr_image_1.png",
