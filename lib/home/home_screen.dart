@@ -1,4 +1,4 @@
-import 'package:demirli_tech_v2/config/constants.dart';
+import 'package:demirli_tech_v2/config/layout_dimensions.dart';
 import 'package:demirli_tech_v2/widgets/custom_app_bar/custom_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       duration: const Duration(seconds: 1), curve: Curves.ease),
                   onButtonTap: (offset) => _controller.animateTo(
                       _controller.offset < offset
-                          ? offset + Constants.appBarHeight
+                          ? offset + LayoutDimensions.appBarHeight
                           : offset,
                       duration: const Duration(seconds: 1),
                       curve: Curves.ease),

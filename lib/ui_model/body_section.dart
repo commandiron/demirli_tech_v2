@@ -1,4 +1,4 @@
-import 'package:demirli_tech_v2/config/constants.dart';
+import 'package:demirli_tech_v2/config/layout_dimensions.dart';
 import 'package:demirli_tech_v2/home/sections/contact_us/contact_us_section.dart';
 import 'package:demirli_tech_v2/home/sections/copyright_footer/copyright_footer.dart';
 import 'package:demirli_tech_v2/ui_model/product.dart';
@@ -24,12 +24,12 @@ class BodySection {
   final bool showTitleAsHeader;
   final Widget? section;
 
-  static const double welcomeMinHeight = 720;
-  static const double productsMinHeight = 720;
+  static const double welcomeMinHeight = 650 - LayoutDimensions.appBarHeight;
+  static const double productsMinHeight = 650 - LayoutDimensions.appBarHeight;
 
   static List<BodySection> getItems(BuildContext context) {
     double welcomeHeight =
-        MediaQuery.of(context).size.height - Constants.appBarHeight;
+        MediaQuery.of(context).size.height - LayoutDimensions.appBarHeight;
     if (welcomeHeight < welcomeMinHeight) {
       welcomeHeight = welcomeMinHeight;
     }

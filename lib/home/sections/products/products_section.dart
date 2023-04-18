@@ -1,10 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:demirli_tech_v2/compatibility/adaptive.dart';
 import 'package:demirli_tech_v2/config/app_padding.dart';
-import 'package:demirli_tech_v2/config/constants.dart';
+import 'package:demirli_tech_v2/config/layout_dimensions.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/carousel_move_button.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/product_item.dart';
-import 'package:demirli_tech_v2/ui_model/body_section.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ui_model/product.dart';
@@ -24,7 +23,7 @@ class _ProductsSectionState extends State<ProductsSection> {
   @override
   Widget build(BuildContext context) {
     double carouselHeight =
-        MediaQuery.of(context).size.height * 0.8 - Constants.appBarHeight;
+        MediaQuery.of(context).size.height * 0.8 - LayoutDimensions.appBarHeight;
     double carouselMinHeight = 560;
     if(carouselHeight < carouselMinHeight) {
       carouselHeight = carouselMinHeight;
@@ -35,11 +34,12 @@ class _ProductsSectionState extends State<ProductsSection> {
         CarouselSlider(
           carouselController: _controller,
           options: CarouselOptions(
-              height: carouselHeight,
+            height: MediaQuery.of(context).size.height - LayoutDimensions.bodyBaseTitleHeight,
               enableInfiniteScroll: false,
               scrollPhysics: Adaptive.isMac()
-                  ? const NeverScrollableScrollPhysics()
-                  : null),
+                ? const NeverScrollableScrollPhysics()
+                : null
+          ),
           items: widget.products.map((product) {
             return Builder(builder: (BuildContext context) {
               return ProductItem(

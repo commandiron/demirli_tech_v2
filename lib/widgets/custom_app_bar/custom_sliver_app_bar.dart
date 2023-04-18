@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../config/constants.dart';
+import '../../config/layout_dimensions.dart';
 import '../../ui_model/body_section.dart';
 import 'app_bar_text_button.dart';
 import '../app_logo.dart';
@@ -18,7 +18,7 @@ class CustomSliverAppBar extends StatelessWidget {
       pinned: false,
       snap: false,
       floating: true,
-      toolbarHeight: Constants.appBarHeight,
+      toolbarHeight: LayoutDimensions.appBarHeight,
       leading:  AppLogo(
         onTap: () => onLeadingTap()
       ),

@@ -1,3 +1,4 @@
+import 'package:demirli_tech_v2/config/layout_dimensions.dart';
 import 'package:flutter/material.dart';
 
 import '../config/app_padding.dart';
@@ -20,8 +21,10 @@ class BodyBase extends StatelessWidget {
         child: Column(
           children: [
             if(title != null)
-              Padding(
-                padding: AppPadding.hXXL!.add(AppPadding.vXL!),
+              Container(
+                height: LayoutDimensions.bodyBaseTitleHeight,
+                alignment: Alignment.center,
+                padding: AppPadding.hXXL!,
                 child: Row(
                   children: [
                     Text(title!.toUpperCase(), style: AppTextStyle.h5b,),
