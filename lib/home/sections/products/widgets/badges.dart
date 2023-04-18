@@ -36,24 +36,47 @@ class WebSiteBadge extends StatelessWidget {
   }
 }
 
-class AppStoreBadge extends StatelessWidget {
-  const AppStoreBadge({super.key});
+class WebBadge extends StatelessWidget {
+  const WebBadge({super.key, this.url});
+  final String? url;
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      "assets/images/badges/app_store_badge.png",
-      height: 60,
+    return InkWell(
+      onTap: url == null ? null : () => openURL(url!),
+      child: Image.asset(
+        "assets/images/badges/web_badge.png",
+        height: 60,
+      ),
+    );
+  }
+}
+
+class AppStoreBadge extends StatelessWidget {
+  const AppStoreBadge({super.key, this.url});
+  final String? url;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: url == null ? null : () => openURL(url!),
+      child: Image.asset(
+        "assets/images/badges/app_store_badge.png",
+        height: 60,
+      ),
     );
   }
 }
 
 class GooglePlayBadge extends StatelessWidget {
-  const GooglePlayBadge({super.key});
+  const GooglePlayBadge({super.key, this.url});
+  final String? url;
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      "assets/images/badges/google_play_badge.png",
-      height: 60,
+    return InkWell(
+      onTap: url == null ? null : () => openURL(url!),
+      child: Image.asset(
+        "assets/images/badges/google_play_badge.png",
+        height: 60,
+      ),
     );
   }
 }

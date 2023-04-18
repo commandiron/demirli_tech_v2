@@ -74,11 +74,11 @@ class ProductItem extends StatelessWidget {
                   runSpacing: 8,
                   children: [
                     if(webUrl != null)
-                      WebSiteBadge(webUrl: webUrl!),
+                      WebBadge(url: webUrl,),
                     if(appStoreUrl == null)
-                      const AppStoreBadge(),
+                      AppStoreBadge(url: appStoreUrl,),
                     if(googlePlayUrl == null)
-                      const GooglePlayBadge()
+                      GooglePlayBadge(url: googlePlayUrl,)
                   ],
                 ),
                 AppSpace.vExpanded!,
