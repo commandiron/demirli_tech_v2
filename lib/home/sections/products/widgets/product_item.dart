@@ -30,9 +30,8 @@ class ProductItem extends StatelessWidget {
           Container(
             alignment: Alignment.topLeft,
             padding: AppPadding.hXXL!,
-            decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.6),
-              borderRadius: const BorderRadius.all(Radius.circular(40)),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(40)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
