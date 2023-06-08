@@ -9,15 +9,20 @@ import '../home/sections/products/products_section.dart';
 
 class BodySection {
   BodySection(
-      {this.title,
+    {
+      required this.index,
+      this.title,
       required this.screenHeight,
       required this.offset,
       required this.bgColor,
       this.bgImageAsset,
       this.showInAppBar = true,
       this.showTitleAsHeader = true,
-      this.section});
+      this.section
+    }
+  );
 
+  final int index;
   final String? title;
   final double screenHeight;
   final double offset;
@@ -57,6 +62,7 @@ class BodySection {
 
     return [
       BodySection(
+          index: 0,
           title: "Ana Sayfa",
           screenHeight: welcomeHeight,
           offset: welcomeOffset,
@@ -66,6 +72,7 @@ class BodySection {
           section: const WelcomeSection()
       ),
       BodySection(
+          index: 1,
           title: "Ürünlerimiz",
           screenHeight: productsHeight,
           offset: productsOffset,
@@ -74,16 +81,19 @@ class BodySection {
             products: Product.getItems(),
           )),
       BodySection(
+          index: 2,
           title: "Hakkımızda",
           screenHeight: aboutHeight,
           offset: aboutOffset,
           bgColor: Theme.of(context).colorScheme.primaryContainer),
       BodySection(
+          index: 3,
           title: "Vizyonumuz",
           screenHeight: ourVisionHeight,
           offset: ourVisionOffset,
           bgColor: Theme.of(context).colorScheme.secondaryContainer),
       BodySection(
+          index: 4,
           title: "Bize ulaşın",
           screenHeight: contactUsHeight,
           offset: contactUsOffset,
@@ -91,6 +101,7 @@ class BodySection {
           showTitleAsHeader: false,
           section: const ContactUsSection()),
       BodySection(
+          index: 5,
           title: "Copyright Footer",
           screenHeight: copyrightFooterHeight,
           offset: copyrightFooterOffset,

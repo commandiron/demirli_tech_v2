@@ -7,8 +7,9 @@ final themeLight = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      shape: StadiumBorder(),
-      padding: EdgeInsets.symmetric(
+      backgroundColor: const Color(0xff232133),
+      shape: const StadiumBorder(),
+      padding: const EdgeInsets.symmetric(
         vertical: 22,
         horizontal: 64
       ),
@@ -17,9 +18,10 @@ final themeLight = ThemeData(
   colorScheme: const ColorScheme.light(
     background: Colors.white,
     primary: Color(0xffF48C1F),
+    secondary: Color(0xff232133),
     primaryContainer: Color(0xffEFF0F7),
     secondaryContainer: Color(0xffF7F7FC),
-    tertiaryContainer: Color(0xff232133),
+    tertiaryContainer: Colors.black,
     onTertiaryContainer: Colors.white
   )
 );

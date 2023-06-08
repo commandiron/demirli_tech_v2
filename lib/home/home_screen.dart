@@ -27,8 +27,10 @@ class HomeScreen extends StatelessWidget {
                 CustomSliverAppBar(
                   bodySections: bodySections,
                   isAppBarTransparent: state.isAppBarTransparent,
-                  onAppLogoPressed: BlocProvider.of<AppCubit>(context).onAppLogoPressed,
-                  onButtonPressed: BlocProvider.of<AppCubit>(context).onAppBarButtonPressed,
+                  onAppLogoPressed: () => BlocProvider.of<AppCubit>(context).animateToSection(context, 0),
+                  onButtonPressed: (sectionIndex) {
+                    BlocProvider.of<AppCubit>(context).animateToSection(context, sectionIndex);
+                  },
                 ),
                 SliverList(
                   delegate: SliverChildBuilderDelegate(

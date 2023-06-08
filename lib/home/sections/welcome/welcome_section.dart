@@ -1,6 +1,8 @@
 import 'package:demirli_tech_v2/config/app_space.dart';
 import 'package:demirli_tech_v2/config/app_text_style.dart';
+import 'package:demirli_tech_v2/domain/app_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WelcomeSection extends StatefulWidget {
   const WelcomeSection({Key? key}) : super(key: key);
@@ -19,7 +21,9 @@ class _WelcomeSectionState extends State<WelcomeSection> {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
         if(_textOpacity == 0) {
-          startInitAnimation();
+          if(context.mounted) {
+            startInitAnimation();
+          }
         }
       }
     );
@@ -65,7 +69,7 @@ class _WelcomeSectionState extends State<WelcomeSection> {
             duration: const Duration(seconds: 1),
             child: ElevatedButton(
               onPressed: () {
-
+                BlocProvider.of<AppCubit>(context).animateToSection(context, 1);
               },
               child: Row(
                 mainAxisSize: MainAxisSize.min,

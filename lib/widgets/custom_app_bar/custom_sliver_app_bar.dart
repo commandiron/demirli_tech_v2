@@ -11,7 +11,7 @@ class CustomSliverAppBar extends StatelessWidget {
   final List<BodySection> bodySections;
   final bool isAppBarTransparent;
   final void Function() onAppLogoPressed;
-  final void Function(double offset) onButtonPressed;
+  final void Function(int sectionIndex) onButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class CustomSliverAppBar extends StatelessWidget {
             text: e.title ?? "",
             color: isAppBarTransparent ? Colors.white : null,
             onPressed: () {
-              onButtonPressed(e.offset);
+              onButtonPressed(e.index);
             },
           ),
         ).toList()
