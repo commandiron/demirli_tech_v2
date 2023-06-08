@@ -72,7 +72,7 @@ class _WelcomeSectionState extends State<WelcomeSection> {
                 children: [
                   Text("Keşfet", style: AppTextStyle.h5,),
                   AppSpace.hL!,
-                  Icon(Icons.arrow_forward_ios, size: 16,)
+                  const Icon(Icons.arrow_forward_ios, size: 16,)
                 ],
               )
             )
