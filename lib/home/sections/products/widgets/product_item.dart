@@ -19,19 +19,22 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: AppPadding.hL!.add(EdgeInsets.only(bottom: 64)),
+      padding: AppPadding.hL!.add(const EdgeInsets.only(bottom: 64)),
       child: Stack(
         fit: StackFit.expand,
         children: [
           ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(40)),
-              child: Image.asset(backgroundAsset, fit: BoxFit.cover,)
+            borderRadius: const BorderRadius.all(Radius.circular(40)),
+            child: Image.asset(backgroundAsset, fit: BoxFit.cover,)
           ),
           Container(
             alignment: Alignment.topLeft,
             padding: AppPadding.hXXL!,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(40)),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(40)),
+              border: Border.all(
+                color: Colors.grey,
+              )
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
