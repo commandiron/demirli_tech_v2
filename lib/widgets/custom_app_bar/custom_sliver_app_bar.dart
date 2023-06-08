@@ -6,11 +6,12 @@ import 'app_bar_text_button.dart';
 import '../app_logo.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
-  const CustomSliverAppBar({Key? key, required this.bodySections, required this.onLeadingTap, required this.onButtonTap,}) : super(key: key);
+  const CustomSliverAppBar({Key? key, required this.bodySections, required this.isAppBarTransparent, required this.onAppLogoPressed, required this.onButtonPressed, }) : super(key: key);
 
   final List<BodySection> bodySections;
-  final void Function() onLeadingTap;
-  final void Function(double offset) onButtonTap;
+  final bool isAppBarTransparent;
+  final void Function() onAppLogoPressed;
+  final void Function(double offset) onButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +20,23 @@ class CustomSliverAppBar extends StatelessWidget {
       snap: false,
       floating: true,
       toolbarHeight: LayoutDimensions.appBarHeight,
-      leading:  AppLogo(
-        onTap: () => onLeadingTap()
+      leading: AppLogo(
+        logoAsset: isAppBarTransparent
+          ? "assets/images/app_logo/demirli_tech_text_logo_white.png"
+          : "assets/images/app_logo/demirli_tech_text_logo_black.png",
+        onTap: onAppLogoPressed
       ),
       leadingWidth: 300,
+      backgroundColor: isAppBarTransparent ? Colors.transparent : null,
+      elevation: 0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: bodySections.where((item) => item.showInAppBar == true).map(
           (e) => AppBarTextButton(
             text: e.title ?? "",
+            color: isAppBarTransparent ? Colors.white : null,
             onPressed: () {
-              onButtonTap(e.offset);
+              onButtonPressed(e.offset);
             },
           ),
         ).toList()

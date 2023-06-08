@@ -2,9 +2,10 @@ import 'package:demirli_tech_v2/config/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class AppBarTextButton extends StatefulWidget {
-  const AppBarTextButton({Key? key, required this.text, this.onPressed}) : super(key: key);
+  const AppBarTextButton({Key? key, required this.text, this.color, this.onPressed,}) : super(key: key);
 
   final String text;
+  final Color? color;
   final void Function()? onPressed;
 
   @override
@@ -40,7 +41,8 @@ class _AppBarTextButtonState extends State<AppBarTextButton> {
                 Text(
                   widget.text,
                   style: AppTextStyle.b2!.copyWith(
-                    fontWeight: FontWeight.w500
+                    fontWeight: FontWeight.w500,
+                    color: widget.color
                   )
                 ),
                 AnimatedOpacity(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppLogo extends StatelessWidget {
-  const AppLogo({Key? key, this.width, this.onTap}) : super(key: key);
+  const AppLogo({Key? key, this.width, required this.logoAsset, this.onTap, }) : super(key: key);
 
   final double? width;
+  final String logoAsset;
   final void Function()? onTap;
 
   @override
@@ -14,7 +15,7 @@ class AppLogo extends StatelessWidget {
       highlightColor: Colors.transparent,
       hoverColor: Colors.transparent,
       child: Image.asset(
-        "assets/images/app_logo/demirli_tech_text_logo_black.png",
+        logoAsset,
         width: width,
       ),
     );

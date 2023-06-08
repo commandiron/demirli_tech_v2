@@ -1,61 +1,55 @@
-import 'package:demirli_tech_v2/config/layout_dimensions.dart';
+import 'package:demirli_tech_v2/domain/app_cubit.dart';
+import 'package:demirli_tech_v2/domain/app_state.dart';
+import 'package:demirli_tech_v2/ui_model/body_section.dart';
 import 'package:demirli_tech_v2/widgets/custom_app_bar/custom_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../ui_model/body_section.dart';
 import '../widgets/body_base.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key, required this.bodySections}) : super(key: key);
 
   final List<BodySection> bodySections;
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  final ScrollController _controller = ScrollController();
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
-        body: Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        CustomScrollView(
-          controller: _controller,
-          slivers: [
-            CustomSliverAppBar(
-              bodySections: widget.bodySections,
-              onLeadingTap: () => _controller.animateTo(0,
-                  duration: const Duration(seconds: 1), curve: Curves.ease),
-              onButtonTap: (offset) => _controller.animateTo(
-                  _controller.offset < offset
-                      ? offset + LayoutDimensions.appBarHeight
-                      : offset,
-                  duration: const Duration(seconds: 1),
-                  curve: Curves.ease),
+    return BlocBuilder<AppCubit, AppState>(
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
+          body: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            CustomScrollView(
+              controller: state.controller,
+              slivers: [
+                CustomSliverAppBar(
+                  bodySections: bodySections,
+                  isAppBarTransparent: state.isAppBarTransparent,
+                  onAppLogoPressed: BlocProvider.of<AppCubit>(context).onAppLogoPressed,
+                  onButtonPressed: BlocProvider.of<AppCubit>(context).onAppBarButtonPressed,
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    childCount: bodySections.length, (context, index) {
+                      return BodyBase(
+                        height: bodySections[index].screenHeight,
+                        bgColor: bodySections[index].bgColor,
+                        bgImageAsset: bodySections[index].bgImageAsset,
+                        title: bodySections[index].showTitleAsHeader
+                            ? bodySections[index].title
+                            : null,
+                        child: bodySections[index].section,
+                      );
+                    }
+                  ),
+                )
+              ],
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                childCount: widget.bodySections.length, (context, index) {
-                  return BodyBase(
-                    height: widget.bodySections[index].screenHeight,
-                    bgColor: widget.bodySections[index].bgColor,
-                    bgImageAsset: widget.bodySections[index].bgImageAsset,
-                    title: widget.bodySections[index].showTitleAsHeader
-                        ? widget.bodySections[index].title
-                        : null,
-                    child: widget.bodySections[index].section,
-                  );
-                }
-              ),
-            )
           ],
-        ),
-      ],
-    ));
+        ));
+      },
+    );
   }
 }
