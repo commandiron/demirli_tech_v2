@@ -26,21 +26,16 @@ class _HomeScreenState extends State<HomeScreen> {
         CustomScrollView(
           controller: _controller,
           slivers: [
-            SliverLayoutBuilder(
-              builder: (context, constraints) {
-                print(constraints);
-                return CustomSliverAppBar(
-                  bodySections: widget.bodySections,
-                  onLeadingTap: () => _controller.animateTo(0,
-                      duration: const Duration(seconds: 1), curve: Curves.ease),
-                  onButtonTap: (offset) => _controller.animateTo(
-                      _controller.offset < offset
-                          ? offset + LayoutDimensions.appBarHeight
-                          : offset,
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.ease),
-                );
-              },
+            CustomSliverAppBar(
+              bodySections: widget.bodySections,
+              onLeadingTap: () => _controller.animateTo(0,
+                  duration: const Duration(seconds: 1), curve: Curves.ease),
+              onButtonTap: (offset) => _controller.animateTo(
+                  _controller.offset < offset
+                      ? offset + LayoutDimensions.appBarHeight
+                      : offset,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.ease),
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
