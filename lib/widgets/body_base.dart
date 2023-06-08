@@ -6,10 +6,11 @@ import '../config/app_space.dart';
 import '../config/app_text_style.dart';
 
 class BodyBase extends StatelessWidget {
-  const BodyBase({Key? key, required this.height, required this.color, this.title, this.child,}) : super(key: key);
+  const BodyBase({Key? key, required this.height, required this.bgColor, this.bgImageAsset, this.title, this.child, }) : super(key: key);
 
   final double height;
-  final Color color;
+  final Color bgColor;
+  final String? bgImageAsset;
   final String? title;
   final Widget? child;
 
@@ -17,7 +18,15 @@ class BodyBase extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: height,
-        color: color,
+        decoration: BoxDecoration(
+          color: bgColor,
+          image: bgImageAsset != null
+            ? DecorationImage(
+              image: AssetImage(bgImageAsset!),
+              fit: BoxFit.cover,
+            )
+            : null
+        ),
         child: Column(
           children: [
             if(title != null)

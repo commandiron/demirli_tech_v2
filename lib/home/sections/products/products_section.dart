@@ -36,9 +36,7 @@ class _ProductsSectionState extends State<ProductsSection> {
           options: CarouselOptions(
             height: MediaQuery.of(context).size.height - LayoutDimensions.bodyBaseTitleHeight,
               enableInfiniteScroll: false,
-              scrollPhysics: Adaptive.isMac()
-                ? const NeverScrollableScrollPhysics()
-                : null
+              scrollPhysics: Adaptive.carouselScrollPhysics
           ),
           items: widget.products.map((product) {
             return Builder(builder: (BuildContext context) {

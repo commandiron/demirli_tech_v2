@@ -35,6 +35,12 @@ class Adaptive extends StatelessWidget {
     return 0;
   }
 
+  static ScrollPhysics? get carouselScrollPhysics {
+    return Adaptive.isMac()
+        ? const NeverScrollableScrollPhysics()
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(

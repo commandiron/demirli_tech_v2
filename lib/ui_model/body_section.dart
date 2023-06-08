@@ -1,6 +1,7 @@
 import 'package:demirli_tech_v2/config/layout_dimensions.dart';
 import 'package:demirli_tech_v2/home/sections/contact_us/contact_us_section.dart';
 import 'package:demirli_tech_v2/home/sections/copyright_footer/copyright_footer.dart';
+import 'package:demirli_tech_v2/home/sections/welcome/welcome_section.dart';
 import 'package:demirli_tech_v2/ui_model/product.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,8 @@ class BodySection {
       {this.title,
       required this.screenHeight,
       required this.offset,
-      required this.color,
+      required this.bgColor,
+      this.bgImageAsset,
       this.showInAppBar = true,
       this.showTitleAsHeader = true,
       this.section});
@@ -19,7 +21,8 @@ class BodySection {
   final String? title;
   final double screenHeight;
   final double offset;
-  final Color color;
+  final Color bgColor;
+  final String? bgImageAsset;
   final bool showInAppBar;
   final bool showTitleAsHeader;
   final Widget? section;
@@ -45,9 +48,10 @@ class BodySection {
     const double copyrightFooterHeight = 60;
 
     const double welcomeOffset = 0;
-    double aboutOffset = welcomeOffset + welcomeHeight;
-    double productsOffset = aboutOffset + aboutHeight;
-    double ourVisionOffset = productsOffset + productsHeight;
+
+    double productsOffset = welcomeOffset + welcomeHeight;
+    double aboutOffset = productsOffset + productsHeight;
+    double ourVisionOffset = aboutOffset + aboutHeight;
     double contactUsOffset = ourVisionOffset + ourVisionHeight;
     double copyrightFooterOffset = contactUsOffset + contactUsHeight;
 
@@ -56,38 +60,41 @@ class BodySection {
           title: "Ana Sayfa",
           screenHeight: welcomeHeight,
           offset: welcomeOffset,
-          color: Colors.purple,
-          showInAppBar: false),
-      BodySection(
-          title: "Hakkımızda",
-          screenHeight: aboutHeight,
-          offset: aboutOffset,
-          color: Theme.of(context).colorScheme.primaryContainer),
+          bgColor: Theme.of(context).colorScheme.tertiaryContainer,
+          showInAppBar: false,
+          showTitleAsHeader: false,
+          section: const WelcomeSection()
+      ),
       BodySection(
           title: "Ürünlerimiz",
           screenHeight: productsHeight,
           offset: productsOffset,
-          color: Theme.of(context).colorScheme.secondaryContainer,
+          bgColor: Theme.of(context).colorScheme.secondaryContainer,
           section: ProductsSection(
             products: Product.getItems(),
           )),
       BodySection(
+          title: "Hakkımızda",
+          screenHeight: aboutHeight,
+          offset: aboutOffset,
+          bgColor: Theme.of(context).colorScheme.primaryContainer),
+      BodySection(
           title: "Vizyonumuz",
           screenHeight: ourVisionHeight,
           offset: ourVisionOffset,
-          color: Theme.of(context).colorScheme.primaryContainer),
+          bgColor: Theme.of(context).colorScheme.secondaryContainer),
       BodySection(
           title: "Bize ulaşın",
           screenHeight: contactUsHeight,
           offset: contactUsOffset,
-          color: Theme.of(context).colorScheme.tertiaryContainer,
+          bgColor: Theme.of(context).colorScheme.tertiaryContainer,
           showTitleAsHeader: false,
           section: const ContactUsSection()),
       BodySection(
           title: "Copyright Footer",
           screenHeight: copyrightFooterHeight,
           offset: copyrightFooterOffset,
-          color: Theme.of(context).colorScheme.tertiaryContainer,
+          bgColor: Theme.of(context).colorScheme.tertiaryContainer,
           showInAppBar: false,
           showTitleAsHeader: false,
           section: const CopyrightFooter()),

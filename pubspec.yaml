@@ -65,6 +65,7 @@ flutter:
     - assets/images/
     - assets/images/app_logo/
     - assets/images/badges/
+    - assets/images/welcome/
     - assets/images/products/
     - assets/images/products/qr_projem/
 

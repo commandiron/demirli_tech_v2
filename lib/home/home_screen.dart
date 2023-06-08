@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
         body: Stack(
       alignment: Alignment.topCenter,
       children: [
@@ -39,16 +40,18 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                  childCount: widget.bodySections.length, (context, index) {
-                return BodyBase(
-                  height: widget.bodySections[index].screenHeight,
-                  color: widget.bodySections[index].color,
-                  title: widget.bodySections[index].showTitleAsHeader
-                      ? widget.bodySections[index].title
-                      : null,
-                  child: widget.bodySections[index].section,
-                );
-              }),
+                childCount: widget.bodySections.length, (context, index) {
+                  return BodyBase(
+                    height: widget.bodySections[index].screenHeight,
+                    bgColor: widget.bodySections[index].bgColor,
+                    bgImageAsset: widget.bodySections[index].bgImageAsset,
+                    title: widget.bodySections[index].showTitleAsHeader
+                        ? widget.bodySections[index].title
+                        : null,
+                    child: widget.bodySections[index].section,
+                  );
+                }
+              ),
             )
           ],
         ),
