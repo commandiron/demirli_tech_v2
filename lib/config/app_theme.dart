@@ -18,11 +18,9 @@ final themeLight = ThemeData(
   colorScheme: const ColorScheme.light(
     background: Colors.white,
     primary: Color(0xffF48C1F),
-    secondary: Color(0xff232133),
+    secondary: Color(0xff3C3856),
     primaryContainer: Color(0xffEFF0F7),
     secondaryContainer: Color(0xffF7F7FC),
-    tertiaryContainer: Colors.black,
-    onTertiaryContainer: Colors.white
   )
 );
 

@@ -8,7 +8,6 @@ class AppCubit extends Cubit<AppState> {
   AppCubit() : super(
     AppState(
       controller: ScrollController(),
-      isAppBarTransparent: false
     )
   );
 

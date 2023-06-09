@@ -47,7 +47,7 @@ class _AppBarTextButtonState extends State<AppBarTextButton> {
                 ),
                 AnimatedOpacity(
                     opacity: _isOnHover ? 1 : 0,
-                    duration: const Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 250),
                     child: Divider(color: Theme.of(context).colorScheme.primary, thickness: 3,)
                 )
               ],

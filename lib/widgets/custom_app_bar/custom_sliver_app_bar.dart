@@ -6,10 +6,9 @@ import 'app_bar_text_button.dart';
 import '../app_logo.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
-  const CustomSliverAppBar({Key? key, required this.bodySections, required this.isAppBarTransparent, required this.onAppLogoPressed, required this.onButtonPressed, }) : super(key: key);
+  const CustomSliverAppBar({Key? key, required this.bodySections, required this.onAppLogoPressed, required this.onButtonPressed, }) : super(key: key);
 
   final List<BodySection> bodySections;
-  final bool isAppBarTransparent;
   final void Function() onAppLogoPressed;
   final void Function(int sectionIndex) onButtonPressed;
 
@@ -21,20 +20,16 @@ class CustomSliverAppBar extends StatelessWidget {
       floating: true,
       toolbarHeight: LayoutDimensions.appBarHeight,
       leading: AppLogo(
-        logoAsset: isAppBarTransparent
-          ? "assets/images/app_logo/demirli_tech_text_logo_white.png"
-          : "assets/images/app_logo/demirli_tech_text_logo_black.png",
+        logoAsset: "assets/images/app_logo/demirli_tech_text_logo_black.png",
         onTap: onAppLogoPressed
       ),
       leadingWidth: 300,
-      backgroundColor: isAppBarTransparent ? Colors.transparent : null,
       elevation: 0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: bodySections.where((item) => item.showInAppBar == true).map(
           (e) => AppBarTextButton(
             text: e.title ?? "",
-            color: isAppBarTransparent ? Colors.white : null,
             onPressed: () {
               onButtonPressed(e.index);
             },

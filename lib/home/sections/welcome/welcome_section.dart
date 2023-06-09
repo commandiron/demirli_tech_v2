@@ -1,8 +1,9 @@
 import 'package:demirli_tech_v2/config/app_space.dart';
 import 'package:demirli_tech_v2/config/app_text_style.dart';
-import 'package:demirli_tech_v2/domain/app_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../domain/app_cubit.dart';
 
 class WelcomeSection extends StatefulWidget {
   const WelcomeSection({Key? key}) : super(key: key);
@@ -20,10 +21,8 @@ class _WelcomeSectionState extends State<WelcomeSection> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
-        if(_textOpacity == 0) {
-          if(context.mounted) {
-            startInitAnimation();
-          }
+        if(_textOpacity == 0 && mounted) {
+          startInitAnimation();
         }
       }
     );
@@ -38,15 +37,19 @@ class _WelcomeSectionState extends State<WelcomeSection> {
   }
 
   Future<void> startTextAnimation() async {
-    setState(() {
-      _textOpacity = 1;
-    });
+    if(mounted) {
+      setState(() {
+        _textOpacity = 1;
+      });
+    }
   }
 
   Future<void> startButtonAnimation() async {
-    setState(() {
-      _buttonOpacity = 1;
-    });
+    if(mounted) {
+      setState(() {
+        _buttonOpacity = 1;
+      });
+    }
   }
 
   @override
@@ -60,7 +63,7 @@ class _WelcomeSectionState extends State<WelcomeSection> {
             duration: const Duration(seconds: 2),
             child: Text(
               "İnşaat sektörüne inovatif ve vizyoner araçlar",
-              style: AppTextStyle.h2!.copyWith(color: Theme.of(context).colorScheme.onTertiaryContainer),
+              style: AppTextStyle.h2!,
             )
           ),
           AppSpace.vXL!,
