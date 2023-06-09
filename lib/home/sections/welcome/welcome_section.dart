@@ -54,38 +54,36 @@ class _WelcomeSectionState extends State<WelcomeSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AnimatedOpacity(
-            opacity: _textOpacity,
-            duration: const Duration(seconds: 2),
-            child: Text(
-              "İnşaat sektörüne inovatif ve vizyoner araçlar",
-              style: AppTextStyle.h2!,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AnimatedOpacity(
+          opacity: _textOpacity,
+          duration: const Duration(seconds: 2),
+          child: Text(
+            "İnşaat sektörü için inovatif ve vizyoner araçlar geliştiriyoruz",
+            style: AppTextStyle.h2!,
+          )
+        ),
+        AppSpace.vXL!,
+        AnimatedOpacity(
+          opacity: _buttonOpacity,
+          duration: const Duration(seconds: 1),
+          child: ElevatedButton(
+            onPressed: () {
+              BlocProvider.of<AppCubit>(context).animateToSection(context, 1);
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text("Keşfet", style: AppTextStyle.h5,),
+                AppSpace.hL!,
+                const Icon(Icons.arrow_forward_ios, size: 16,)
+              ],
             )
-          ),
-          AppSpace.vXL!,
-          AnimatedOpacity(
-            opacity: _buttonOpacity,
-            duration: const Duration(seconds: 1),
-            child: ElevatedButton(
-              onPressed: () {
-                BlocProvider.of<AppCubit>(context).animateToSection(context, 1);
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text("Keşfet", style: AppTextStyle.h5,),
-                  AppSpace.hL!,
-                  const Icon(Icons.arrow_forward_ios, size: 16,)
-                ],
-              )
-            )
-          ),
-        ],
-      ),
+          )
+        ),
+      ],
     );
   }
 }

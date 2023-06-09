@@ -18,7 +18,7 @@ class BodySection {
       this.bgImageAsset,
       this.showInAppBar = true,
       this.showTitleAsHeader = true,
-      this.section
+      required this.section
     }
   );
 
@@ -30,7 +30,7 @@ class BodySection {
   final String? bgImageAsset;
   final bool showInAppBar;
   final bool showTitleAsHeader;
-  final Widget? section;
+  final Widget section;
 
   static const double welcomeMinHeight = 650 - LayoutDimensions.appBarHeight;
   static const double productsMinHeight = 650 - LayoutDimensions.appBarHeight;
@@ -85,13 +85,17 @@ class BodySection {
           title: "Hakkımızda",
           screenHeight: aboutHeight,
           offset: aboutOffset,
-          bgColor: Theme.of(context).colorScheme.primaryContainer),
+          bgColor: Theme.of(context).colorScheme.primaryContainer,
+          section: const SizedBox.shrink()
+      ),
       BodySection(
           index: 3,
           title: "Vizyonumuz",
           screenHeight: ourVisionHeight,
           offset: ourVisionOffset,
-          bgColor: Theme.of(context).colorScheme.secondaryContainer),
+          bgColor: Theme.of(context).colorScheme.secondaryContainer,
+          section: const SizedBox.shrink()
+      ),
       BodySection(
           index: 4,
           title: "Bize ulaşın",

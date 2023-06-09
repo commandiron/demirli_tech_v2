@@ -41,7 +41,9 @@ class HomeScreen extends StatelessWidget {
                         title: bodySections[index].showTitleAsHeader
                             ? bodySections[index].title
                             : null,
-                        child: bodySections[index].section,
+                        child: Expanded(
+                          child: bodySections[index].section
+                        ),
                       );
                     }
                   ),
