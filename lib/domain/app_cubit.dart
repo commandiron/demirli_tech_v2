@@ -8,6 +8,11 @@ class AppCubit extends Cubit<AppState> {
   AppCubit() : super(
     AppState(
       controller: ScrollController(),
+      welcomeAnimationAttr: WelcomeAnimationAttr(
+        textOpacity: 0,
+        buttonOpacity: 0
+      )
+
     )
   );
 
@@ -20,5 +25,10 @@ class AppCubit extends Cubit<AppState> {
         duration: const Duration(seconds: 1),
         curve: Curves.ease
     );
+  }
+
+  Future<void> startWelcomeAnimation() async {
+    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
   }
 }
