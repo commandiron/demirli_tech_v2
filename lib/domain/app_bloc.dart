@@ -56,7 +56,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           productsAnimationState: ProductsAnimationStepOne()
         )
       );
-      await Future.delayed(const Duration(milliseconds: 500));
       emit(
         AppState(
           appScrollController: state.appScrollController,
