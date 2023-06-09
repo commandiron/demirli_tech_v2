@@ -6,6 +6,7 @@ class AppState extends Equatable{
   final ScrollController appScrollController;
   final CarouselController productsCarouselController;
   final WelcomeAnimationState welcomeAnimationState;
+  final IconData welcomeButtonIcon;
   final ProductsAnimationState productsAnimationState;
 
   const AppState(
@@ -13,12 +14,13 @@ class AppState extends Equatable{
       required this.appScrollController,
       required this.productsCarouselController,
       required this.welcomeAnimationState,
+      required this.welcomeButtonIcon,
       required this.productsAnimationState
     }
   );
 
   @override
-  List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, productsAnimationState];
+  List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, welcomeButtonIcon, productsAnimationState];
 }
 
 abstract class WelcomeAnimationState {

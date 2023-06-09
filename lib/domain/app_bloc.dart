@@ -12,6 +12,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       appScrollController: ScrollController(),
       productsCarouselController: CarouselController(),
       welcomeAnimationState: WelcomeAnimationInitial(),
+      welcomeButtonIcon: Icons.arrow_forward_ios,
       productsAnimationState: ProductsAnimationInitial()
     )
   ) {
@@ -34,6 +35,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           appScrollController: state.appScrollController,
           productsCarouselController: state.productsCarouselController,
           welcomeAnimationState: WelcomeAnimationStepOne(),
+          welcomeButtonIcon: state.welcomeButtonIcon,
           productsAnimationState: state.productsAnimationState
         )
       );
@@ -43,9 +45,33 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           appScrollController: state.appScrollController,
           productsCarouselController: state.productsCarouselController,
           welcomeAnimationState: WelcomeAnimationStepTwo(),
+          welcomeButtonIcon: state.welcomeButtonIcon,
           productsAnimationState: state.productsAnimationState
         )
       );
+    });
+    on<OnWelcomeButtonHover>((event, emit) async {
+      if(event.value) {
+        emit(
+          AppState(
+            appScrollController: state.appScrollController,
+            productsCarouselController: state.productsCarouselController,
+            welcomeAnimationState: state.welcomeAnimationState,
+            welcomeButtonIcon: Icons.arrow_downward_outlined,
+            productsAnimationState: state.productsAnimationState
+          )
+        );
+      } else {
+        emit(
+          AppState(
+            appScrollController: state.appScrollController,
+            productsCarouselController: state.productsCarouselController,
+            welcomeAnimationState: state.welcomeAnimationState,
+            welcomeButtonIcon: Icons.arrow_forward_ios,
+            productsAnimationState: state.productsAnimationState
+          )
+        );
+      }
     });
     on<StartProductsAnimation>((event, emit) async {
       emit(
@@ -53,6 +79,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           appScrollController: state.appScrollController,
           productsCarouselController: state.productsCarouselController,
           welcomeAnimationState: state.welcomeAnimationState,
+          welcomeButtonIcon: state.welcomeButtonIcon,
           productsAnimationState: ProductsAnimationStepOne()
         )
       );
@@ -61,6 +88,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           appScrollController: state.appScrollController,
           productsCarouselController: state.productsCarouselController,
           welcomeAnimationState: state.welcomeAnimationState,
+          welcomeButtonIcon: state.welcomeButtonIcon,
           productsAnimationState: ProductsAnimationStepTwo()
         )
       );

@@ -32,12 +32,15 @@ class WelcomeSection extends StatelessWidget {
                 onPressed: () {
                   context.read<AppBloc>().add(NavigateSection(context, 1));
                 },
+                onHover: (value) {
+                  context.read<AppBloc>().add(OnWelcomeButtonHover(value));
+                },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text("Keşfet", style: AppTextStyle.h5,),
                     AppSpace.hL!,
-                    const Icon(Icons.arrow_forward_ios, size: 16,)
+                    Icon(state.welcomeButtonIcon, size: 16,)
                   ],
                 )
               )
