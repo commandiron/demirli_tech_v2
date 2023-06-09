@@ -21,50 +21,62 @@ class ProductsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
-        return AnimatedSlide(
-          duration: const Duration(seconds: 1),
-          offset: Offset(state.productsAnimationState.offsetX, 0),
-          curve: Curves.easeOutCubic,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              CarouselSlider(
-                carouselController: state.productsCarouselController,
-                options: CarouselOptions(
-                  height: MediaQuery.of(context).size.height - LayoutDimensions.bodyBaseTitleHeight,
-                    enableInfiniteScroll: false,
-                    scrollPhysics: Adaptive.carouselScrollPhysics
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            AnimatedSlide(
+              duration: const Duration(seconds: 1),
+              offset: Offset(state.productsAnimationState.sliderOffsetX, 0),
+              curve: Curves.easeOutCubic,
+              child: AnimatedScale(
+                duration: const Duration(seconds: 1),
+                scale: state.productsAnimationState.scale,
+                child: CarouselSlider(
+                  carouselController: state.productsCarouselController,
+                  options: CarouselOptions(
+                    height: MediaQuery.of(context).size.height - LayoutDimensions.bodyBaseTitleHeight,
+                      enableInfiniteScroll: false,
+                      scrollPhysics: Adaptive.carouselScrollPhysics
+                  ),
+                  items: products.map((product) {
+                    return Builder(builder: (BuildContext context) {
+                      return ProductItem(
+                        backgroundAsset: product.backgroundAsset,
+                        iconAsset: product.iconAsset,
+                        name: product.name,
+                        shortDescription: product.shortDescription,
+                        webUrl: product.webUrl,
+                        appStoreUrl: product.appStoreUrl,
+                        googlePlayUrl: product.googlePlayUrl,
+                      );
+                    });
+                  }).toList(),
                 ),
-                items: products.map((product) {
-                  return Builder(builder: (BuildContext context) {
-                    return ProductItem(
-                      backgroundAsset: product.backgroundAsset,
-                      iconAsset: product.iconAsset,
-                      name: product.name,
-                      shortDescription: product.shortDescription,
-                      webUrl: product.webUrl,
-                      appStoreUrl: product.appStoreUrl,
-                      googlePlayUrl: product.googlePlayUrl,
-                    );
-                  });
-                }).toList(),
               ),
-              Padding(
+            ),
+            AnimatedSlide(
+              duration: const Duration(seconds: 1),
+              offset: Offset(state.productsAnimationState.backButtonOffsetX, 0),
+              child: Container(
+                alignment: Alignment.centerLeft,
                 padding: AppPadding.hXL!,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CarouselBackButton(
-                      onTap: () => context.read<AppBloc>().add(ProductsCarouselBack())
-                    ),
-                    CarouselNextButton(
-                      onTap: () => context.read<AppBloc>().add(ProductsCarouselNext())
-                    ),
-                  ],
+                child: CarouselBackButton(
+                  onTap: () => context.read<AppBloc>().add(ProductsCarouselBack())
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+            AnimatedSlide(
+              duration: const Duration(seconds: 1),
+              offset: Offset(state.productsAnimationState.nextButtonOffsetX, 0),
+              child: Container(
+                alignment: Alignment.centerRight,
+                padding: AppPadding.hXL!,
+                child: CarouselNextButton(
+                    onTap: () => context.read<AppBloc>().add(ProductsCarouselNext())
+                ),
+              ),
+            ),
+          ],
         );
       },
     );

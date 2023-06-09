@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CarouselMoveButton extends StatefulWidget {
-  const CarouselMoveButton({Key? key, this.icon, this.onTap}) : super(key: key);
+  const CarouselMoveButton({Key? key, this.icon, this.color, this.onTap, }) : super(key: key);
   final IconData? icon;
+  final Color? color;
   final void Function()? onTap;
 
   @override
@@ -21,8 +22,8 @@ class _CarouselMoveButtonState extends State<CarouselMoveButton> {
         });
       },
       child: CircleAvatar(
-        backgroundColor: _onHover ? Theme.of(context).colorScheme.primary : Colors.white,
-        minRadius: 40,
+        backgroundColor: _onHover ? Theme.of(context).colorScheme.primary : widget.color ?? Colors.white,
+        radius: 40,
         child: Icon(
           widget.icon,
           color: _onHover ? Colors.white : Colors.black,
@@ -34,24 +35,28 @@ class _CarouselMoveButtonState extends State<CarouselMoveButton> {
 }
 
 class CarouselNextButton extends StatelessWidget {
-  const CarouselNextButton({Key? key, this.onTap}) : super(key: key);
+  const CarouselNextButton({Key? key, this.color, this.onTap, }) : super(key: key);
+  final Color? color;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return CarouselMoveButton(
       icon: Icons.navigate_next,
+      color: color,
       onTap: onTap,
     );
   }
 }
 
 class CarouselBackButton extends StatelessWidget {
-  const CarouselBackButton({Key? key, this.onTap}) : super(key: key);
+  const CarouselBackButton({Key? key,  this.color, this.onTap,}) : super(key: key);
+  final Color? color;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return CarouselMoveButton(
       icon: Icons.navigate_before,
+      color: color,
       onTap: onTap,
     );
   }

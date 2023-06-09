@@ -56,6 +56,15 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           productsAnimationState: ProductsAnimationStepOne()
         )
       );
+      await Future.delayed(const Duration(milliseconds: 500));
+      emit(
+        AppState(
+          appScrollController: state.appScrollController,
+          productsCarouselController: state.productsCarouselController,
+          welcomeAnimationState: state.welcomeAnimationState,
+          productsAnimationState: ProductsAnimationStepTwo()
+        )
+      );
     });
     on<NavigateSection>((event, emit) {
       final double offset = BodySection.getItems(event.context).firstWhere((element) => element.index == event.index).offset;

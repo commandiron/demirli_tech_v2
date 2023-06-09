@@ -45,18 +45,28 @@ class WelcomeAnimationStepTwo extends WelcomeAnimationState{
 }
 
 abstract class ProductsAnimationState {
-  final double offsetX;
+  final double sliderOffsetX;
+  final double scale;
+  final double backButtonOffsetX;
+  final double nextButtonOffsetX;
   ProductsAnimationState(
     {
-      required this.offsetX,
+      required this.sliderOffsetX,
+      required this.scale,
+      required this.backButtonOffsetX,
+      required this.nextButtonOffsetX,
     }
   );
 }
 
 class ProductsAnimationInitial extends ProductsAnimationState{
-  ProductsAnimationInitial({super.offsetX = 1,});
+  ProductsAnimationInitial({super.sliderOffsetX = 1, super.scale = 1, super.backButtonOffsetX = -1, super.nextButtonOffsetX = 1});
 }
 
 class ProductsAnimationStepOne extends  ProductsAnimationState{
-  ProductsAnimationStepOne({super.offsetX = 0,});
+  ProductsAnimationStepOne({super.sliderOffsetX = 0, super.scale = 1, super.backButtonOffsetX = -1, super.nextButtonOffsetX = 1});
+}
+
+class ProductsAnimationStepTwo extends  ProductsAnimationState{
+  ProductsAnimationStepTwo({super.sliderOffsetX = 0, super.scale = 1, super.backButtonOffsetX = 0, super.nextButtonOffsetX = 0});
 }
