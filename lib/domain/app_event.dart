@@ -8,6 +8,15 @@ abstract class AppEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+class InitAppAnimations extends AppEvent {
+  final BuildContext context;
+
+  const InitAppAnimations(this.context,);
+
+  @override
+  List<Object?> get props => [context,];
+}
+
 class NavigateSection extends AppEvent {
   final BuildContext context;
   final int index;
@@ -19,6 +28,21 @@ class NavigateSection extends AppEvent {
 }
 
 class StartWelcomeAnimation extends AppEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class StartProductsAnimation extends AppEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class ProductsCarouselNext extends AppEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class ProductsCarouselBack extends AppEvent {
   @override
   List<Object?> get props => [];
 }

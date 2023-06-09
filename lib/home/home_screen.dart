@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
           alignment: Alignment.topCenter,
           children: [
             CustomScrollView(
-              controller: state.controller,
+              controller: state.appScrollController,
               slivers: [
                 CustomSliverAppBar(
                   bodySections: bodySections,

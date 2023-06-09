@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     AppConfig.init(context);
     return BlocProvider(
-      create: (context) => AppBloc()..add(StartWelcomeAnimation()),
+      create: (context) => AppBloc()..add(InitAppAnimations(context)),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: themeLight,
