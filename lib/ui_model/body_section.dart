@@ -97,7 +97,7 @@ class BodySection {
           title: "Bize ulaşın",
           screenHeight: contactUsHeight,
           offset: contactUsOffset,
-          bgColor: Theme.of(context).colorScheme.primaryContainer,
+          bgColor: Theme.of(context).colorScheme.tertiaryContainer,
           showTitleAsHeader: false,
           section: const ContactUsSection()),
       BodySection(
@@ -105,7 +105,7 @@ class BodySection {
           title: "Copyright Footer",
           screenHeight: copyrightFooterHeight,
           offset: copyrightFooterOffset,
-          bgColor: Theme.of(context).colorScheme.secondaryContainer,
+          bgColor: Theme.of(context).colorScheme.tertiaryContainer,
           showInAppBar: false,
           showTitleAsHeader: false,
           section: const CopyrightFooter()),
