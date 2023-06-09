@@ -1,4 +1,5 @@
-import 'package:demirli_tech_v2/domain/app_cubit.dart';
+import 'package:demirli_tech_v2/domain/app_bloc.dart';
+import 'package:demirli_tech_v2/domain/app_event.dart';
 import 'package:demirli_tech_v2/ui_model/body_section.dart';
 import 'package:demirli_tech_v2/widgets/custom_app_bar/custom_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppState>(
+    return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
@@ -26,9 +27,9 @@ class HomeScreen extends StatelessWidget {
               slivers: [
                 CustomSliverAppBar(
                   bodySections: bodySections,
-                  onAppLogoPressed: () => BlocProvider.of<AppCubit>(context).animateToSection(context, 0),
+                  onAppLogoPressed: () => context.read<AppBloc>().add(NavigateSection(context, 0)),
                   onButtonPressed: (sectionIndex) {
-                    BlocProvider.of<AppCubit>(context).animateToSection(context, sectionIndex);
+                    context.read<AppBloc>().add(NavigateSection(context, sectionIndex));
                   },
                 ),
                 SliverList(

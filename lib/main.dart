@@ -1,5 +1,6 @@
 import 'package:demirli_tech_v2/config/app_theme.dart';
-import 'package:demirli_tech_v2/domain/app_cubit.dart';
+import 'package:demirli_tech_v2/domain/app_bloc.dart';
+import 'package:demirli_tech_v2/domain/app_event.dart';
 import 'package:demirli_tech_v2/home/home_screen.dart';
 import 'package:demirli_tech_v2/ui_model/body_section.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     AppConfig.init(context);
     return BlocProvider(
-      create: (context) => AppCubit(),
+      create: (context) => AppBloc()..add(StartWelcomeAnimation()),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: themeLight,
