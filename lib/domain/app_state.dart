@@ -36,7 +36,7 @@ class AppState extends Equatable{
   }
 
   @override
-  List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, productsAnimationState];
+  List<Object?> get props => [appScrollController, productsCarouselController, uiState, welcomeAnimationState, productsAnimationState];
 }
 
 
