@@ -67,21 +67,23 @@ class WelcomeAnimationStepTwo extends WelcomeAnimationState{
 }
 
 abstract class ProductsAnimationState {
-  final int sliderOffsetAnimationDurationInSecond;
-  final double sliderOffsetX;
-  final int productItemOpacityAnimationDurationInSecond;
+  final int sliderAnimationDurationInSecond;
+  final double sliderOffsetY;
+  final double sliderOpacity;
+  final int productItemAnimationDurationInSecond;
   final double productItemOpacity;
-  final int buttonsOffsetAnimationDurationInSecond;
+  final int buttonsAnimationDurationInSecond;
   final double backButtonOffsetX;
   final double nextButtonOffsetX;
   final int stepOneToTwoAnimationDelayInSecond;
   ProductsAnimationState(
     {
-      this.sliderOffsetAnimationDurationInSecond = 1,
-      required this.sliderOffsetX,
-      this.productItemOpacityAnimationDurationInSecond = 1,
+      this.sliderAnimationDurationInSecond = 1,
+      required this.sliderOffsetY,
+      required this.sliderOpacity,
+      this.productItemAnimationDurationInSecond = 1,
       required this.productItemOpacity,
-      this.buttonsOffsetAnimationDurationInSecond = 1,
+      this.buttonsAnimationDurationInSecond = 1,
       required this.backButtonOffsetX,
       required this.nextButtonOffsetX,
       this.stepOneToTwoAnimationDelayInSecond = 1,
@@ -90,13 +92,13 @@ abstract class ProductsAnimationState {
 }
 
 class ProductsAnimationInitial extends ProductsAnimationState{
-  ProductsAnimationInitial({super.sliderOffsetX = 1, super.productItemOpacity = 0, super.backButtonOffsetX = -1, super.nextButtonOffsetX = 1});
+  ProductsAnimationInitial({super.sliderOffsetY = 1, super.sliderOpacity = 0, super.productItemOpacity = 0, super.backButtonOffsetX = -1, super.nextButtonOffsetX = 1});
 }
 
 class ProductsAnimationStepOne extends  ProductsAnimationState{
-  ProductsAnimationStepOne({super.sliderOffsetX = 0, super.productItemOpacity = 0, super.backButtonOffsetX = -1, super.nextButtonOffsetX = 1});
+  ProductsAnimationStepOne({super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 0, super.backButtonOffsetX = -1, super.nextButtonOffsetX = 1});
 }
 
 class ProductsAnimationStepTwo extends  ProductsAnimationState{
-  ProductsAnimationStepTwo({super.sliderOffsetX = 0, super.productItemOpacity = 1, super.backButtonOffsetX = 0, super.nextButtonOffsetX = 0});
+  ProductsAnimationStepTwo({super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 1, super.backButtonOffsetX = 0, super.nextButtonOffsetX = 0});
 }

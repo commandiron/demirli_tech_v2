@@ -33,7 +33,7 @@ class ProductItem extends StatelessWidget {
           BlocBuilder<AppBloc, AppState>(
             builder: (context, state) {
               return AnimatedOpacity(
-                duration: Duration(seconds: state.productsAnimationState.productItemOpacityAnimationDurationInSecond),
+                duration: Duration(seconds: state.productsAnimationState.productItemAnimationDurationInSecond),
                 opacity: state.productsAnimationState.productItemOpacity,
                 child: Container(
                   alignment: Alignment.topLeft,
