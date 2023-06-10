@@ -27,15 +27,6 @@ class NavigateSection extends AppEvent {
   List<Object?> get props => [context, index];
 }
 
-class OnWelcomeButtonHover extends AppEvent {
-  final bool value;
-
-  const OnWelcomeButtonHover(this.value);
-
-  @override
-  List<Object?> get props => [value];
-}
-
 class StartWelcomeAnimation extends AppEvent {
   @override
   List<Object?> get props => [];

@@ -1,8 +1,8 @@
 import 'package:demirli_tech_v2/config/app_space.dart';
 import 'package:demirli_tech_v2/config/app_text_style.dart';
 import 'package:demirli_tech_v2/domain/app_bloc.dart';
-import 'package:demirli_tech_v2/domain/app_event.dart';
 import 'package:demirli_tech_v2/domain/app_state.dart';
+import 'package:demirli_tech_v2/home/sections/welcome/widget/welcome_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,22 +28,7 @@ class WelcomeSection extends StatelessWidget {
             AnimatedOpacity(
               opacity: state.welcomeAnimationState.buttonOpacity,
               duration: Duration(seconds: state.welcomeAnimationState.buttonAnimationDurationInSecond),
-              child: ElevatedButton(
-                onPressed: () {
-                  context.read<AppBloc>().add(NavigateSection(context, 1));
-                },
-                onHover: (value) {
-                  context.read<AppBloc>().add(OnWelcomeButtonHover(value));
-                },
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text("Keşfet", style: AppTextStyle.h5,),
-                    AppSpace.hL!,
-                    Icon(state.uiState.welcomeButtonIcon, size: 32,)
-                  ],
-                )
-              )
+              child: const WelcomeButton()
             ),
           ],
         );

@@ -11,9 +11,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     AppState(
       appScrollController: ScrollController(),
       productsCarouselController: CarouselController(),
-      uiState: UiState(
-        welcomeButtonIcon: Icons.arrow_right,
-      ),
       welcomeAnimationState: WelcomeAnimationInitial(),
       productsAnimationState: ProductsAnimationInitial()
     )
@@ -35,13 +32,6 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepOne()));
       await Future.delayed(Duration(seconds: state.welcomeAnimationState.stepOneToTwoAnimationDelayInSecond));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepTwo()));
-    });
-    on<OnWelcomeButtonHover>((event, emit) async {
-      if(event.value) {
-        emit(state.copyWith(uiState: state.uiState.copyWith(welcomeButtonIcon: Icons.arrow_drop_down)));
-      } else {
-        emit(state.copyWith(uiState: state.uiState.copyWith(welcomeButtonIcon: Icons.arrow_right)));
-      }
     });
     on<StartProductsAnimation>((event, emit) async {
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepOne()));
