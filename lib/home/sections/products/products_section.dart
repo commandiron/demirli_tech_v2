@@ -25,37 +25,31 @@ class ProductsSection extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             AnimatedSlide(
-              duration: const Duration(seconds: 1),
+              duration: Duration(seconds: state.productsAnimationState.sliderOffsetAnimationDurationInSecond),
               offset: Offset(state.productsAnimationState.sliderOffsetX, 0),
               curve: Curves.easeOutCubic,
-              child: AnimatedScale(
-                duration: const Duration(seconds: 1),
-                scale: state.productsAnimationState.scale,
-                child: CarouselSlider(
-                  carouselController: state.productsCarouselController,
-                  options: CarouselOptions(
-                    height: MediaQuery.of(context).size.height - LayoutDimensions.bodyBaseTitleHeight,
-                      enableInfiniteScroll: false,
-                      scrollPhysics: Adaptive.carouselScrollPhysics
-                  ),
-                  items: products.map((product) {
-                    return Builder(builder: (BuildContext context) {
-                      return ProductItem(
-                        backgroundAsset: product.backgroundAsset,
-                        iconAsset: product.iconAsset,
-                        name: product.name,
-                        shortDescription: product.shortDescription,
-                        webUrl: product.webUrl,
-                        appStoreUrl: product.appStoreUrl,
-                        googlePlayUrl: product.googlePlayUrl,
-                      );
-                    });
-                  }).toList(),
+              child: CarouselSlider(
+                carouselController: state.productsCarouselController,
+                options: CarouselOptions(
+                  height: MediaQuery.of(context).size.height - LayoutDimensions.bodyBaseTitleHeight,
+                    enableInfiniteScroll: false,
+                    scrollPhysics: Adaptive.carouselScrollPhysics
                 ),
+                items: products.map((product) {
+                  return ProductItem(
+                    backgroundAsset: product.backgroundAsset,
+                    iconAsset: product.iconAsset,
+                    name: product.name,
+                    shortDescription: product.shortDescription,
+                    webUrl: product.webUrl,
+                    appStoreUrl: product.appStoreUrl,
+                    googlePlayUrl: product.googlePlayUrl,
+                  );
+                }).toList(),
               ),
             ),
             AnimatedSlide(
-              duration: const Duration(seconds: 1),
+              duration: Duration(seconds: state.productsAnimationState.buttonsOffsetAnimationDurationInSecond),
               offset: Offset(state.productsAnimationState.backButtonOffsetX, 0),
               child: Container(
                 alignment: Alignment.centerLeft,
@@ -66,7 +60,7 @@ class ProductsSection extends StatelessWidget {
               ),
             ),
             AnimatedSlide(
-              duration: const Duration(seconds: 1),
+              duration: Duration(seconds: state.productsAnimationState.buttonsOffsetAnimationDurationInSecond),
               offset: Offset(state.productsAnimationState.nextButtonOffsetX, 0),
               child: Container(
                 alignment: Alignment.centerRight,

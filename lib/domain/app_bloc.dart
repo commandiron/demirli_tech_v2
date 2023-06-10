@@ -29,9 +29,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       });
     });
     on<StartWelcomeAnimation>((event, emit) async {
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(Duration(seconds: state.welcomeAnimationState.animationDelayInSecond));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepOne()));
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(Duration(seconds: state.welcomeAnimationState.stepOneToTwoAnimationDelayInSecond));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepTwo()));
     });
     on<OnWelcomeButtonHover>((event, emit) async {
@@ -43,6 +43,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     });
     on<StartProductsAnimation>((event, emit) async {
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepOne()));
+      await Future.delayed(Duration(seconds: state.productsAnimationState.stepOneToTwoAnimationDelayInSecond));
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepTwo()));
     });
     on<NavigateSection>((event, emit) {

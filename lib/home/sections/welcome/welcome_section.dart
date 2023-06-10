@@ -18,7 +18,7 @@ class WelcomeSection extends StatelessWidget {
           children: [
             AnimatedOpacity(
               opacity: state.welcomeAnimationState.textOpacity,
-              duration: const Duration(seconds: 2),
+              duration: Duration(seconds: state.welcomeAnimationState.textAnimationDurationInSecond),
               child: Text(
                 "İnşaat sektörü için inovatif ve vizyoner araçlar geliştiriyoruz",
                 style: AppTextStyle.h2!,
@@ -27,7 +27,7 @@ class WelcomeSection extends StatelessWidget {
             AppSpace.vXL!,
             AnimatedOpacity(
               opacity: state.welcomeAnimationState.buttonOpacity,
-              duration: const Duration(seconds: 1),
+              duration: Duration(seconds: state.welcomeAnimationState.buttonAnimationDurationInSecond),
               child: ElevatedButton(
                 onPressed: () {
                   context.read<AppBloc>().add(NavigateSection(context, 1));
