@@ -2,6 +2,7 @@ import 'package:demirli_tech_v2/config/layout_dimensions.dart';
 import 'package:demirli_tech_v2/home/sections/about/about_section.dart';
 import 'package:demirli_tech_v2/home/sections/contact_us/contact_us_section.dart';
 import 'package:demirli_tech_v2/home/sections/copyright_footer/copyright_footer.dart';
+import 'package:demirli_tech_v2/home/sections/our_vision/our_vision_section.dart';
 import 'package:demirli_tech_v2/home/sections/welcome/welcome_section.dart';
 import 'package:demirli_tech_v2/ui_model/product.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,6 @@ class BodySection {
       required this.bgColor,
       this.bgImageAsset,
       this.showInAppBar = true,
-      this.showTitleAsHeader = true,
       required this.section
     }
   );
@@ -30,7 +30,6 @@ class BodySection {
   final Color bgColor;
   final String? bgImageAsset;
   final bool showInAppBar;
-  final bool showTitleAsHeader;
   final Widget section;
 
   static const double welcomeMinHeight = 650 - LayoutDimensions.appBarHeight;
@@ -69,7 +68,6 @@ class BodySection {
           offset: welcomeOffset,
           bgColor: Theme.of(context).colorScheme.primaryContainer,
           showInAppBar: false,
-          showTitleAsHeader: false,
           section: const WelcomeSection()
       ),
       BodySection(
@@ -95,7 +93,7 @@ class BodySection {
           screenHeight: ourVisionHeight,
           offset: ourVisionOffset,
           bgColor: Theme.of(context).colorScheme.secondaryContainer,
-          section: const SizedBox.shrink()
+          section: const OurVisionSection()
       ),
       BodySection(
           index: 4,
@@ -103,7 +101,6 @@ class BodySection {
           screenHeight: contactUsHeight,
           offset: contactUsOffset,
           bgColor: Theme.of(context).colorScheme.tertiaryContainer,
-          showTitleAsHeader: false,
           section: const ContactUsSection()),
       BodySection(
           index: 5,
@@ -112,7 +109,6 @@ class BodySection {
           offset: copyrightFooterOffset,
           bgColor: Theme.of(context).colorScheme.tertiaryContainer,
           showInAppBar: false,
-          showTitleAsHeader: false,
           section: const CopyrightFooter()),
     ];
   }

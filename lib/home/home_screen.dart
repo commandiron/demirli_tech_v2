@@ -39,9 +39,6 @@ class HomeScreen extends StatelessWidget {
                         height: bodySections[index].screenHeight,
                         bgColor: bodySections[index].bgColor,
                         bgImageAsset: bodySections[index].bgImageAsset,
-                        title: bodySections[index].showTitleAsHeader
-                            ? bodySections[index].title
-                            : null,
                         child: Expanded(
                           child: bodySections[index].section
                         ),
