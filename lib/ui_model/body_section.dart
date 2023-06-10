@@ -1,4 +1,5 @@
 import 'package:demirli_tech_v2/config/layout_dimensions.dart';
+import 'package:demirli_tech_v2/home/sections/about/about_section.dart';
 import 'package:demirli_tech_v2/home/sections/contact_us/contact_us_section.dart';
 import 'package:demirli_tech_v2/home/sections/copyright_footer/copyright_footer.dart';
 import 'package:demirli_tech_v2/home/sections/welcome/welcome_section.dart';
@@ -86,7 +87,7 @@ class BodySection {
           screenHeight: aboutHeight,
           offset: aboutOffset,
           bgColor: Theme.of(context).colorScheme.primaryContainer,
-          section: const SizedBox.shrink()
+          section: const AboutSection()
       ),
       BodySection(
           index: 3,
