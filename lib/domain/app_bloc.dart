@@ -30,68 +30,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     });
     on<StartWelcomeAnimation>((event, emit) async {
       await Future.delayed(const Duration(seconds: 1));
-      emit(
-        AppState(
-          appScrollController: state.appScrollController,
-          productsCarouselController: state.productsCarouselController,
-          welcomeAnimationState: WelcomeAnimationStepOne(),
-          welcomeButtonIcon: state.welcomeButtonIcon,
-          productsAnimationState: state.productsAnimationState
-        )
-      );
+      emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepOne()));
       await Future.delayed(const Duration(seconds: 1));
-      emit(
-        AppState(
-          appScrollController: state.appScrollController,
-          productsCarouselController: state.productsCarouselController,
-          welcomeAnimationState: WelcomeAnimationStepTwo(),
-          welcomeButtonIcon: state.welcomeButtonIcon,
-          productsAnimationState: state.productsAnimationState
-        )
-      );
+      emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepTwo()));
     });
     on<OnWelcomeButtonHover>((event, emit) async {
       if(event.value) {
-        emit(
-          AppState(
-            appScrollController: state.appScrollController,
-            productsCarouselController: state.productsCarouselController,
-            welcomeAnimationState: state.welcomeAnimationState,
-            welcomeButtonIcon: Icons.arrow_downward_outlined,
-            productsAnimationState: state.productsAnimationState
-          )
-        );
+        emit(state.copyWith(welcomeButtonIcon: Icons.arrow_downward_outlined));
       } else {
-        emit(
-          AppState(
-            appScrollController: state.appScrollController,
-            productsCarouselController: state.productsCarouselController,
-            welcomeAnimationState: state.welcomeAnimationState,
-            welcomeButtonIcon: Icons.arrow_forward_ios,
-            productsAnimationState: state.productsAnimationState
-          )
-        );
+        emit(state.copyWith(welcomeButtonIcon: Icons.arrow_forward_ios));
       }
     });
     on<StartProductsAnimation>((event, emit) async {
-      emit(
-        AppState(
-          appScrollController: state.appScrollController,
-          productsCarouselController: state.productsCarouselController,
-          welcomeAnimationState: state.welcomeAnimationState,
-          welcomeButtonIcon: state.welcomeButtonIcon,
-          productsAnimationState: ProductsAnimationStepOne()
-        )
-      );
-      emit(
-        AppState(
-          appScrollController: state.appScrollController,
-          productsCarouselController: state.productsCarouselController,
-          welcomeAnimationState: state.welcomeAnimationState,
-          welcomeButtonIcon: state.welcomeButtonIcon,
-          productsAnimationState: ProductsAnimationStepTwo()
-        )
-      );
+      emit(state.copyWith(productsAnimationState: ProductsAnimationStepOne()));
+      emit(state.copyWith(productsAnimationState: ProductsAnimationStepTwo()));
     });
     on<NavigateSection>((event, emit) {
       final double offset = BodySection.getItems(event.context).firstWhere((element) => element.index == event.index).offset;

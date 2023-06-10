@@ -19,6 +19,22 @@ class AppState extends Equatable{
     }
   );
 
+  AppState copyWith({
+    ScrollController? appScrollController,
+    CarouselController? productsCarouselController,
+    WelcomeAnimationState? welcomeAnimationState,
+    IconData? welcomeButtonIcon,
+    ProductsAnimationState? productsAnimationState,
+  }) {
+    return AppState(
+      appScrollController: appScrollController ?? this.appScrollController,
+      productsCarouselController: productsCarouselController ?? this.productsCarouselController,
+      welcomeAnimationState: welcomeAnimationState ?? this.welcomeAnimationState,
+      welcomeButtonIcon: welcomeButtonIcon ?? this.welcomeButtonIcon,
+      productsAnimationState: productsAnimationState ?? this.productsAnimationState
+    );
+  }
+
   @override
   List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, welcomeButtonIcon, productsAnimationState];
 }
