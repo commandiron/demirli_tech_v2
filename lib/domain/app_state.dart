@@ -49,7 +49,7 @@ abstract class WelcomeAnimationState {
       this.textAnimationDuration = 2000,
       this.stepOneToTwoAnimationDelay = 1000,
       required this.buttonOpacity,
-      this.buttonAnimationDuration = 1,
+      this.buttonAnimationDuration = 1000,
     }
   );
 }
