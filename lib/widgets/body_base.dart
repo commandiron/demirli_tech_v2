@@ -6,12 +6,13 @@ import '../config/app_space.dart';
 import '../config/app_text_style.dart';
 
 class BodyBase extends StatelessWidget {
-  const BodyBase({Key? key, required this.height, required this.bgColor, this.bgImageAsset, this.title, this.child, }) : super(key: key);
+  const BodyBase({Key? key, required this.height, required this.bgColor, this.bgImageAsset, this.title, this.child, this.titleLineWidth = 90, }) : super(key: key);
 
   final double height;
   final Color bgColor;
   final String? bgImageAsset;
   final String? title;
+  final double titleLineWidth;
   final Widget? child;
 
   @override
@@ -38,8 +39,9 @@ class BodyBase extends StatelessWidget {
                   children: [
                     Text(title!.toUpperCase(), style: AppTextStyle.h5b,),
                     AppSpace.hL!,
-                    Container(
-                      width: 70,
+                    AnimatedContainer(
+                      duration: const Duration(seconds: 1),
+                      width: titleLineWidth,
                       height: 5,
                       decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.primary,
