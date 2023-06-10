@@ -36,20 +36,20 @@ class AppState extends Equatable{
 }
 
 abstract class WelcomeAnimationState {
-  final int animationDelayInSecond;
-  final int textAnimationDurationInSecond;
+  final int animationDelay;
+  final int textAnimationDuration;
   final double textOpacity;
-  final int stepOneToTwoAnimationDelayInSecond;
-  final int buttonAnimationDurationInSecond;
+  final int stepOneToTwoAnimationDelay;
+  final int buttonAnimationDuration;
   final double buttonOpacity;
   WelcomeAnimationState(
     {
-      this.animationDelayInSecond = 1,
+      this.animationDelay = 1000,
       required this.textOpacity,
-      this.textAnimationDurationInSecond = 2,
-      this.stepOneToTwoAnimationDelayInSecond = 1,
+      this.textAnimationDuration = 2000,
+      this.stepOneToTwoAnimationDelay = 1000,
       required this.buttonOpacity,
-      this.buttonAnimationDurationInSecond = 1,
+      this.buttonAnimationDuration = 1,
     }
   );
 }

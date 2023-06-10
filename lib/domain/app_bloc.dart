@@ -28,9 +28,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       });
     });
     on<StartWelcomeAnimation>((event, emit) async {
-      await Future.delayed(Duration(seconds: state.welcomeAnimationState.animationDelayInSecond));
+      await Future.delayed(Duration(milliseconds: state.welcomeAnimationState.animationDelay));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepOne()));
-      await Future.delayed(Duration(seconds: state.welcomeAnimationState.stepOneToTwoAnimationDelayInSecond));
+      await Future.delayed(Duration(milliseconds: state.welcomeAnimationState.stepOneToTwoAnimationDelay));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepTwo()));
     });
     on<StartProductsAnimation>((event, emit) async {

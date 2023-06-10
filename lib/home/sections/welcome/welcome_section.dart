@@ -18,7 +18,7 @@ class WelcomeSection extends StatelessWidget {
           children: [
             AnimatedOpacity(
               opacity: state.welcomeAnimationState.textOpacity,
-              duration: Duration(seconds: state.welcomeAnimationState.textAnimationDurationInSecond),
+              duration: Duration(milliseconds: state.welcomeAnimationState.textAnimationDuration),
               child: Text(
                 "İnşaat sektörü için inovatif ve vizyoner araçlar geliştiriyoruz",
                 style: AppTextStyle.h2!,
@@ -27,7 +27,7 @@ class WelcomeSection extends StatelessWidget {
             AppSpace.vXL!,
             AnimatedOpacity(
               opacity: state.welcomeAnimationState.buttonOpacity,
-              duration: Duration(seconds: state.welcomeAnimationState.buttonAnimationDurationInSecond),
+              duration: Duration(milliseconds: state.welcomeAnimationState.buttonAnimationDuration),
               child: const WelcomeButton()
             ),
           ],
