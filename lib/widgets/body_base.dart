@@ -18,43 +18,43 @@ class BodyBase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: height,
-        decoration: BoxDecoration(
-          color: bgColor,
-          image: bgImageAsset != null
-            ? DecorationImage(
-              image: AssetImage(bgImageAsset!),
-              fit: BoxFit.cover,
-            )
-            : null
-        ),
-        child: Column(
-          children: [
-            if(title != null)
-              Container(
-                height: LayoutDimensions.bodyBaseTitleHeight,
-                alignment: Alignment.center,
-                padding: AppPadding.hXXL!,
-                child: Row(
-                  children: [
-                    Text(title!.toUpperCase(), style: AppTextStyle.h5b,),
-                    AppSpace.hL!,
-                    AnimatedContainer(
-                      duration: const Duration(seconds: 1),
-                      width: titleLineWidth,
-                      height: 5,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(16)
-                      ),
-                    )
-                  ],
-                ),
+      height: height,
+      decoration: BoxDecoration(
+        color: bgColor,
+        image: bgImageAsset != null
+          ? DecorationImage(
+            image: AssetImage(bgImageAsset!),
+            fit: BoxFit.cover,
+          )
+          : null
+      ),
+      child: Column(
+        children: [
+          if(title != null)
+            Container(
+              height: LayoutDimensions.bodyBaseTitleHeight,
+              alignment: Alignment.center,
+              padding: AppPadding.hXXL!,
+              child: Row(
+                children: [
+                  Text(title!.toUpperCase(), style: AppTextStyle.h5b,),
+                  AppSpace.hL!,
+                  AnimatedContainer(
+                    duration: const Duration(seconds: 1),
+                    width: titleLineWidth,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.circular(16)
+                    ),
+                  )
+                ],
               ),
-            if(child != null)
-              child!
-          ],
-        )
+            ),
+          if(child != null)
+            child!
+        ],
+      )
     );
   }
 }
