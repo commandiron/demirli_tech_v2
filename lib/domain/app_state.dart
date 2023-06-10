@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 class AppState extends Equatable{
   final ScrollController appScrollController;
   final CarouselController productsCarouselController;
+  final UiState uiState;
   final WelcomeAnimationState welcomeAnimationState;
-  final IconData welcomeButtonIcon;
   final ProductsAnimationState productsAnimationState;
 
   const AppState(
     {
       required this.appScrollController,
       required this.productsCarouselController,
+      required this.uiState,
       required this.welcomeAnimationState,
-      required this.welcomeButtonIcon,
       required this.productsAnimationState
     }
   );
@@ -22,21 +22,40 @@ class AppState extends Equatable{
   AppState copyWith({
     ScrollController? appScrollController,
     CarouselController? productsCarouselController,
+    UiState? uiState,
     WelcomeAnimationState? welcomeAnimationState,
-    IconData? welcomeButtonIcon,
     ProductsAnimationState? productsAnimationState,
   }) {
     return AppState(
       appScrollController: appScrollController ?? this.appScrollController,
       productsCarouselController: productsCarouselController ?? this.productsCarouselController,
+      uiState: uiState ?? this.uiState,
       welcomeAnimationState: welcomeAnimationState ?? this.welcomeAnimationState,
-      welcomeButtonIcon: welcomeButtonIcon ?? this.welcomeButtonIcon,
       productsAnimationState: productsAnimationState ?? this.productsAnimationState
     );
   }
 
   @override
-  List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, welcomeButtonIcon, productsAnimationState];
+  List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, productsAnimationState];
+}
+
+
+class UiState {
+  final IconData welcomeButtonIcon;
+
+  UiState(
+    {
+      required this.welcomeButtonIcon,
+    }
+  );
+
+  UiState copyWith({
+    IconData? welcomeButtonIcon,
+  }) {
+    return UiState(
+      welcomeButtonIcon: welcomeButtonIcon ?? this.welcomeButtonIcon
+    );
+  }
 }
 
 abstract class WelcomeAnimationState {

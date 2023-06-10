@@ -40,7 +40,7 @@ class WelcomeSection extends StatelessWidget {
                   children: [
                     Text("Keşfet", style: AppTextStyle.h5,),
                     AppSpace.hL!,
-                    Icon(state.welcomeButtonIcon, size: 16,)
+                    Icon(state.uiState.welcomeButtonIcon, size: 16,)
                   ],
                 )
               )

@@ -11,8 +11,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     AppState(
       appScrollController: ScrollController(),
       productsCarouselController: CarouselController(),
+      uiState: UiState(
+        welcomeButtonIcon: Icons.arrow_forward_ios,
+      ),
       welcomeAnimationState: WelcomeAnimationInitial(),
-      welcomeButtonIcon: Icons.arrow_forward_ios,
       productsAnimationState: ProductsAnimationInitial()
     )
   ) {
@@ -36,9 +38,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     });
     on<OnWelcomeButtonHover>((event, emit) async {
       if(event.value) {
-        emit(state.copyWith(welcomeButtonIcon: Icons.arrow_downward_outlined));
+        emit(state.copyWith(uiState: state.uiState.copyWith(welcomeButtonIcon: Icons.arrow_downward_outlined)));
       } else {
-        emit(state.copyWith(welcomeButtonIcon: Icons.arrow_forward_ios));
+        emit(state.copyWith(uiState: state.uiState.copyWith(welcomeButtonIcon: Icons.arrow_forward_ios)));
       }
     });
     on<StartProductsAnimation>((event, emit) async {
