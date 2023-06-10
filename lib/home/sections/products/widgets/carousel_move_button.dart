@@ -21,13 +21,21 @@ class _CarouselMoveButtonState extends State<CarouselMoveButton> {
           _onHover = value;
         });
       },
-      child: CircleAvatar(
-        backgroundColor: _onHover ? Theme.of(context).colorScheme.primary : widget.color ?? Colors.white,
-        radius: 40,
-        child: Icon(
-          widget.icon,
-          color: _onHover ? Colors.white : Colors.black,
-          size: 40,
+      child: Container(
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(blurRadius: 10, color: Colors.grey, spreadRadius: 5)
+          ],
+        ),
+        child: CircleAvatar(
+          backgroundColor: _onHover ? Theme.of(context).colorScheme.primary : widget.color ?? Colors.white,
+          radius: 40,
+          child: Icon(
+            widget.icon,
+            color: _onHover ? Colors.white : Colors.black,
+            size: 40,
+          ),
         ),
       ),
     );
