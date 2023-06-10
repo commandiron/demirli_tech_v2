@@ -24,7 +24,10 @@ class ProductsSection extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
-            const SectionTitle(title: "ÜRÜNLERİMİZ"),
+            SectionTitle(
+              title: "ÜRÜNLERİMİZ",
+              titleLineWidth: state.productsAnimationState.titleLineWidth,
+            ),
             Stack(
               alignment: Alignment.center,
               children: [

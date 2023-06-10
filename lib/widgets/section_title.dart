@@ -6,9 +6,10 @@ import '../config/app_text_style.dart';
 import '../config/layout_dimensions.dart';
 
 class SectionTitle extends StatelessWidget {
-  const SectionTitle({Key? key, required this.title}) : super(key: key);
+  const SectionTitle({Key? key, required this.title, this.titleLineWidth = 100, }) : super(key: key);
 
   final String title;
+  final double titleLineWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +22,12 @@ class SectionTitle extends StatelessWidget {
           Text(title, style: AppTextStyle.h5b,),
           AppSpace.hL!,
           AnimatedContainer(
-            duration: const Duration(seconds: 1),
-            width: 90,
+            duration: const Duration(milliseconds: 500),
+            width: titleLineWidth,
             height: 5,
             decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(16)
+              color: Theme.of(context).colorScheme.primary,
+              borderRadius: BorderRadius.circular(16)
             ),
           )
         ],
