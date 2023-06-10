@@ -35,7 +35,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     });
     on<StartProductsAnimation>((event, emit) async {
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepOne()));
-      await Future.delayed(Duration(seconds: state.productsAnimationState.stepOneToTwoAnimationDelayInSecond));
+      await Future.delayed(Duration(milliseconds: state.productsAnimationState.stepOneToTwoAnimationDelayInMillis));
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepTwo()));
     });
     on<NavigateSection>((event, emit) {

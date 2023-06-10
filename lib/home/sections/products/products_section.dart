@@ -32,11 +32,11 @@ class ProductsSection extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 AnimatedSlide(
-                  duration: Duration(seconds: state.productsAnimationState.sliderAnimationDurationInSecond),
+                  duration: Duration(milliseconds: state.productsAnimationState.sliderAnimationDuration),
                   offset: Offset(0,state.productsAnimationState.sliderOffsetY,),
                   curve: Curves.easeOutCubic,
                   child: AnimatedOpacity(
-                    duration: Duration(seconds: state.productsAnimationState.sliderAnimationDurationInSecond),
+                    duration: Duration(milliseconds: state.productsAnimationState.sliderAnimationDuration),
                     opacity: state.productsAnimationState.sliderOpacity,
                     child: CarouselSlider(
                       carouselController: state.productsCarouselController,
@@ -60,7 +60,7 @@ class ProductsSection extends StatelessWidget {
                   ),
                 ),
                 AnimatedSlide(
-                  duration: Duration(seconds: state.productsAnimationState.buttonsAnimationDurationInSecond),
+                  duration: Duration(milliseconds: state.productsAnimationState.buttonsAnimationDuration),
                   offset: Offset(state.productsAnimationState.backButtonOffsetX, 0),
                   child: Container(
                     alignment: Alignment.centerLeft,
@@ -71,7 +71,7 @@ class ProductsSection extends StatelessWidget {
                   ),
                 ),
                 AnimatedSlide(
-                  duration: Duration(seconds: state.productsAnimationState.buttonsAnimationDurationInSecond),
+                  duration: Duration(milliseconds: state.productsAnimationState.buttonsAnimationDuration),
                   offset: Offset(state.productsAnimationState.nextButtonOffsetX, 0),
                   child: Container(
                     alignment: Alignment.centerRight,

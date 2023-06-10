@@ -68,27 +68,27 @@ class WelcomeAnimationStepTwo extends WelcomeAnimationState{
 
 abstract class ProductsAnimationState {
   final double titleLineWidth;
-  final int sliderAnimationDurationInSecond;
+  final int sliderAnimationDuration;
   final double sliderOffsetY;
   final double sliderOpacity;
-  final int productItemAnimationDurationInSecond;
+  final int productItemAnimationDuration;
   final double productItemOpacity;
-  final int buttonsAnimationDurationInSecond;
+  final int buttonsAnimationDuration;
   final double backButtonOffsetX;
   final double nextButtonOffsetX;
-  final int stepOneToTwoAnimationDelayInSecond;
+  final int stepOneToTwoAnimationDelayInMillis;
   ProductsAnimationState(
     {
       required this.titleLineWidth,
-      this.sliderAnimationDurationInSecond = 1,
+      this.sliderAnimationDuration = 1000,
       required this.sliderOffsetY,
       required this.sliderOpacity,
-      this.productItemAnimationDurationInSecond = 1,
+      this.productItemAnimationDuration = 1000,
       required this.productItemOpacity,
-      this.buttonsAnimationDurationInSecond = 1,
+      this.buttonsAnimationDuration = 1000,
       required this.backButtonOffsetX,
       required this.nextButtonOffsetX,
-      this.stepOneToTwoAnimationDelayInSecond = 1,
+      this.stepOneToTwoAnimationDelayInMillis = 1200,
     }
   );
 }
