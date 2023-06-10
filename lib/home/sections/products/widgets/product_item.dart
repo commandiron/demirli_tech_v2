@@ -72,11 +72,11 @@ class ProductItem extends StatelessWidget {
                       SizedBox(
                         width: 600,
                         child: Text(
-                            shortDescription,
-                            style: AppTextStyle.b1b!.copyWith(
-                                color: Colors.white,
-                                height: 2
-                            ),
+                          shortDescription,
+                          style: AppTextStyle.b1b!.copyWith(
+                            color: Colors.white,
+                            height: 2
+                          ),
                         )
                       ),
                       AppSpace.vXXL!,
