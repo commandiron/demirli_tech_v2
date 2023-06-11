@@ -19,14 +19,14 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       initializeAppAnimations(event.context);
     });
     on<InitWelcomeAnimation>((event, emit) async {
-      await Future.delayed(Duration(milliseconds: state.welcomeAnimationState.animationDelay));
+      await Future.delayed(const Duration(milliseconds: 1000));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepOne()));
-      await Future.delayed(Duration(milliseconds: state.welcomeAnimationState.stepOneToTwoAnimationDelay));
+      await Future.delayed(const Duration(milliseconds: 1000));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepTwo()));
     });
     on<InitProductsAnimation>((event, emit) async {
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepOne()));
-      await Future.delayed(Duration(milliseconds: state.productsAnimationState.stepOneToTwoAnimationDelayInMillis));
+      await Future.delayed(const Duration(milliseconds: 1200));
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepTwo()));
     });
     on<AppBarLeadingTap>((event, emit) {

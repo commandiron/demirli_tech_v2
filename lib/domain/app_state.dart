@@ -36,18 +36,14 @@ class AppState extends Equatable{
 }
 
 abstract class WelcomeAnimationState {
-  final int animationDelay;
   final int textAnimationDuration;
   final double textOpacity;
-  final int stepOneToTwoAnimationDelay;
   final int buttonAnimationDuration;
   final double buttonOpacity;
   WelcomeAnimationState(
     {
-      this.animationDelay = 1000,
       required this.textOpacity,
       this.textAnimationDuration = 2000,
-      this.stepOneToTwoAnimationDelay = 1000,
       required this.buttonOpacity,
       this.buttonAnimationDuration = 1000,
     }
@@ -76,7 +72,6 @@ abstract class ProductsAnimationState {
   final int buttonsAnimationDuration;
   final double backButtonOffsetX;
   final double nextButtonOffsetX;
-  final int stepOneToTwoAnimationDelayInMillis;
   ProductsAnimationState(
     {
       required this.titleLineWidth,
@@ -85,10 +80,9 @@ abstract class ProductsAnimationState {
       required this.sliderOpacity,
       this.productItemAnimationDuration = 800,
       required this.productItemOpacity,
-      this.buttonsAnimationDuration = 800,
+      this.buttonsAnimationDuration = 600,
       required this.backButtonOffsetX,
       required this.nextButtonOffsetX,
-      this.stepOneToTwoAnimationDelayInMillis = 1200,
     }
   );
 }
@@ -98,7 +92,7 @@ class ProductsAnimationInitial extends ProductsAnimationState{
 }
 
 class ProductsAnimationStepOne extends  ProductsAnimationState{
-  ProductsAnimationStepOne({super.titleLineWidth = 100, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 0, super.backButtonOffsetX = -1, super.nextButtonOffsetX = 1});
+  ProductsAnimationStepOne({super.titleLineWidth = 100, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 0, super.backButtonOffsetX = -0.5, super.nextButtonOffsetX = 0.5});
 }
 
 class ProductsAnimationStepTwo extends  ProductsAnimationState{
