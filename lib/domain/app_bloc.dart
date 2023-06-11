@@ -15,17 +15,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       productsAnimationState: ProductsAnimationInitial()
     )
   ) {
-    on<InitAppAnimations>((event, emit) {
-      add(InitWelcomeAnimation());
-
-      final productsOffset = BodySection.getItems(event.context)[1].offset;
-      state.appScrollController.addListener(() {
-        if(state.appScrollController.offset > productsOffset / 1.2
-            && state.productsAnimationState is ProductsAnimationInitial
-        ) {
-          add(InitProductsAnimation());
-        }
-      });
+    on<Init>((event, emit) {
+      initializeAppAnimations(event.context);
     });
     on<InitWelcomeAnimation>((event, emit) async {
       await Future.delayed(Duration(milliseconds: state.welcomeAnimationState.animationDelay));
@@ -44,7 +35,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<AppBarButtonTap>((event, emit) {
       navigateToSection(event.context, event.index);
     });
-    on<WelcomeButtonPressed>((event, emit) {
+    on<WelcomeButtonTap>((event, emit) {
       navigateToSection(event.context, 1);
     });
 
@@ -59,6 +50,18 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         duration: const Duration(milliseconds: 500),
         curve: Curves.ease
       );
+    });
+  }
+
+  void initializeAppAnimations(BuildContext context) {
+    add(InitWelcomeAnimation());
+    final productsOffset = BodySection.getItems(context)[1].offset;
+    state.appScrollController.addListener(() {
+      if(state.appScrollController.offset > productsOffset / 1.2
+          && state.productsAnimationState is ProductsAnimationInitial
+      ) {
+        add(InitProductsAnimation());
+      }
     });
   }
 

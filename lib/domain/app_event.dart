@@ -8,10 +8,10 @@ abstract class AppEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class InitAppAnimations extends AppEvent {
+class Init extends AppEvent {
   final BuildContext context;
 
-  const InitAppAnimations(this.context);
+  const Init(this.context);
 
   @override
   List<Object?> get props => [context];
@@ -42,9 +42,9 @@ class AppBarButtonTap extends AppEvent {
   List<Object?> get props => [context, index];
 }
 
-class WelcomeButtonPressed extends AppEvent {
+class WelcomeButtonTap extends AppEvent {
   final BuildContext context;
-  const WelcomeButtonPressed(this.context);
+  const WelcomeButtonTap(this.context);
   @override
   List<Object?> get props => [context];
 }
