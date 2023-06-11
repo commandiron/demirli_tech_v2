@@ -24,9 +24,9 @@ class HomeScreen extends StatelessWidget {
           slivers: [
             CustomSliverAppBar(
               bodySections: bodySections,
-              onAppLogoPressed: () => context.read<AppBloc>().add(NavigateSection(context, 0)),
-              onButtonPressed: (sectionIndex) {
-                context.read<AppBloc>().add(NavigateSection(context, sectionIndex));
+              onLeadingTap: () => context.read<AppBloc>().add(AppBarLeadingTap(context)),
+              onButtonTap: (sectionIndex) {
+                context.read<AppBloc>().add(AppBarButtonTap(context, sectionIndex));
               },
             ),
             SliverList(

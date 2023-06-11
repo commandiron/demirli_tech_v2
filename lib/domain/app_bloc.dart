@@ -16,38 +16,38 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     )
   ) {
     on<InitAppAnimations>((event, emit) {
-      add(StartWelcomeAnimation());
+      add(InitWelcomeAnimation());
 
       final productsOffset = BodySection.getItems(event.context)[1].offset;
       state.appScrollController.addListener(() {
         if(state.appScrollController.offset > productsOffset / 1.2
             && state.productsAnimationState is ProductsAnimationInitial
         ) {
-          add(StartProductsAnimation());
+          add(InitProductsAnimation());
         }
       });
     });
-    on<StartWelcomeAnimation>((event, emit) async {
+    on<InitWelcomeAnimation>((event, emit) async {
       await Future.delayed(Duration(milliseconds: state.welcomeAnimationState.animationDelay));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepOne()));
       await Future.delayed(Duration(milliseconds: state.welcomeAnimationState.stepOneToTwoAnimationDelay));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepTwo()));
     });
-    on<StartProductsAnimation>((event, emit) async {
+    on<InitProductsAnimation>((event, emit) async {
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepOne()));
       await Future.delayed(Duration(milliseconds: state.productsAnimationState.stepOneToTwoAnimationDelayInMillis));
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepTwo()));
     });
-    on<NavigateSection>((event, emit) {
-      final double offset = BodySection.getItems(event.context).firstWhere((element) => element.index == event.index).offset;
-      state.appScrollController.animateTo(
-          state.appScrollController.offset < offset
-              ? offset + LayoutDimensions.appBarHeight
-              : offset,
-          duration: const Duration(seconds: 1),
-          curve: Curves.ease
-      );
+    on<AppBarLeadingTap>((event, emit) {
+      navigateToSection(event.context, 0);
     });
+    on<AppBarButtonTap>((event, emit) {
+      navigateToSection(event.context, event.index);
+    });
+    on<WelcomeButtonPressed>((event, emit) {
+      navigateToSection(event.context, 1);
+    });
+
     on<ProductsCarouselBack>((event, emit) {
       state.productsCarouselController.previousPage(
         duration: const Duration(milliseconds: 500),
@@ -60,5 +60,16 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         curve: Curves.ease
       );
     });
+  }
+
+  void navigateToSection(BuildContext context, index) {
+    final double offset = BodySection.getItems(context).firstWhere((element) => element.index == index).offset;
+    state.appScrollController.animateTo(
+        state.appScrollController.offset < offset
+            ? offset + LayoutDimensions.appBarHeight
+            : offset,
+        duration: const Duration(seconds: 1),
+        curve: Curves.ease
+    );
   }
 }

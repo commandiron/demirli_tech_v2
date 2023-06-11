@@ -23,7 +23,7 @@ class _WelcomeButtonState extends State<WelcomeButton> {
     return ElevatedButton(
         onPressed: () {
           pressedRecently = true;
-          context.read<AppBloc>().add(NavigateSection(context, 1));
+          context.read<AppBloc>().add(WelcomeButtonPressed(context));
         },
         onHover: (value) async {
           if(value) {

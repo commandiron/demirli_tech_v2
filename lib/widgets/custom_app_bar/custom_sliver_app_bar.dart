@@ -6,11 +6,11 @@ import 'app_bar_text_button.dart';
 import '../app_logo.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
-  const CustomSliverAppBar({Key? key, required this.bodySections, required this.onAppLogoPressed, required this.onButtonPressed, }) : super(key: key);
+  const CustomSliverAppBar({Key? key, required this.bodySections, required this.onLeadingTap, required this.onButtonTap, }) : super(key: key);
 
   final List<BodySection> bodySections;
-  final void Function() onAppLogoPressed;
-  final void Function(int sectionIndex) onButtonPressed;
+  final void Function() onLeadingTap;
+  final void Function(int sectionIndex) onButtonTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class CustomSliverAppBar extends StatelessWidget {
       toolbarHeight: LayoutDimensions.appBarHeight,
       leading: AppLogo(
         logoAsset: "assets/images/app_logo/demirli_tech_text_logo_black.png",
-        onTap: onAppLogoPressed
+        onTap: onLeadingTap
       ),
       leadingWidth: 300,
       elevation: 0,
@@ -31,7 +31,7 @@ class CustomSliverAppBar extends StatelessWidget {
           (e) => AppBarTextButton(
             text: e.title ?? "",
             onPressed: () {
-              onButtonPressed(e.index);
+              onButtonTap(e.index);
             },
           ),
         ).toList()
