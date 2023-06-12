@@ -20,7 +20,7 @@ class SectionDecorativeTitle extends StatelessWidget {
             ..style = PaintingStyle.stroke
             ..strokeWidth = 2
             ..color = Colors.grey.shade200,
-          fontSize: 200
+          fontSize: 200,
       ),
       ),
     );
