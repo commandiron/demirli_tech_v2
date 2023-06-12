@@ -27,6 +27,11 @@ class InitProductsAnimation extends AppEvent {
   List<Object?> get props => [];
 }
 
+class RemoveProductsAnimation extends AppEvent {
+  @override
+  List<Object?> get props => [];
+}
+
 class AppBarLeadingTap extends AppEvent {
   final BuildContext context;
   const AppBarLeadingTap(this.context);

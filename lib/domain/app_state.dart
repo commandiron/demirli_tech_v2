@@ -65,19 +65,47 @@ abstract class WelcomeAnimationState {
 }
 
 class WelcomeAnimationInitial extends WelcomeAnimationState{
-  WelcomeAnimationInitial({super.textOpacity = 0, super.buttonOpacity = 0, super.appBarOpacity = 0, super.bgOpacity = 1, });
+  WelcomeAnimationInitial(
+    {
+      super.textOpacity = 0,
+      super.buttonOpacity = 0,
+      super.appBarOpacity = 0,
+      super.bgOpacity = 1,
+    }
+  );
 }
 
 class WelcomeAnimationStepOne extends WelcomeAnimationState{
-  WelcomeAnimationStepOne({super.textOpacity = 1, super.buttonOpacity = 0, super.appBarOpacity = 0, super.bgOpacity = 1, });
+  WelcomeAnimationStepOne(
+    {
+      super.textOpacity = 1,
+      super.buttonOpacity = 0,
+      super.appBarOpacity = 0,
+      super.bgOpacity = 1,
+    }
+  );
 }
 
 class WelcomeAnimationStepTwo extends WelcomeAnimationState{
-  WelcomeAnimationStepTwo({super.textOpacity = 1, super.buttonOpacity = 1, super.appBarOpacity = 0, super.bgOpacity = 1, });
+  WelcomeAnimationStepTwo(
+    {
+      super.textOpacity = 1,
+      super.buttonOpacity = 1,
+      super.appBarOpacity = 0,
+      super.bgOpacity = 1,
+    }
+  );
 }
 
 class WelcomeAnimationStepThree extends WelcomeAnimationState{
-  WelcomeAnimationStepThree({super.textOpacity = 1, super.buttonOpacity = 1, super.appBarOpacity = 1, super.bgOpacity = 0,});
+  WelcomeAnimationStepThree(
+    {
+      super.textOpacity = 1,
+      super.buttonOpacity = 1,
+      super.appBarOpacity = 1,
+      super.bgOpacity = 0,
+    }
+  );
 }
 
 abstract class ProductsAnimationState {

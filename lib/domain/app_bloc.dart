@@ -42,6 +42,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       await Future.delayed(const Duration(milliseconds: 1200));
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepTwo()));
     });
+    on<RemoveProductsAnimation>((event, emit) async {
+      emit(state.copyWith(productsAnimationState: ProductsAnimationInitial()));
+    });
     on<AppBarLeadingTap>((event, emit) {
       _navigateToSection(event.context, 0);
     });
@@ -68,6 +71,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
   void _initScrollAnimations(BuildContext context) {
     final productsOffset = BodySection.getItems(context)[1].offset;
+    final productsAnimationTriggerOffset = productsOffset / 1.2;
     state.appScrollController.addListener(() {
       if(state.appScrollController.offset > 0
           && state.scrollToTopFabState is ScrollToTopFabHidden) {
@@ -77,10 +81,15 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           && state.scrollToTopFabState is ScrollToTopFabVisible) {
         add(HideScrollToTopFab());
       }
-      if(state.appScrollController.offset > productsOffset / 1.4
+      if(state.appScrollController.offset > productsAnimationTriggerOffset
           && state.productsAnimationState is ProductsAnimationInitial
       ) {
         add(InitProductsAnimation());
+      }
+      if(state.appScrollController.offset < productsAnimationTriggerOffset
+          && state.productsAnimationState is ProductsAnimationStepTwo
+      ) {
+        add(RemoveProductsAnimation());
       }
     });
   }
