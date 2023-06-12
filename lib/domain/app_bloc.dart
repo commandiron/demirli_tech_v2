@@ -18,7 +18,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) {
     on<Init>((event, emit) {
       add(InitWelcomeAnimation());
-      _addScrollAnimations(event.context);
+      _initScrollAnimations(event.context);
     });
     on<ShowScrollToTopFab>((event, emit) {
       emit(state.copyWith(scrollToTopFabState: ScrollToTopFabStateVisible()));
@@ -64,7 +64,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     });
   }
 
-  void _addScrollAnimations(BuildContext context) {
+  void _initScrollAnimations(BuildContext context) {
     final productsOffset = BodySection.getItems(context)[1].offset;
     state.appScrollController.addListener(() {
       if(state.appScrollController.offset > 0
