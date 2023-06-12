@@ -40,30 +40,34 @@ class AppState extends Equatable{
 }
 
 abstract class WelcomeAnimationState {
+  final int bgAnimationDuration;
+  final double bgOpacity;
   final int textAnimationDuration;
   final double textOpacity;
   final int buttonAnimationDuration;
   final double buttonOpacity;
   WelcomeAnimationState(
     {
-      required this.textOpacity,
+      this.bgAnimationDuration = 1000,
+      required this.bgOpacity,
       this.textAnimationDuration = 2000,
-      required this.buttonOpacity,
+      required this.textOpacity,
       this.buttonAnimationDuration = 1000,
+      required this.buttonOpacity,
     }
   );
 }
 
 class WelcomeAnimationInitial extends WelcomeAnimationState{
-  WelcomeAnimationInitial({super.textOpacity = 0, super.buttonOpacity = 0,});
+  WelcomeAnimationInitial({super.bgOpacity = 1, super.textOpacity = 0, super.buttonOpacity = 0,});
 }
 
 class WelcomeAnimationStepOne extends WelcomeAnimationState{
-  WelcomeAnimationStepOne({super.textOpacity = 1, super.buttonOpacity = 0,});
+  WelcomeAnimationStepOne({super.bgOpacity = 0, super.textOpacity = 1, super.buttonOpacity = 0,});
 }
 
 class WelcomeAnimationStepTwo extends WelcomeAnimationState{
-  WelcomeAnimationStepTwo({super.textOpacity = 1, super.buttonOpacity = 1,});
+  WelcomeAnimationStepTwo({super.bgOpacity = 0, super.textOpacity = 1, super.buttonOpacity = 1,});
 }
 
 abstract class ProductsAnimationState {

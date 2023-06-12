@@ -16,22 +16,34 @@ class WelcomeSection extends StatelessWidget {
         return previous.welcomeAnimationState != current.welcomeAnimationState;
       },
       builder: (context, state) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        return Stack(
+          alignment: Alignment.center,
           children: [
             AnimatedOpacity(
-              opacity: state.welcomeAnimationState.textOpacity,
-              duration: Duration(milliseconds: state.welcomeAnimationState.textAnimationDuration),
-              child: Text(
-                "İnşaat sektörü için inovatif ve vizyoner araçlar geliştiriyoruz",
-                style: AppTextStyle.h2!,
-              )
+              duration: Duration(milliseconds: state.welcomeAnimationState.bgAnimationDuration),
+              opacity: state.welcomeAnimationState.bgOpacity,
+              child: Container(
+                color: Colors.white,
+              ),
             ),
-            AppSpace.vXL!,
-            AnimatedOpacity(
-              opacity: state.welcomeAnimationState.buttonOpacity,
-              duration: Duration(milliseconds: state.welcomeAnimationState.buttonAnimationDuration),
-              child: const WelcomeButton()
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AnimatedOpacity(
+                  opacity: state.welcomeAnimationState.textOpacity,
+                  duration: Duration(milliseconds: state.welcomeAnimationState.textAnimationDuration),
+                  child: Text(
+                    "İnşaat sektörü için inovatif ve vizyoner araçlar geliştiriyoruz",
+                    style: AppTextStyle.h2!,
+                  )
+                ),
+                AppSpace.vXL!,
+                AnimatedOpacity(
+                  opacity: state.welcomeAnimationState.buttonOpacity,
+                  duration: Duration(milliseconds: state.welcomeAnimationState.buttonAnimationDuration),
+                  child: const WelcomeButton()
+                ),
+              ],
             ),
           ],
         );
