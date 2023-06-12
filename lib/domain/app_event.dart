@@ -59,11 +59,18 @@ class ProductsCarouselBack extends AppEvent {
   List<Object?> get props => [];
 }
 
-class ShowFab extends AppEvent {
+class ShowScrollToTopFab extends AppEvent {
   @override
   List<Object?> get props => [];
 }
-class HideFab extends AppEvent {
+class HideScrollToTopFab extends AppEvent {
   @override
   List<Object?> get props => [];
+}
+
+class ScrollToTop extends AppEvent {
+  final BuildContext context;
+  const ScrollToTop(this.context);
+  @override
+  List<Object?> get props => [context];
 }

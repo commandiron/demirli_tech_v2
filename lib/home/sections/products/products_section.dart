@@ -21,6 +21,9 @@ class ProductsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppBloc, AppState>(
+      buildWhen: (previous, current) {
+        return previous.productsAnimationState != current.productsAnimationState;
+      },
       builder: (context, state) {
         return Column(
           children: [

@@ -13,18 +13,21 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       productsCarouselController: CarouselController(),
       welcomeAnimationState: WelcomeAnimationInitial(),
       productsAnimationState: ProductsAnimationInitial(),
-      showScrollToTopFab: false,
+      scrollToTopFabState: ScrollToTopFabStateHidden(),
     )
   ) {
     on<Init>((event, emit) {
       add(InitWelcomeAnimation());
       _addScrollAnimations(event.context);
     });
-    on<ShowFab>((event, emit) {
-      emit(state.copyWith(showScrollToTopFab: true));
+    on<ShowScrollToTopFab>((event, emit) {
+      emit(state.copyWith(scrollToTopFabState: ScrollToTopFabStateVisible()));
     });
-    on<HideFab>((event, emit) {
-      emit(state.copyWith(showScrollToTopFab: false));
+    on<HideScrollToTopFab>((event, emit) {
+      emit(state.copyWith(scrollToTopFabState: ScrollToTopFabStateHidden()));
+    });
+    on<ScrollToTop>((event, emit) {
+      _navigateToSection(event.context, 0);
     });
     on<InitWelcomeAnimation>((event, emit) async {
       await Future.delayed(const Duration(milliseconds: 1000));
@@ -64,11 +67,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   void _addScrollAnimations(BuildContext context) {
     final productsOffset = BodySection.getItems(context)[1].offset;
     state.appScrollController.addListener(() {
-      if(state.appScrollController.offset > 0 && state.showScrollToTopFab == false) {
-        add(ShowFab());
+      if(state.appScrollController.offset > 0
+          && state.scrollToTopFabState is ScrollToTopFabStateHidden) {
+        add(ShowScrollToTopFab());
       }
-      if(state.appScrollController.offset == 0 && state.showScrollToTopFab == true) {
-        add(HideFab());
+      if(state.appScrollController.offset == 0
+          && state.scrollToTopFabState is ScrollToTopFabStateVisible) {
+        add(HideScrollToTopFab());
       }
       if(state.appScrollController.offset > productsOffset / 1.2
           && state.productsAnimationState is ProductsAnimationInitial

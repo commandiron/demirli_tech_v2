@@ -7,7 +7,7 @@ class AppState extends Equatable{
   final CarouselController productsCarouselController;
   final WelcomeAnimationState welcomeAnimationState;
   final ProductsAnimationState productsAnimationState;
-  final bool showScrollToTopFab;
+  final ScrollToTopFabState scrollToTopFabState;
 
   const AppState(
     {
@@ -15,7 +15,7 @@ class AppState extends Equatable{
       required this.productsCarouselController,
       required this.welcomeAnimationState,
       required this.productsAnimationState,
-      required this.showScrollToTopFab,
+      required this.scrollToTopFabState,
     }
   );
 
@@ -24,19 +24,19 @@ class AppState extends Equatable{
     CarouselController? productsCarouselController,
     WelcomeAnimationState? welcomeAnimationState,
     ProductsAnimationState? productsAnimationState,
-    bool? showScrollToTopFab,
+    ScrollToTopFabState? scrollToTopFabState,
   }) {
     return AppState(
       appScrollController: appScrollController ?? this.appScrollController,
       productsCarouselController: productsCarouselController ?? this.productsCarouselController,
       welcomeAnimationState: welcomeAnimationState ?? this.welcomeAnimationState,
       productsAnimationState: productsAnimationState ?? this.productsAnimationState,
-      showScrollToTopFab: showScrollToTopFab ?? this.showScrollToTopFab
+      scrollToTopFabState: scrollToTopFabState ?? this.scrollToTopFabState,
     );
   }
 
   @override
-  List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, productsAnimationState, showScrollToTopFab];
+  List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, productsAnimationState, scrollToTopFabState];
 }
 
 abstract class WelcomeAnimationState {
@@ -101,4 +101,21 @@ class ProductsAnimationStepOne extends  ProductsAnimationState{
 
 class ProductsAnimationStepTwo extends  ProductsAnimationState{
   ProductsAnimationStepTwo({super.titleLineWidth = 100, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 1, super.backButtonOffsetX = 0, super.nextButtonOffsetX = 0});
+}
+
+abstract class ScrollToTopFabState {
+  final int animationDuration;
+  final double offsetX;
+  ScrollToTopFabState (
+    {
+      this.animationDuration = 250,
+      required this.offsetX,
+    }
+  );
+}
+class ScrollToTopFabStateHidden extends ScrollToTopFabState{
+  ScrollToTopFabStateHidden({super.offsetX = 2});
+}
+class ScrollToTopFabStateVisible extends ScrollToTopFabState{
+  ScrollToTopFabStateVisible({super.offsetX = 0});
 }

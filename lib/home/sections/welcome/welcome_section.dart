@@ -12,6 +12,9 @@ class WelcomeSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppBloc, AppState>(
+      buildWhen: (previous, current) {
+        return previous.welcomeAnimationState != current.welcomeAnimationState;
+      },
       builder: (context, state) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
