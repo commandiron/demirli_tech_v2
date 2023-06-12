@@ -39,7 +39,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     });
     on<InitProductsAnimation>((event, emit) async {
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepOne()));
-      await Future.delayed(const Duration(milliseconds: 1200));
+      await Future.delayed(const Duration(milliseconds: 600));
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepTwo()));
     });
     on<RemoveProductsAnimation>((event, emit) async {
