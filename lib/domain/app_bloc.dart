@@ -34,6 +34,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepOne()));
       await Future.delayed(const Duration(milliseconds: 1000));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepTwo()));
+      await Future.delayed(const Duration(milliseconds: 1000));
+      emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepThree()));
     });
     on<InitProductsAnimation>((event, emit) async {
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepOne()));
@@ -84,13 +86,14 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   void _navigateToSection(BuildContext context, index) {
-    final double offset = BodySection.getItems(context).firstWhere((element) => element.index == index).offset;
+    final double currentOffset = state.appScrollController.offset;
+    final double targetOffset = BodySection.getItems(context).firstWhere((element) => element.index == index).offset;
     state.appScrollController.animateTo(
-        state.appScrollController.offset < offset
-            ? offset + LayoutDimensions.appBarHeight
-            : offset,
-        duration: const Duration(seconds: 1),
-        curve: Curves.ease
+      currentOffset < targetOffset
+        ? targetOffset + LayoutDimensions.appBarHeight
+        : targetOffset,
+      duration: const Duration(seconds: 1),
+      curve: Curves.ease
     );
   }
 }
