@@ -6,13 +6,13 @@ import '../config/app_text_style.dart';
 import '../config/layout_dimensions.dart';
 
 class SectionTitle extends StatelessWidget {
-  const SectionTitle({Key? key, required this.title, this.titleLineWidth = 100, this.titleLineAnimationDuration = 1000, this.decorativeTitleColor, this.decorativeTitleOffsetY, this.decorativeTitleAnimationDuration, }) : super(key: key);
+  const SectionTitle({Key? key, required this.title, this.titleLineWidth = 100, this.titleLineAnimationDuration = 1000, this.decorativeTitleColor, this.decorativeTitleContainerHeight, this.decorativeTitleAnimationDuration, }) : super(key: key);
 
   final String title;
   final double titleLineWidth;
   final int titleLineAnimationDuration;
   final Color? decorativeTitleColor;
-  final double? decorativeTitleOffsetY;
+  final double? decorativeTitleContainerHeight;
   final int? decorativeTitleAnimationDuration;
 
   @override
@@ -35,20 +35,20 @@ class SectionTitle extends StatelessWidget {
             ),
           ),
           AppSpace.hExpanded!,
-          if(decorativeTitleOffsetY != null && decorativeTitleAnimationDuration != null)
+          if(decorativeTitleContainerHeight != null && decorativeTitleAnimationDuration != null)
             AnimatedSlide(
-              duration: Duration(milliseconds: 1000),
-              offset: Offset(0, 0.2),
+              duration: const Duration(milliseconds: 1000),
+              offset: const Offset(0, 0.2),
               child: AnimatedContainer(
                 duration: Duration(milliseconds: decorativeTitleAnimationDuration!),
-                height: decorativeTitleOffsetY,
+                height: decorativeTitleContainerHeight,
                 alignment: Alignment.center,
                 child: Text(title, style: AppTextStyle.h1!.copyWith(
                     foreground: Paint()
                       ..style = PaintingStyle.stroke
                       ..strokeWidth = 2
                       ..color = Colors.grey.shade200,
-                    fontSize: 160
+                    fontSize: 200
                   ),
                 ),
               ),
