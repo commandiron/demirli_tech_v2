@@ -125,9 +125,9 @@ abstract class ScrollToTopFabState {
     }
   );
 }
-class ScrollToTopFabStateHidden extends ScrollToTopFabState{
-  ScrollToTopFabStateHidden({super.offsetX = 2});
+class ScrollToTopFabHidden extends ScrollToTopFabState{
+  ScrollToTopFabHidden({super.offsetX = 2});
 }
-class ScrollToTopFabStateVisible extends ScrollToTopFabState{
-  ScrollToTopFabStateVisible({super.offsetX = 0});
+class ScrollToTopFabVisible extends ScrollToTopFabState{
+  ScrollToTopFabVisible({super.offsetX = 0});
 }
