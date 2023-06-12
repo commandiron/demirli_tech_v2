@@ -29,7 +29,11 @@ class ProductsSection extends StatelessWidget {
           children: [
             SectionTitle(
               title: "ÜRÜNLERİMİZ",
+              titleLineAnimationDuration: state.productsAnimationState.titleLineAnimationDurationInSecond,
               titleLineWidth: state.productsAnimationState.titleLineWidth,
+              decorativeTitleColor: Colors.white,
+              decorativeTitleAnimationDuration: state.productsAnimationState.decorativeTitleAnimationDuration,
+              decorativeTitleOffsetY: state.productsAnimationState.decorativeTitleOffsetY,
             ),
             Stack(
               alignment: Alignment.center,

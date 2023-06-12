@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import '../config/layout_dimensions.dart';
+
 class AppState extends Equatable{
   final ScrollController appScrollController;
   final CarouselController productsCarouselController;
@@ -79,7 +81,10 @@ class WelcomeAnimationStepThree extends WelcomeAnimationState{
 }
 
 abstract class ProductsAnimationState {
+  final int titleLineAnimationDurationInSecond;
   final double titleLineWidth;
+  final int decorativeTitleAnimationDuration;
+  final double decorativeTitleOffsetY;
   final int sliderAnimationDuration;
   final double sliderOffsetY;
   final double sliderOpacity;
@@ -90,7 +95,10 @@ abstract class ProductsAnimationState {
   final double nextButtonOffsetX;
   ProductsAnimationState(
     {
+      this.titleLineAnimationDurationInSecond = 1000,
       required this.titleLineWidth,
+      this.decorativeTitleAnimationDuration = 500,
+      required this.decorativeTitleOffsetY,
       this.sliderAnimationDuration = 1000,
       required this.sliderOffsetY,
       required this.sliderOpacity,
@@ -104,15 +112,15 @@ abstract class ProductsAnimationState {
 }
 
 class ProductsAnimationInitial extends ProductsAnimationState{
-  ProductsAnimationInitial({super.titleLineWidth = 0, super.sliderOffsetY = 1, super.sliderOpacity = 0, super.productItemOpacity = 0, super.backButtonOffsetX = -1, super.nextButtonOffsetX = 1});
+  ProductsAnimationInitial({super.titleLineWidth = 0, super.decorativeTitleOffsetY = 0, super.sliderOffsetY = 1, super.sliderOpacity = 0, super.productItemOpacity = 0, super.backButtonOffsetX = -1, super.nextButtonOffsetX = 1});
 }
 
 class ProductsAnimationStepOne extends  ProductsAnimationState{
-  ProductsAnimationStepOne({super.titleLineWidth = 100, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 0, super.backButtonOffsetX = -0.5, super.nextButtonOffsetX = 0.5});
+  ProductsAnimationStepOne({super.titleLineWidth = 100, super.decorativeTitleOffsetY = LayoutDimensions.sectionTitleHeight, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 0, super.backButtonOffsetX = -0.5, super.nextButtonOffsetX = 0.5});
 }
 
 class ProductsAnimationStepTwo extends  ProductsAnimationState{
-  ProductsAnimationStepTwo({super.titleLineWidth = 100, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 1, super.backButtonOffsetX = 0, super.nextButtonOffsetX = 0});
+  ProductsAnimationStepTwo({super.titleLineWidth = 100, super.decorativeTitleOffsetY = LayoutDimensions.sectionTitleHeight, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 1, super.backButtonOffsetX = 0, super.nextButtonOffsetX = 0});
 }
 
 abstract class ScrollToTopFabState {
