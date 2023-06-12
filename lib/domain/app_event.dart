@@ -58,3 +58,12 @@ class ProductsCarouselBack extends AppEvent {
   @override
   List<Object?> get props => [];
 }
+
+class ShowFab extends AppEvent {
+  @override
+  List<Object?> get props => [];
+}
+class HideFab extends AppEvent {
+  @override
+  List<Object?> get props => [];
+}

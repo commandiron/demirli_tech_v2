@@ -3,7 +3,7 @@ import 'package:demirli_tech_v2/compatibility/adaptive.dart';
 import 'package:demirli_tech_v2/config/app_padding.dart';
 import 'package:demirli_tech_v2/config/layout_dimensions.dart';
 import 'package:demirli_tech_v2/domain/app_event.dart';
-import 'package:demirli_tech_v2/home/sections/products/widgets/carousel_move_button.dart';
+import 'package:demirli_tech_v2/home/sections/products/widgets/carousel_move_buttons.dart';
 import 'package:demirli_tech_v2/home/sections/products/widgets/product_item.dart';
 import 'package:demirli_tech_v2/widgets/section_title.dart';
 import 'package:flutter/material.dart';

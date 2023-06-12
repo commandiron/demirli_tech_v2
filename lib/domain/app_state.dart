@@ -7,13 +7,15 @@ class AppState extends Equatable{
   final CarouselController productsCarouselController;
   final WelcomeAnimationState welcomeAnimationState;
   final ProductsAnimationState productsAnimationState;
+  final bool showScrollToTopFab;
 
   const AppState(
     {
       required this.appScrollController,
       required this.productsCarouselController,
       required this.welcomeAnimationState,
-      required this.productsAnimationState
+      required this.productsAnimationState,
+      required this.showScrollToTopFab,
     }
   );
 
@@ -22,17 +24,19 @@ class AppState extends Equatable{
     CarouselController? productsCarouselController,
     WelcomeAnimationState? welcomeAnimationState,
     ProductsAnimationState? productsAnimationState,
+    bool? showScrollToTopFab,
   }) {
     return AppState(
       appScrollController: appScrollController ?? this.appScrollController,
       productsCarouselController: productsCarouselController ?? this.productsCarouselController,
       welcomeAnimationState: welcomeAnimationState ?? this.welcomeAnimationState,
-      productsAnimationState: productsAnimationState ?? this.productsAnimationState
+      productsAnimationState: productsAnimationState ?? this.productsAnimationState,
+      showScrollToTopFab: showScrollToTopFab ?? this.showScrollToTopFab
     );
   }
 
   @override
-  List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, productsAnimationState];
+  List<Object?> get props => [appScrollController, productsCarouselController, welcomeAnimationState, productsAnimationState, showScrollToTopFab];
 }
 
 abstract class WelcomeAnimationState {
