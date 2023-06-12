@@ -77,7 +77,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           && state.scrollToTopFabState is ScrollToTopFabVisible) {
         add(HideScrollToTopFab());
       }
-      if(state.appScrollController.offset > productsOffset / 1.2
+      if(state.appScrollController.offset > productsOffset / 1.4
           && state.productsAnimationState is ProductsAnimationInitial
       ) {
         add(InitProductsAnimation());
