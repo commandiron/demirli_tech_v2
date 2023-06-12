@@ -34,25 +34,6 @@ class SectionTitle extends StatelessWidget {
               borderRadius: BorderRadius.circular(16)
             ),
           ),
-          AppSpace.hExpanded!,
-          if(decorativeTitleContainerHeight != null && decorativeTitleAnimationDuration != null)
-            AnimatedSlide(
-              duration: const Duration(milliseconds: 1000),
-              offset: const Offset(0, 0.2),
-              child: AnimatedContainer(
-                duration: Duration(milliseconds: decorativeTitleAnimationDuration!),
-                height: decorativeTitleContainerHeight,
-                alignment: Alignment.center,
-                child: Text(title, style: AppTextStyle.h1!.copyWith(
-                    foreground: Paint()
-                      ..style = PaintingStyle.stroke
-                      ..strokeWidth = 2
-                      ..color = Colors.grey.shade200,
-                    fontSize: 200
-                  ),
-                ),
-              ),
-            ),
         ],
       ),
     );

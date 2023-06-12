@@ -116,11 +116,11 @@ class ProductsAnimationInitial extends ProductsAnimationState{
 }
 
 class ProductsAnimationStepOne extends  ProductsAnimationState{
-  ProductsAnimationStepOne({super.titleLineWidth = 100, super.decorativeTitleContainerHeight = LayoutDimensions.sectionTitleHeight, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 0, super.backButtonOffsetX = -0.5, super.nextButtonOffsetX = 0.5});
+  ProductsAnimationStepOne({super.titleLineWidth = 100, super.decorativeTitleContainerHeight = LayoutDimensions.sectionTitleHeight * 2, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 0, super.backButtonOffsetX = -0.5, super.nextButtonOffsetX = 0.5});
 }
 
 class ProductsAnimationStepTwo extends  ProductsAnimationState{
-  ProductsAnimationStepTwo({super.titleLineWidth = 100, super.decorativeTitleContainerHeight = LayoutDimensions.sectionTitleHeight, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 1, super.backButtonOffsetX = 0, super.nextButtonOffsetX = 0});
+  ProductsAnimationStepTwo({super.titleLineWidth = 100, super.decorativeTitleContainerHeight = LayoutDimensions.sectionTitleHeight * 2, super.sliderOffsetY = 0, super.sliderOpacity = 1, super.productItemOpacity = 1, super.backButtonOffsetX = 0, super.nextButtonOffsetX = 0});
 }
 
 abstract class ScrollToTopFabState {
