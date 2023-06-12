@@ -39,9 +39,6 @@ class ProductsSection extends StatelessWidget {
                   title: "ÜRÜNLERİMİZ",
                   titleLineAnimationDuration: state.productsAnimationState.titleLineAnimationDurationInSecond,
                   titleLineWidth: state.productsAnimationState.titleLineWidth,
-                  decorativeTitleColor: Colors.white,
-                  decorativeTitleAnimationDuration: state.productsAnimationState.decorativeTitleAnimationDuration,
-                  decorativeTitleContainerHeight: state.productsAnimationState.decorativeTitleContainerHeight,
                 ),
                 Stack(
                   alignment: Alignment.center,

@@ -6,14 +6,11 @@ import '../config/app_text_style.dart';
 import '../config/layout_dimensions.dart';
 
 class SectionTitle extends StatelessWidget {
-  const SectionTitle({Key? key, required this.title, this.titleLineWidth = 100, this.titleLineAnimationDuration = 1000, this.decorativeTitleColor, this.decorativeTitleContainerHeight, this.decorativeTitleAnimationDuration, }) : super(key: key);
+  const SectionTitle({Key? key, required this.title, this.titleLineWidth = 100, this.titleLineAnimationDuration = 1000,}) : super(key: key);
 
   final String title;
   final double titleLineWidth;
   final int titleLineAnimationDuration;
-  final Color? decorativeTitleColor;
-  final double? decorativeTitleContainerHeight;
-  final int? decorativeTitleAnimationDuration;
 
   @override
   Widget build(BuildContext context) {
