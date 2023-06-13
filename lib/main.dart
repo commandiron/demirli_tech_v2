@@ -1,4 +1,5 @@
 import 'package:demirli_tech_v2/config/app_theme.dart';
+import 'package:demirli_tech_v2/config/constants.dart';
 import 'package:demirli_tech_v2/domain/bloc/app_bloc.dart';
 import 'package:demirli_tech_v2/domain/bloc/app_event.dart';
 import 'package:demirli_tech_v2/home/home_screen.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: themeLight,
       darkTheme: themeDark,
-      title: "Demirli Tech",
+      title: Constants.appTitle,
       home: const MaterialChild()
     );
   }

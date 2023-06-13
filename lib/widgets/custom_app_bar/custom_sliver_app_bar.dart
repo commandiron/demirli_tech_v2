@@ -1,3 +1,4 @@
+import 'package:demirli_tech_v2/config/assets.dart';
 import 'package:demirli_tech_v2/domain/bloc/app_bloc.dart';
 import 'package:demirli_tech_v2/domain/bloc/state/app_state.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +35,8 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> with SingleTick
             opacity: state.welcomeAnimationState.appBarOpacity,
             duration: const Duration(milliseconds: 1000),
             child: AppLogo(
-                logoAsset: "assets/images/app_logo/demirli_tech_text_logo_black.png",
-                onTap: widget.onLeadingTap
+              logoAsset: Assets.appLogoBlack,
+              onTap: widget.onLeadingTap
             ),
           ),
           leadingWidth: 300,
