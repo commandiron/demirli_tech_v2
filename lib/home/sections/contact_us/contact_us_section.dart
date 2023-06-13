@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 class ContactUsSection extends StatelessWidget {
   const ContactUsSection({Key? key}) : super(key: key);
 
+  static const index = 4;
+  static const title = "Bize ulaşın";
+
   @override
   Widget build(BuildContext context) {
     return Padding(

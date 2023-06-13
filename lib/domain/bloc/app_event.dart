@@ -17,17 +17,17 @@ class Init extends AppEvent {
   List<Object?> get props => [context];
 }
 
-class InitWelcomeAnimation extends AppEvent {
+class ForwardWelcomeAnimation extends AppEvent {
   @override
   List<Object?> get props => [];
 }
 
-class InitProductsAnimation extends AppEvent {
+class ForwardProductsAnimation extends AppEvent {
   @override
   List<Object?> get props => [];
 }
 
-class RemoveProductsAnimation extends AppEvent {
+class BackwardProductsAnimation extends AppEvent {
   @override
   List<Object?> get props => [];
 }

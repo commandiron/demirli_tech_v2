@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:demirli_tech_v2/domain/bloc/state/products_animation_state.dart';
 import 'package:demirli_tech_v2/domain/bloc/state/scroll_to_top_fab_state.dart';
 import 'package:demirli_tech_v2/domain/bloc/state/welcome_animation_state.dart';
+import 'package:demirli_tech_v2/home/sections/products/products_section.dart';
+import 'package:demirli_tech_v2/home/sections/welcome/welcome_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../config/layout_dimensions.dart';
@@ -27,7 +29,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(state.copyWith(products: Product.getItems()));
       _initAnimations();
     });
-    on<InitWelcomeAnimation>((event, emit) async {
+    on<ForwardWelcomeAnimation>((event, emit) async {
       await Future.delayed(const Duration(milliseconds: 1000));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepOne()));
       await Future.delayed(const Duration(milliseconds: 1000));
@@ -35,22 +37,22 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       await Future.delayed(const Duration(milliseconds: 1000));
       emit(state.copyWith(welcomeAnimationState: WelcomeAnimationStepThree()));
     });
-    on<InitProductsAnimation>((event, emit) async {
+    on<ForwardProductsAnimation>((event, emit) async {
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepOne()));
       await Future.delayed(const Duration(milliseconds: 600));
       emit(state.copyWith(productsAnimationState: ProductsAnimationStepTwo()));
     });
-    on<RemoveProductsAnimation>((event, emit) async {
+    on<BackwardProductsAnimation>((event, emit) async {
       emit(state.copyWith(productsAnimationState: ProductsAnimationInitial()));
     });
     on<AppBarLeadingTap>((event, emit) {
-      _navigateToSection(0);
+      _navigateToSection(WelcomeSection.index);
     });
     on<AppBarButtonTap>((event, emit) {
       _navigateToSection(event.index);
     });
     on<WelcomeButtonTap>((event, emit) {
-      _navigateToSection(1);
+      _navigateToSection(ProductsSection.index);
     });
     on<ShowScrollToTopFab>((event, emit) {
       emit(state.copyWith(scrollToTopFabState: ScrollToTopFabVisible()));
@@ -76,8 +78,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   void _initAnimations() {
-    add(InitWelcomeAnimation());
+    _initWelcomeAnimation();
     _initScrollAnimations();
+  }
+
+  void _initWelcomeAnimation() {
+    add(ForwardWelcomeAnimation());
   }
 
   void _initScrollAnimations() {
@@ -95,12 +101,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       if(state.appScrollController.offset > productsAnimationTriggerOffset
           && state.productsAnimationState is ProductsAnimationInitial
       ) {
-        add(InitProductsAnimation());
+        add(ForwardProductsAnimation());
       }
       if(state.appScrollController.offset < productsAnimationTriggerOffset
           && state.productsAnimationState is ProductsAnimationStepTwo
       ) {
-        add(RemoveProductsAnimation());
+        add(BackwardProductsAnimation());
       }
     });
   }

@@ -16,6 +16,9 @@ import '../../../domain/bloc/state/app_state.dart';
 class ProductsSection extends StatelessWidget {
   const ProductsSection({Key? key,}) : super(key: key);
 
+  static const index = 1;
+  static const title = "Ürünlerimiz";
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppBloc, AppState>(
@@ -26,14 +29,14 @@ class ProductsSection extends StatelessWidget {
         return Stack(
           children: [
             SectionDecorativeTitle(
-              title: "ÜRÜNLERİMİZ",
+              title: title.toUpperCase(),
               decorativeTitleAnimationDuration: state.productsAnimationState.decorativeTitleAnimationDuration,
               decorativeTitleContainerHeight: state.productsAnimationState.decorativeTitleContainerHeight
             ),
             Column(
               children: [
                 SectionTitle(
-                  title: "ÜRÜNLERİMİZ",
+                  title: title.toUpperCase(),
                   titleLineAnimationDuration: state.productsAnimationState.titleLineAnimationDurationInSecond,
                   titleLineWidth: state.productsAnimationState.titleLineWidth,
                 ),

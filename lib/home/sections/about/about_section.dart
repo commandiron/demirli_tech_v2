@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 class AboutSection extends StatelessWidget {
   const AboutSection({Key? key}) : super(key: key);
 
+  static const index = 2;
+  static const title = "Hakkımızda";
+
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        SectionTitle(title: "HAKKIMIZDA"),
-        Row(
+        SectionTitle(title: title.toUpperCase()),
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(

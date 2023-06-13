@@ -9,6 +9,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class WelcomeSection extends StatelessWidget {
   const WelcomeSection({Key? key}) : super(key: key);
 
+  static const index = 0;
+  static const title = "Ana Sayfa";
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppBloc, AppState>(

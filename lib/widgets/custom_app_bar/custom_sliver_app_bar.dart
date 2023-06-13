@@ -44,15 +44,15 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> with SingleTick
             opacity: state.welcomeAnimationState.appBarOpacity,
             duration: const Duration(milliseconds: 1000),
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: state.bodySections.where((item) => item.showInAppBar == true).map(
-                      (e) => AppBarTextButton(
-                    text: e.title ?? "",
-                    onPressed: () {
-                      widget.onButtonTap(e.index);
-                    },
-                  ),
-                ).toList()
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: state.bodySections.where((item) => item.showInAppBar == true).map(
+                (bodySection) => AppBarTextButton(
+                  text: bodySection.title,
+                  onPressed: () {
+                    widget.onButtonTap(bodySection.index);
+                  },
+                ),
+              ).toList()
             ),
           ),
           actions: const [
