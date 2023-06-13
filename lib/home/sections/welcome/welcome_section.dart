@@ -1,7 +1,7 @@
 import 'package:demirli_tech_v2/config/app_space.dart';
 import 'package:demirli_tech_v2/config/app_text_style.dart';
-import 'package:demirli_tech_v2/domain/app_bloc.dart';
-import 'package:demirli_tech_v2/domain/app_state.dart';
+import 'package:demirli_tech_v2/domain/bloc/app_bloc.dart';
+import 'package:demirli_tech_v2/domain/bloc/state/app_state.dart';
 import 'package:demirli_tech_v2/home/sections/welcome/widget/welcome_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

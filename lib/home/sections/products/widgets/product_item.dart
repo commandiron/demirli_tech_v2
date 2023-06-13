@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/app_padding.dart';
 import '../../../../config/app_text_style.dart';
-import '../../../../domain/app_bloc.dart';
-import '../../../../domain/app_state.dart';
+import '../../../../domain/bloc/app_bloc.dart';
+import '../../../../domain/bloc/state/app_state.dart';
 
 class ProductItem extends StatelessWidget {
   const ProductItem({Key? key, required this.backgroundAsset, required this.iconAsset, required this.name, required this.shortDescription, this.webUrl, this.appStoreUrl, this.googlePlayUrl}) : super(key: key);

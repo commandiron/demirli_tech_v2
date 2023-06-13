@@ -33,25 +33,22 @@ class RemoveProductsAnimation extends AppEvent {
 }
 
 class AppBarLeadingTap extends AppEvent {
-  final BuildContext context;
-  const AppBarLeadingTap(this.context);
+  const AppBarLeadingTap();
   @override
-  List<Object?> get props => [context];
+  List<Object?> get props => [];
 }
 
 class AppBarButtonTap extends AppEvent {
-  final BuildContext context;
   final int index;
-  const AppBarButtonTap(this.context, this.index);
+  const AppBarButtonTap(this.index);
   @override
-  List<Object?> get props => [context, index];
+  List<Object?> get props => [index];
 }
 
 class WelcomeButtonTap extends AppEvent {
-  final BuildContext context;
-  const WelcomeButtonTap(this.context);
+  const WelcomeButtonTap();
   @override
-  List<Object?> get props => [context];
+  List<Object?> get props => [];
 }
 
 class ProductsCarouselNext extends AppEvent {
@@ -74,8 +71,7 @@ class HideScrollToTopFab extends AppEvent {
 }
 
 class ScrollToTop extends AppEvent {
-  final BuildContext context;
-  const ScrollToTop(this.context);
+  const ScrollToTop();
   @override
-  List<Object?> get props => [context];
+  List<Object?> get props => [];
 }

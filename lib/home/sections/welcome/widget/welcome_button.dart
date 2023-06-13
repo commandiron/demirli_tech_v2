@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/app_space.dart';
 import '../../../../config/app_text_style.dart';
-import '../../../../domain/app_bloc.dart';
-import '../../../../domain/app_event.dart';
+import '../../../../domain/bloc/app_bloc.dart';
+import '../../../../domain/bloc/app_event.dart';
 
 class WelcomeButton extends StatefulWidget {
   const WelcomeButton({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _WelcomeButtonState extends State<WelcomeButton> {
     return ElevatedButton(
         onPressed: () {
           pressedRecently = true;
-          context.read<AppBloc>().add(WelcomeButtonTap(context));
+          context.read<AppBloc>().add(const WelcomeButtonTap());
         },
         onHover: (value) async {
           if(value) {

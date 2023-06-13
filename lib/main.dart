@@ -1,8 +1,7 @@
 import 'package:demirli_tech_v2/config/app_theme.dart';
-import 'package:demirli_tech_v2/domain/app_bloc.dart';
-import 'package:demirli_tech_v2/domain/app_event.dart';
+import 'package:demirli_tech_v2/domain/bloc/app_bloc.dart';
+import 'package:demirli_tech_v2/domain/bloc/app_event.dart';
 import 'package:demirli_tech_v2/home/home_screen.dart';
-import 'package:demirli_tech_v2/ui_model/body_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -20,15 +19,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppConfig.init(context);
-    return BlocProvider(
-      create: (context) => AppBloc()..add(Init(context)),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: themeLight,
-        darkTheme: themeDark,
-        title: "Demirli Tech",
-        home: const MaterialChild()
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: themeLight,
+      darkTheme: themeDark,
+      title: "Demirli Tech",
+      home: const MaterialChild()
     );
   }
 }
@@ -38,6 +34,9 @@ class MaterialChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeScreen(bodySections: BodySection.getItems(context),);
+    return BlocProvider(
+      create: (context) => AppBloc()..add(Init(context)),
+      child: const HomeScreen(),
+    );
   }
 }

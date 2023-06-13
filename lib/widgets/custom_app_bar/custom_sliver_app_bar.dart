@@ -1,17 +1,15 @@
-import 'package:demirli_tech_v2/domain/app_bloc.dart';
-import 'package:demirli_tech_v2/domain/app_state.dart';
+import 'package:demirli_tech_v2/domain/bloc/app_bloc.dart';
+import 'package:demirli_tech_v2/domain/bloc/state/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../config/layout_dimensions.dart';
-import '../../ui_model/body_section.dart';
 import 'app_bar_text_button.dart';
 import '../app_logo.dart';
 
 class CustomSliverAppBar extends StatefulWidget {
-  const CustomSliverAppBar({Key? key, required this.bodySections, required this.onLeadingTap, required this.onButtonTap, }) : super(key: key);
+  const CustomSliverAppBar({Key? key, required this.onLeadingTap, required this.onButtonTap, }) : super(key: key);
 
-  final List<BodySection> bodySections;
   final void Function() onLeadingTap;
   final void Function(int sectionIndex) onButtonTap;
 
@@ -47,7 +45,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> with SingleTick
             duration: const Duration(milliseconds: 1000),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: widget.bodySections.where((item) => item.showInAppBar == true).map(
+                children: state.bodySections.where((item) => item.showInAppBar == true).map(
                       (e) => AppBarTextButton(
                     text: e.title ?? "",
                     onPressed: () {

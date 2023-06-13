@@ -1,18 +1,16 @@
-import 'package:demirli_tech_v2/domain/app_bloc.dart';
-import 'package:demirli_tech_v2/domain/app_event.dart';
-import 'package:demirli_tech_v2/ui_model/body_section.dart';
+import 'package:demirli_tech_v2/domain/bloc/app_bloc.dart';
+import 'package:demirli_tech_v2/domain/bloc/app_event.dart';
 import 'package:demirli_tech_v2/widgets/app_fab.dart';
 import 'package:demirli_tech_v2/widgets/custom_app_bar/custom_sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../domain/bloc/state/app_state.dart';
 import '../widgets/body_base.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key, required this.bodySections}) : super(key: key);
-
-  final List<BodySection> bodySections;
-
+  const HomeScreen({Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,23 +23,28 @@ class HomeScreen extends StatelessWidget {
           controller: context.read<AppBloc>().state.appScrollController,
           slivers: [
             CustomSliverAppBar(
-              bodySections: bodySections,
-              onLeadingTap: () => context.read<AppBloc>().add(AppBarLeadingTap(context)),
-              onButtonTap: (sectionIndex) {
-                context.read<AppBloc>().add(AppBarButtonTap(context, sectionIndex));
-              },
+              onLeadingTap: () => context.read<AppBloc>().add(const AppBarLeadingTap()),
+              onButtonTap: (sectionIndex) => context.read<AppBloc>().add(AppBarButtonTap(sectionIndex)),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                childCount: bodySections.length, (context, index) {
-                  return BodyBase(
-                    height: bodySections[index].screenHeight,
-                    bgColor: bodySections[index].bgColor,
-                    bgImageAsset: bodySections[index].bgImageAsset,
-                    child: bodySections[index].section,
-                  );
-                }
-              ),
+            BlocBuilder<AppBloc, AppState>(
+              buildWhen: (previous, current) {
+                return previous.bodySections != current.bodySections;
+              },
+              builder: (context, state) {
+                return SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    childCount: state.bodySections.length,
+                    (context, index) {
+                      return BodyBase(
+                        height: state.bodySections[index].screenHeight,
+                        bgColor: state.bodySections[index].bgColor,
+                        bgImageAsset: state.bodySections[index].bgImageAsset,
+                        child: state.bodySections[index].section,
+                      );
+                    }
+                  ),
+                );
+              },
             )
           ],
         ),

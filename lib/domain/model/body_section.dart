@@ -1,27 +1,26 @@
-import 'package:demirli_tech_v2/config/layout_dimensions.dart';
-import 'package:demirli_tech_v2/home/sections/about/about_section.dart';
-import 'package:demirli_tech_v2/home/sections/contact_us/contact_us_section.dart';
-import 'package:demirli_tech_v2/home/sections/copyright_footer/copyright_footer.dart';
-import 'package:demirli_tech_v2/home/sections/our_vision/our_vision_section.dart';
-import 'package:demirli_tech_v2/home/sections/welcome/welcome_section.dart';
-import 'package:demirli_tech_v2/ui_model/product.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-import '../home/sections/products/products_section.dart';
+import '../../config/layout_dimensions.dart';
+import '../../home/sections/about/about_section.dart';
+import '../../home/sections/contact_us/contact_us_section.dart';
+import '../../home/sections/copyright_footer/copyright_footer.dart';
+import '../../home/sections/our_vision/our_vision_section.dart';
+import '../../home/sections/products/products_section.dart';
+import '../../home/sections/welcome/welcome_section.dart';
 
 class BodySection {
-  BodySection(
-    {
-      required this.index,
-      this.title,
-      required this.screenHeight,
-      required this.offset,
-      required this.bgColor,
-      this.bgImageAsset,
-      this.showInAppBar = true,
-      required this.section
-    }
-  );
+  BodySection({
+    required this.index,
+    this.title,
+    required this.screenHeight,
+    required this.offset,
+    required this.bgColor,
+    this.bgImageAsset,
+    this.showInAppBar = true,
+    required this.section
+  });
 
   final int index;
   final String? title;
@@ -32,10 +31,11 @@ class BodySection {
   final bool showInAppBar;
   final Widget section;
 
-  static const double welcomeMinHeight = 650 - LayoutDimensions.appBarHeight;
-  static const double productsMinHeight = 650 - LayoutDimensions.appBarHeight;
-
   static List<BodySection> getItems(BuildContext context) {
+
+    const double welcomeMinHeight = 650 - LayoutDimensions.appBarHeight;
+    const double productsMinHeight = 650 - LayoutDimensions.appBarHeight;
+
     double welcomeHeight =
         MediaQuery.of(context).size.height - LayoutDimensions.appBarHeight;
     if (welcomeHeight < welcomeMinHeight) {
@@ -71,14 +71,13 @@ class BodySection {
           section: const WelcomeSection()
       ),
       BodySection(
-          index: 1,
-          title: "Ürünlerimiz",
-          screenHeight: productsHeight,
-          offset: productsOffset,
-          bgColor: Theme.of(context).colorScheme.secondaryContainer,
-          section: ProductsSection(
-            products: Product.getItems(),
-          )),
+        index: 1,
+        title: "Ürünlerimiz",
+        screenHeight: productsHeight,
+        offset: productsOffset,
+        bgColor: Theme.of(context).colorScheme.secondaryContainer,
+        section: const ProductsSection(),
+      ),
       BodySection(
           index: 2,
           title: "Hakkımızda",
