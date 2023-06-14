@@ -38,6 +38,7 @@ class WelcomeSection extends StatelessWidget {
                   child: Text(
                     "İnşaat sektörü için inovatif ve vizyoner araçlar geliştiriyoruz",
                     style: AppTextStyle.h2!,
+                    textAlign: TextAlign.center,
                   )
                 ),
                 AppSpace.vXL!,

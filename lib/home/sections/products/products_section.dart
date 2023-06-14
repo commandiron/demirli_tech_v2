@@ -53,9 +53,9 @@ class ProductsSection extends StatelessWidget {
                         child: CarouselSlider(
                           carouselController: state.productsCarouselController,
                           options: CarouselOptions(
-                            height: MediaQuery.of(context).size.height - LayoutDimensions.sectionTitleHeight,
-                              enableInfiniteScroll: false,
-                              scrollPhysics: Adaptive.carouselScrollPhysics
+                            height: state.bodySections.firstWhere((element) => element.index == index).screenHeight - LayoutDimensions.sectionTitleHeight,
+                            enableInfiniteScroll: false,
+                            scrollPhysics: Adaptive.carouselScrollPhysics
                           ),
                           items: state.products.map((product) {
                             return ProductItem(
