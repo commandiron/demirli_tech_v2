@@ -8,7 +8,7 @@ class CopyrightFooter extends StatelessWidget {
   static const title = "Copyright Footer";
   static const double height = 60;
 
-  static double getCopyrightFooterOffset(BuildContext context) {
+  static double calculateOffset(BuildContext context) {
     return ContactUsSection.calculateOffset(context) + ContactUsSection.height;
   }
 

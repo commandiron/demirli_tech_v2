@@ -28,10 +28,10 @@ class BodySection {
         section: const WelcomeSection()
     ),
     BodySection(
-      index: ProductsSection.index,
-      title: ProductsSection.title,
-      showInAppBar: true,
-      section: const ProductsSection(),
+        index: ProductsSection.index,
+        title: ProductsSection.title,
+        showInAppBar: true,
+        section: const ProductsSection(),
     ),
     BodySection(
         index: AboutSection.index,

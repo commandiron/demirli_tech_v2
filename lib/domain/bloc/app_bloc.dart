@@ -28,8 +28,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     )
   ) {
     on<Init>((event, emit) {
-      emit(state.copyWith(bodySections: BodySection.items));
-      emit(state.copyWith(products: Product.getItems()));
+      emit(state.copyWith(bodySections: BodySection.items, products: Product.items));
       _initAnimations(event.context);
     });
     on<ForwardWelcomeAnimation>((event, emit) async {
