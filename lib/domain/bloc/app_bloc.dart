@@ -99,7 +99,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         add(HideScrollToTopFab());
       }
       final productsOffset = ProductsSection.calculateHeight(context);
-      final productsAnimationTriggerOffset = productsOffset / 1.2;
+      final productsAnimationTriggerOffset = productsOffset / 1.3;
       if(state.appScrollController.offset > productsAnimationTriggerOffset
           && state.productsAnimationState is ProductsAnimationInitial
       ) {
@@ -115,22 +115,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
   void _navigateToSection(BuildContext context, index) {
     final double currentOffset = state.appScrollController.offset;
-    double targetOffset = 0;
-    if(index == 0) {
-      targetOffset = WelcomeSection.offset;
-    }
-    if(index == 1) {
-      targetOffset = ProductsSection.calculateOffset(context);
-    }
-    if(index == 2) {
-      targetOffset = AboutSection.calculateOffset(context);
-    }
-    if(index == 3) {
-      targetOffset = OurVisionSection.calculateOffset(context);
-    }
-    if(index == 4) {
-      targetOffset = ContactUsSection.calculateOffset(context);
-    }
+    final targetOffset = _getSectionOffsetFromIndex(context, index);
     state.appScrollController.animateTo(
       currentOffset < targetOffset
         ? targetOffset + LayoutDimensions.appBarHeight
@@ -138,5 +123,21 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       duration: const Duration(seconds: 1),
       curve: Curves.ease
     );
+  }
+
+  double _getSectionOffsetFromIndex(BuildContext context, index) {
+    switch (index) {
+      case WelcomeSection.index:
+        return WelcomeSection.offset;
+      case ProductsSection.index:
+        return ProductsSection.calculateOffset(context);
+      case AboutSection.index:
+        return AboutSection.calculateOffset(context);
+      case OurVisionSection.index:
+        return OurVisionSection.calculateOffset(context);
+      case ContactUsSection.index:
+        return ContactUsSection.calculateOffset(context);
+      default : return 0;
+    }
   }
 }
