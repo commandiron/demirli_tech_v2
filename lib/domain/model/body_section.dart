@@ -29,23 +29,30 @@ class BodySection {
   final bool showInAppBar;
   final Widget section;
 
-  static List<BodySection> getItems(BuildContext context) {
-
+  static double getWelcomeHeight(BuildContext context) {
     const double welcomeMinHeight = 650 - LayoutDimensions.appBarHeight;
-    const double productsMinHeight = 650 - LayoutDimensions.appBarHeight;
-
     double welcomeHeight =
         MediaQuery.of(context).size.height - LayoutDimensions.appBarHeight;
     if (welcomeHeight < welcomeMinHeight) {
       welcomeHeight = welcomeMinHeight;
     }
+    return welcomeHeight;
+  }
 
-    const double aboutHeight = 360;
-
+  static double getProductsHeight(BuildContext context) {
+    const double productsMinHeight = 650 - LayoutDimensions.appBarHeight;
     double productsHeight = MediaQuery.of(context).size.height;
     if (productsHeight < productsMinHeight) {
       productsHeight = productsMinHeight;
     }
+    return productsHeight;
+  }
+
+  static List<BodySection> getItems(BuildContext context) {
+
+    final welcomeHeight = getWelcomeHeight(context);
+    final productsHeight = getProductsHeight(context);
+    const double aboutHeight = 360;
     const double ourVisionHeight = 600;
     const double contactUsHeight = 360;
     const double copyrightFooterHeight = 60;
