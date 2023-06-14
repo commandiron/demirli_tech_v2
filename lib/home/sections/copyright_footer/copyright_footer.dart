@@ -18,9 +18,11 @@ class CopyrightFooter extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.tertiaryContainer,
-        border: Border.all(
-          color: Colors.grey,
-          width: 0.2
+        border: const Border(
+          top: BorderSide(
+            color: Colors.grey,
+            width: 0.2
+          ),
         )
       ),
     );
