@@ -15,7 +15,6 @@ class BodySection {
     required this.screenHeight,
     required this.offset,
     required this.bgColor,
-    this.bgImageAsset,
     required this.showInAppBar,
     required this.section
   });
@@ -25,7 +24,6 @@ class BodySection {
   final double screenHeight;
   final double offset;
   final Color bgColor;
-  final String? bgImageAsset;
   final bool showInAppBar;
   final Widget section;
 

@@ -38,7 +38,6 @@ class HomeScreen extends StatelessWidget {
                       return BodyBase(
                         height: state.bodySections[index].screenHeight,
                         bgColor: state.bodySections[index].bgColor,
-                        bgImageAsset: state.bodySections[index].bgImageAsset,
                         child: state.bodySections[index].section,
                       );
                     }
