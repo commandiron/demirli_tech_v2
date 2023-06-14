@@ -8,17 +8,12 @@ import '../../config/layout_dimensions.dart';
 import 'app_bar_text_button.dart';
 import '../app_logo.dart';
 
-class CustomSliverAppBar extends StatefulWidget {
+class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar({Key? key, required this.onLeadingTap, required this.onButtonTap, }) : super(key: key);
 
   final void Function() onLeadingTap;
   final void Function(int sectionIndex) onButtonTap;
 
-  @override
-  State<CustomSliverAppBar> createState() => _CustomSliverAppBarState();
-}
-
-class _CustomSliverAppBarState extends State<CustomSliverAppBar> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppBloc, AppState>(
@@ -36,7 +31,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> with SingleTick
             duration: const Duration(milliseconds: 1000),
             child: AppLogo(
               logoAsset: Assets.appLogoBlack,
-              onTap: widget.onLeadingTap
+              onTap: onLeadingTap
             ),
           ),
           leadingWidth: 300,
@@ -50,7 +45,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> with SingleTick
                 (bodySection) => AppBarTextButton(
                   text: bodySection.title,
                   onPressed: () {
-                    widget.onButtonTap(bodySection.index);
+                    onButtonTap(bodySection.index);
                   },
                 ),
               ).toList()

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../config/layout_dimensions.dart';
 import '../../home/sections/about/about_section.dart';
 import '../../home/sections/contact_us/contact_us_section.dart';
 import '../../home/sections/copyright_footer/copyright_footer.dart';
@@ -12,110 +11,49 @@ class BodySection {
   BodySection({
     required this.index,
     required this.title,
-    required this.screenHeight,
-    required this.offset,
-    required this.bgColor,
     required this.showInAppBar,
     required this.section
   });
 
   final int index;
   final String title;
-  final double screenHeight;
-  final double offset;
-  final Color bgColor;
   final bool showInAppBar;
   final Widget section;
 
-  static double getWelcomeHeight(BuildContext context) {
-    const double welcomeMinHeight = 650 - LayoutDimensions.appBarHeight;
-    double welcomeHeight =
-        MediaQuery.of(context).size.height - LayoutDimensions.appBarHeight;
-    if (welcomeHeight < welcomeMinHeight) {
-      welcomeHeight = welcomeMinHeight;
-    }
-    return welcomeHeight;
-  }
-
-  static double getProductsHeight(BuildContext context) {
-    const double productsMinHeight = 650 - LayoutDimensions.appBarHeight;
-    double productsHeight = MediaQuery.of(context).size.height;
-    if (productsHeight < productsMinHeight) {
-      productsHeight = productsMinHeight;
-    }
-    return productsHeight;
-  }
-
-  static List<BodySection> getItems(BuildContext context) {
-
-    final welcomeHeight = getWelcomeHeight(context);
-    final productsHeight = getProductsHeight(context);
-    const double aboutHeight = 360;
-    const double ourVisionHeight = 600;
-    const double contactUsHeight = 360;
-    const double copyrightFooterHeight = 60;
-
-    const double welcomeOffset = 0;
-
-    double productsOffset = welcomeOffset + welcomeHeight;
-    double aboutOffset = productsOffset + productsHeight;
-    double ourVisionOffset = aboutOffset + aboutHeight;
-    double contactUsOffset = ourVisionOffset + ourVisionHeight;
-    double copyrightFooterOffset = contactUsOffset + contactUsHeight;
-
-    return [
-      BodySection(
+  static final List<BodySection> items = [
+    BodySection(
         index: WelcomeSection.index,
         title: WelcomeSection.title,
-        screenHeight: welcomeHeight,
-        offset: welcomeOffset,
-        bgColor: Theme.of(context).colorScheme.primaryContainer,
         showInAppBar: false,
         section: const WelcomeSection()
-      ),
-      BodySection(
-        index: ProductsSection.index,
-        title: ProductsSection.title,
-        screenHeight: productsHeight,
-        offset: productsOffset,
-        bgColor: Theme.of(context).colorScheme.secondaryContainer,
-        showInAppBar: true,
-        section: const ProductsSection(),
-      ),
-      BodySection(
+    ),
+    BodySection(
+      index: ProductsSection.index,
+      title: ProductsSection.title,
+      showInAppBar: true,
+      section: const ProductsSection(),
+    ),
+    BodySection(
         index: AboutSection.index,
         title: AboutSection.title,
-        screenHeight: aboutHeight,
-        offset: aboutOffset,
-        bgColor: Theme.of(context).colorScheme.primaryContainer,
         showInAppBar: true,
         section: const AboutSection()
-      ),
-      BodySection(
+    ),
+    BodySection(
         index: OurVisionSection.index,
         title: OurVisionSection.title,
-        screenHeight: ourVisionHeight,
-        offset: ourVisionOffset,
-        bgColor: Theme.of(context).colorScheme.secondaryContainer,
         showInAppBar: true,
         section: const OurVisionSection()
-      ),
-      BodySection(
+    ),
+    BodySection(
         index: ContactUsSection.index,
         title: ContactUsSection.title,
-        screenHeight: contactUsHeight,
-        offset: contactUsOffset,
-        bgColor: Theme.of(context).colorScheme.tertiaryContainer,
         showInAppBar: true,
         section: const ContactUsSection()),
-      BodySection(
+    BodySection(
         index: CopyrightFooter.index,
         title: CopyrightFooter.title,
-        screenHeight: copyrightFooterHeight,
-        offset: copyrightFooterOffset,
-        bgColor: Theme.of(context).colorScheme.tertiaryContainer,
         showInAppBar: false,
         section: const CopyrightFooter()),
-    ];
-  }
+  ];
 }

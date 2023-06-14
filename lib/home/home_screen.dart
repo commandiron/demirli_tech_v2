@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../domain/bloc/state/app_state.dart';
-import '../widgets/body_base.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -23,8 +22,8 @@ class HomeScreen extends StatelessWidget {
           controller: context.read<AppBloc>().state.appScrollController,
           slivers: [
             CustomSliverAppBar(
-              onLeadingTap: () => context.read<AppBloc>().add(const AppBarLeadingTap()),
-              onButtonTap: (sectionIndex) => context.read<AppBloc>().add(AppBarButtonTap(sectionIndex)),
+              onLeadingTap: () => context.read<AppBloc>().add(AppBarLeadingTap(context)),
+              onButtonTap: (sectionIndex) => context.read<AppBloc>().add(AppBarButtonTap(context, sectionIndex)),
             ),
             BlocBuilder<AppBloc, AppState>(
               buildWhen: (previous, current) {
@@ -35,11 +34,7 @@ class HomeScreen extends StatelessWidget {
                   delegate: SliverChildBuilderDelegate(
                     childCount: state.bodySections.length,
                     (context, index) {
-                      return BodyBase(
-                        height: state.bodySections[index].screenHeight,
-                        bgColor: state.bodySections[index].bgColor,
-                        child: state.bodySections[index].section,
-                      );
+                      return state.bodySections[index].section;
                     }
                   ),
                 );

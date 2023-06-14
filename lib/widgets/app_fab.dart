@@ -21,7 +21,7 @@ class AppFab extends StatelessWidget {
             padding: AppPadding.allM!,
             child: MoveButton(
               icon: Icons.arrow_drop_up,
-              onTap: () => context.read<AppBloc>().add(const ScrollToTop()),
+              onTap: () => context.read<AppBloc>().add(ScrollToTop(context)),
             ),
           ),
         );

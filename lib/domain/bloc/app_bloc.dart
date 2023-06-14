@@ -2,6 +2,9 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:demirli_tech_v2/domain/bloc/state/products_animation_state.dart';
 import 'package:demirli_tech_v2/domain/bloc/state/scroll_to_top_fab_state.dart';
 import 'package:demirli_tech_v2/domain/bloc/state/welcome_animation_state.dart';
+import 'package:demirli_tech_v2/home/sections/about/about_section.dart';
+import 'package:demirli_tech_v2/home/sections/contact_us/contact_us_section.dart';
+import 'package:demirli_tech_v2/home/sections/our_vision/our_vision_section.dart';
 import 'package:demirli_tech_v2/home/sections/products/products_section.dart';
 import 'package:demirli_tech_v2/home/sections/welcome/welcome_section.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +28,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     )
   ) {
     on<Init>((event, emit) {
-      emit(state.copyWith(bodySections: BodySection.getItems(event.context)));
+      emit(state.copyWith(bodySections: BodySection.items));
       emit(state.copyWith(products: Product.getItems()));
-      _initAnimations();
+      _initAnimations(event.context);
     });
     on<ForwardWelcomeAnimation>((event, emit) async {
       await Future.delayed(const Duration(milliseconds: 1000));
@@ -46,13 +49,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(state.copyWith(productsAnimationState: ProductsAnimationInitial()));
     });
     on<AppBarLeadingTap>((event, emit) {
-      _navigateToSection(WelcomeSection.index);
+      _navigateToSection(event.context, WelcomeSection.index);
     });
     on<AppBarButtonTap>((event, emit) {
-      _navigateToSection(event.index);
+      _navigateToSection(event.context, event.index);
     });
     on<WelcomeButtonTap>((event, emit) {
-      _navigateToSection(ProductsSection.index);
+      _navigateToSection(event.context, ProductsSection.index);
     });
     on<ShowScrollToTopFab>((event, emit) {
       emit(state.copyWith(scrollToTopFabState: ScrollToTopFabVisible()));
@@ -61,7 +64,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(state.copyWith(scrollToTopFabState: ScrollToTopFabHidden()));
     });
     on<ScrollToTop>((event, emit) {
-      _navigateToSection(0);
+      _navigateToSection(event.context, 0,);
     });
     on<ProductsCarouselBack>((event, emit) {
       state.productsCarouselController.previousPage(
@@ -77,18 +80,16 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     });
   }
 
-  void _initAnimations() {
+  void _initAnimations(BuildContext context) {
     _initWelcomeAnimation();
-    _initScrollAnimations();
+    _initScrollAnimations(context);
   }
 
   void _initWelcomeAnimation() {
     add(ForwardWelcomeAnimation());
   }
 
-  void _initScrollAnimations() {
-    final productsOffset = state.bodySections[1].offset;
-    final productsAnimationTriggerOffset = productsOffset / 1.2;
+  void _initScrollAnimations(BuildContext context) {
     state.appScrollController.addListener(() {
       if(state.appScrollController.offset > 0
           && state.scrollToTopFabState is ScrollToTopFabHidden) {
@@ -98,6 +99,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           && state.scrollToTopFabState is ScrollToTopFabVisible) {
         add(HideScrollToTopFab());
       }
+      final productsOffset = ProductsSection.calculateHeight(context);
+      final productsAnimationTriggerOffset = productsOffset / 1.2;
       if(state.appScrollController.offset > productsAnimationTriggerOffset
           && state.productsAnimationState is ProductsAnimationInitial
       ) {
@@ -111,9 +114,24 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     });
   }
 
-  void _navigateToSection(index) {
+  void _navigateToSection(BuildContext context, index) {
     final double currentOffset = state.appScrollController.offset;
-    final double targetOffset = state.bodySections.firstWhere((element) => element.index == index).offset;
+    double targetOffset = 0;
+    if(index == 0) {
+      targetOffset = WelcomeSection.offset;
+    }
+    if(index == 1) {
+      targetOffset = ProductsSection.calculateOffset(context);
+    }
+    if(index == 2) {
+      targetOffset = AboutSection.calculateOffset(context);
+    }
+    if(index == 3) {
+      targetOffset = OurVisionSection.calculateOffset(context);
+    }
+    if(index == 4) {
+      targetOffset = ContactUsSection.calculateOffset(context);
+    }
     state.appScrollController.animateTo(
       currentOffset < targetOffset
         ? targetOffset + LayoutDimensions.appBarHeight
