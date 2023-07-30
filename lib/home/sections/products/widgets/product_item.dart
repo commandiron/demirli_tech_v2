@@ -86,9 +86,9 @@ class ProductItem extends StatelessWidget {
                         children: [
                           if(webUrl != null)
                             WebBadge(url: webUrl,),
-                          if(appStoreUrl == null)
+                          if(appStoreUrl != null)
                             AppStoreBadge(url: appStoreUrl,),
-                          if(googlePlayUrl == null)
+                          if(googlePlayUrl != null)
                             GooglePlayBadge(url: googlePlayUrl,)
                         ],
                       ),
